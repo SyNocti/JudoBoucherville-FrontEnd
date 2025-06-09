@@ -11,7 +11,7 @@
                 </div>
             </div>
 
-            <!-- Middle section: Navigation -->
+            <!-- Middle section: Navigation (Desktop only) -->
             <nav class="header-nav">
                 <ul class="nav-menu">
                     <li class="nav-item" [class.active]="currentPage === 'accueil'">
@@ -130,12 +130,154 @@
                 </ul>
             </nav>
 
-            <!-- Right section: Inscription button -->
+            <!-- Right section: Inscription button (Desktop only) -->
             <div class="header-right">
                 <a href="#" class="inscription-btn">
                     <span>Inscription</span>
                 </a>
             </div>
+
+            <!-- Mobile hamburger menu -->
+            <button class="mobile-toggle" (click)="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" [class.show]="mobileMenuOpen" (click)="closeMobileMenu()"></div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" [class.open]="mobileMenuOpen">
+        <div class="drawer-header">
+            <span class="drawer-title">Menu</span>
+            <button class="drawer-close" (click)="closeMobileMenu()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <nav class="drawer-nav">
+            <ul class="drawer-menu">
+                <li class="nav-item" [class.active]="currentPage === 'accueil'">
+                    <a href="#" class="nav-link" (click)="setActiveItem('accueil'); closeMobileMenu()">
+                        <span>Accueil</span>
+                        <div class="underline"></div>
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" [class.active]="currentPage === 'athletes'"
+                        (click)="toggleMobileDropdown('athletes')">
+                        <span>Athlètes</span>
+                        <i class="fas fa-chevron-down" [class.rotate]="mobileActiveDropdown === 'athletes'"></i>
+                        <div class="underline"></div>
+                    </a>
+                    <ul class="dropdown-menu" [class.show]="mobileActiveDropdown === 'athletes'">
+                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Équipe A</span>
+                                <div class="underline"></div>
+                            </a></li>
+                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Équipe B</span>
+                                <div class="underline"></div>
+                            </a></li>
+                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Équipe Junior</span>
+                                <div class="underline"></div>
+                            </a></li>
+                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Équipe Senior</span>
+                                <div class="underline"></div>
+                            </a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" [class.active]="currentPage === 'club'"
+                        (click)="toggleMobileDropdown('club')">
+                        <span>Club</span>
+                        <i class="fas fa-chevron-down" [class.rotate]="mobileActiveDropdown === 'club'"></i>
+                        <div class="underline"></div>
+                    </a>
+                    <ul class="dropdown-menu" [class.show]="mobileActiveDropdown === 'club'">
+                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Histoire</span>
+                                <div class="underline"></div>
+                            </a></li>
+                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Administration</span>
+                                <div class="underline"></div>
+                            </a></li>
+                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Présidents</span>
+                                <div class="underline"></div>
+                            </a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" [class.active]="currentPage === 'cours'"
+                        (click)="toggleMobileDropdown('cours')">
+                        <span>Cours</span>
+                        <i class="fas fa-chevron-down" [class.rotate]="mobileActiveDropdown === 'cours'"></i>
+                        <div class="underline"></div>
+                    </a>
+                    <ul class="dropdown-menu" [class.show]="mobileActiveDropdown === 'cours'">
+                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Débutants</span>
+                                <div class="underline"></div>
+                            </a></li>
+                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Intermédiaires</span>
+                                <div class="underline"></div>
+                            </a></li>
+                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Avancés</span>
+                                <div class="underline"></div>
+                            </a></li>
+                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Compétition</span>
+                                <div class="underline"></div>
+                            </a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item" [class.active]="currentPage === 'challenge'">
+                    <a href="#" class="nav-link" (click)="setActiveItem('challenge'); closeMobileMenu()">
+                        <span>Challenge</span>
+                        <div class="underline"></div>
+                    </a>
+                </li>
+
+                <li class="nav-item" [class.active]="currentPage === 'contact'">
+                    <a href="#" class="nav-link" (click)="setActiveItem('contact'); closeMobileMenu()">
+                        <span>Contact</span>
+                        <div class="underline"></div>
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" [class.active]="currentPage === 'archive'"
+                        (click)="toggleMobileDropdown('archive')">
+                        <span>Archive</span>
+                        <i class="fas fa-chevron-down" [class.rotate]="mobileActiveDropdown === 'archive'"></i>
+                        <div class="underline"></div>
+                    </a>
+                    <ul class="dropdown-menu" [class.show]="mobileActiveDropdown === 'archive'">
+                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Résultats</span>
+                                <div class="underline"></div>
+                            </a></li>
+                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Actualités</span>
+                                <div class="underline"></div>
+                            </a></li>
+                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Journaux</span>
+                                <div class="underline"></div>
+                            </a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item" [class.active]="currentPage === 'telechargements'">
+                    <a href="#" class="nav-link" (click)="setActiveItem('telechargements'); closeMobileMenu()">
+                        <span>Téléchargements</span>
+                        <div class="underline"></div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="drawer-inscription">
+            <a href="#" class="inscription-btn" (click)="closeMobileMenu()">
+                <span>Inscription</span>
+            </a>
         </div>
     </div>
 </header>

@@ -9,9 +9,12 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent {
   activeDropdown: string | null = null;
-  currentPage: string = 'accueil'; // This should be set based on current route
+  mobileActiveDropdown: string | null = null;
+  currentPage: string = 'accueil';
+  mobileMenuOpen: boolean = false;
   private hideTimeout: any;
 
+  // Desktop dropdown methods
   showDropdown(dropdown: string): void {
     // Clear any pending hide timeout
     if (this.hideTimeout) {
@@ -39,6 +42,27 @@ export class HeaderComponent {
       this.hideTimeout = null;
     }
     this.activeDropdown = null;
+  }
+
+  // Mobile menu methods
+  toggleMobileMenu(): void {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
+    if (!this.mobileMenuOpen) {
+      this.mobileActiveDropdown = null;
+    }
+  }
+
+  closeMobileMenu(): void {
+    this.mobileMenuOpen = false;
+    this.mobileActiveDropdown = null;
+  }
+
+  toggleMobileDropdown(dropdown: string): void {
+    if (this.mobileActiveDropdown === dropdown) {
+      this.mobileActiveDropdown = null;
+    } else {
+      this.mobileActiveDropdown = dropdown;
+    }
   }
 
   // Method to set current page (should be called from router or parent component)
