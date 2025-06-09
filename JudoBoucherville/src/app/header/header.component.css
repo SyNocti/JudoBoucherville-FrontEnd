@@ -1,0 +1,216 @@
+.header {
+    position: sticky;
+    top: 0;
+    background-color: var(--primary-color);
+    z-index: 1000;
+    width: 100%;
+}
+
+.container {
+    max-width: 100%;
+    padding: 0 30px;
+}
+
+.header-content {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    min-height: 100px;
+    padding: 20px 0;
+}
+
+/* Left section */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-self: start;
+}
+
+.logo-img {
+    height: 60px;
+    width: auto;
+}
+
+.brand-name h1 {
+    color: var(--secondary-color);
+    font-size: 1.8rem;
+    margin: 0;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px var(--shadow-light);
+}
+
+/* Middle section - Navigation */
+.header-nav {
+    justify-self: center;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 5px;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    color: var(--secondary-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.2rem;
+    position: relative;
+    transition: var(--transition-fast);
+    border-radius: var(--border-radius);
+    gap: 8px;
+}
+
+.nav-link span:first-child {
+    position: relative;
+    z-index: 2;
+}
+
+/* Font Awesome chevron styling */
+.fa-chevron-down {
+    color: var(--accent-color);
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.dropdown.show .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* Underline animation - unified for hover and active states */
+.underline {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    right: 16px;
+    height: 3px;
+    background-color: var(--accent-color);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover .underline {
+    transform: scaleX(1);
+}
+
+/* Active page styling */
+.nav-item.active .nav-link .underline {
+    transform: scaleX(1);
+}
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--primary-color);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-link {
+    display: block;
+    color: var(--secondary-color);
+    padding: 12px 20px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    position: relative;
+    transition: var(--transition-fast);
+}
+
+.dropdown-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-link .underline {
+    bottom: 8px;
+    left: 20px;
+    right: 20px;
+    height: 2px;
+}
+
+.dropdown-link:hover .underline {
+    transform: scaleX(1);
+}
+
+/* Right section */
+.header-right {
+    justify-self: end;
+}
+
+.inscription-btn {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    padding: 10px 24px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: var(--transition-medium);
+    position: relative;
+    overflow: hidden;
+}
+
+.inscription-btn:hover {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-medium);
+}
+
+.inscription-btn span {
+    position: relative;
+    z-index: 2;
+}
+
+/* Hover effects */
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Animation delays for dropdown items */
+.dropdown-menu li:nth-child(1) .dropdown-link {
+    transition-delay: 0.05s;
+}
+
+.dropdown-menu li:nth-child(2) .dropdown-link {
+    transition-delay: 0.1s;
+}
+
+.dropdown-menu li:nth-child(3) .dropdown-link {
+    transition-delay: 0.15s;
+}
+
+.dropdown-menu li:nth-child(4) .dropdown-link {
+    transition-delay: 0.2s;
+}

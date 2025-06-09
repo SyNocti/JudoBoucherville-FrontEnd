@@ -1,1 +1,141 @@
-<p>header works!</p>
+<header class="header">
+    <div class="container">
+        <div class="header-content">
+            <!-- Left section: Logo and brand -->
+            <div class="header-left">
+                <div class="logo">
+                    <img src="/assets/logo.png" alt="Judo Boucherville Logo" class="logo-img">
+                </div>
+                <div class="brand-name">
+                    <h1>Club de Judo Boucherville</h1>
+                </div>
+            </div>
+
+            <!-- Middle section: Navigation -->
+            <nav class="header-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item" [class.active]="currentPage === 'accueil'">
+                        <a href="#" class="nav-link" (mouseenter)="setActiveItem('accueil')">
+                            <span>Accueil</span>
+                            <div class="underline"></div>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown" [class.show]="activeDropdown === 'athletes'"
+                        (mouseenter)="showDropdown('athletes')" (mouseleave)="scheduleHideDropdown('athletes')">
+                        <a href="#" class="nav-link dropdown-toggle" [class.active]="currentPage === 'athletes'">
+                            <span>Athlètes</span>
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="underline"></div>
+                        </a>
+                        <ul class="dropdown-menu" [class.show]="activeDropdown === 'athletes'">
+                            <li><a href="#" class="dropdown-link"><span>Équipe A</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                            <li><a href="#" class="dropdown-link"><span>Équipe B</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                            <li><a href="#" class="dropdown-link"><span>Équipe Junior</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                            <li><a href="#" class="dropdown-link"><span>Équipe Senior</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown" [class.show]="activeDropdown === 'club'"
+                        (mouseenter)="showDropdown('club')" (mouseleave)="scheduleHideDropdown('club')">
+                        <a href="#" class="nav-link dropdown-toggle" [class.active]="currentPage === 'club'">
+                            <span>Club</span>
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="underline"></div>
+                        </a>
+                        <ul class="dropdown-menu" [class.show]="activeDropdown === 'club'">
+                            <li><a href="#" class="dropdown-link"><span>Histoire</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                            <li><a href="#" class="dropdown-link"><span>Administration</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                            <li><a href="#" class="dropdown-link"><span>Présidents</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown" [class.show]="activeDropdown === 'cours'"
+                        (mouseenter)="showDropdown('cours')" (mouseleave)="scheduleHideDropdown('cours')">
+                        <a href="#" class="nav-link dropdown-toggle" [class.active]="currentPage === 'cours'">
+                            <span>Cours</span>
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="underline"></div>
+                        </a>
+                        <ul class="dropdown-menu" [class.show]="activeDropdown === 'cours'">
+                            <li><a href="#" class="dropdown-link"><span>Débutants</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                            <li><a href="#" class="dropdown-link"><span>Intermédiaires</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                            <li><a href="#" class="dropdown-link"><span>Avancés</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                            <li><a href="#" class="dropdown-link"><span>Compétition</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item" [class.active]="currentPage === 'challenge'">
+                        <a href="#" class="nav-link" (mouseenter)="setActiveItem('challenge')">
+                            <span>Challenge</span>
+                            <div class="underline"></div>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" [class.active]="currentPage === 'contact'">
+                        <a href="#" class="nav-link" (mouseenter)="setActiveItem('contact')">
+                            <span>Contact</span>
+                            <div class="underline"></div>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown" [class.show]="activeDropdown === 'archive'"
+                        (mouseenter)="showDropdown('archive')" (mouseleave)="scheduleHideDropdown('archive')">
+                        <a href="#" class="nav-link dropdown-toggle" [class.active]="currentPage === 'archive'">
+                            <span>Archive</span>
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="underline"></div>
+                        </a>
+                        <ul class="dropdown-menu" [class.show]="activeDropdown === 'archive'">
+                            <li><a href="#" class="dropdown-link"><span>Résultats</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                            <li><a href="#" class="dropdown-link"><span>Actualités</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                            <li><a href="#" class="dropdown-link"><span>Journaux</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item" [class.active]="currentPage === 'telechargements'">
+                        <a href="#" class="nav-link" (mouseenter)="setActiveItem('telechargements')">
+                            <span>Téléchargements</span>
+                            <div class="underline"></div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Right section: Inscription button -->
+            <div class="header-right">
+                <a href="#" class="inscription-btn">
+                    <span>Inscription</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
