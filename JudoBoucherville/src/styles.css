@@ -1,1 +1,299 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* CSS Variables */
+:root {
+    --primary-color: #404ac3;
+    --secondary-color: #ffffff;
+    --accent-color: #ffd700;
+    --text-color: #000000;
+    --border-color: #000000;
+    --background-light: #f8f9fa;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.2);
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.3s ease;
+    --border-radius: 8px;
+    --max-width: 1200px;
+}
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Typography */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-color);
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-shadow: 1px 1px 2px var(--shadow-light);
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+/* Links */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition-medium);
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-color: var(--border-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-medium);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.btn-accent {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.btn-accent:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+/* Container */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Cards */
+.card {
+    background-color: var(--secondary-color);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px var(--shadow-light);
+    transition: var(--transition-medium);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px var(--shadow-medium);
+}
+
+.card-header {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 15px 20px;
+    margin: -20px -20px 20px -20px;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    font-weight: bold;
+}
+
+/* Navigation */
+.nav {
+    background-color: var(--primary-color);
+    border-bottom: 3px solid var(--border-color);
+    padding: 10px 0;
+}
+
+.nav-link {
+    color: var(--secondary-color);
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: var(--border-radius);
+    transition: var(--transition-fast);
+}
+
+.nav-link:hover {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.nav-link.active {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    transition: var(--transition-fast);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(64, 74, 195, 0.2);
+}
+
+/* Alert Messages */
+.alert {
+    padding: 15px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.alert-warning {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.text-primary {
+    color: var(--primary-color);
+}
+
+.text-accent {
+    color: var(--accent-color);
+}
+
+.bg-primary {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.bg-accent {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+.border-accent {
+    border: 2px solid var(--accent-color);
+}
+
+.shadow {
+    box-shadow: 0 4px 8px var(--shadow-medium);
+}
+
+.rounded {
+    border-radius: var(--border-radius);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .card-header {
+        margin: -15px -15px 15px -15px;
+        padding: 12px 15px;
+    }
+}
