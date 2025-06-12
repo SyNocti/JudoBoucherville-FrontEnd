@@ -123,7 +123,10 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    min-width: 200px;
+    min-width: max-content;
+    /* Changed: adjusts to content width */
+    width: max-content;
+    /* Added: ensures single line items */
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
@@ -145,6 +148,8 @@
     font-size: 1.1rem;
     position: relative;
     transition: var(--transition-fast);
+    white-space: nowrap;
+    /* Added: prevents text wrapping */
 }
 
 .dropdown-link:hover {
@@ -313,10 +318,12 @@
     transition: all 0.3s ease;
     max-height: 0;
     overflow: hidden;
+    width: 100%;
+    /* Full width in mobile */
 }
 
 .drawer-menu .dropdown-menu.show {
-    max-height: 300px;
+    max-height: 600px;
     padding: 10px 0;
 }
 
@@ -407,4 +414,13 @@
     .logo-img {
         height: 45px;
     }
+}
+
+/* Add this for mobile chevron rotation */
+.drawer-menu .fa-chevron-down {
+    transition: transform 0.3s ease;
+}
+
+.drawer-menu .fa-chevron-down.rotate {
+    transform: rotate(180deg);
 }
