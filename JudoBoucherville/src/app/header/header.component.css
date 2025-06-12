@@ -356,8 +356,8 @@
     visibility: visible;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
+/* Responsive Design 1024p->1770*/
+@media (max-width: 1770px) {
     .brand-name h1 {
         display: none;
     }
@@ -367,7 +367,8 @@
     }
 }
 
-@media (max-width: 768px) {
+/*768->1400*/
+@media (max-width: 1400px) {
     .container {
         padding: 0 20px;
     }
