@@ -124,20 +124,80 @@
     margin: 0;
     padding: 0;
     min-width: max-content;
-    /* Changed: adjusts to content width */
     width: max-content;
-    /* Added: ensures single line items */
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
     border-radius: 0 0 var(--border-radius) var(--border-radius);
+    overflow: hidden;
+    /* Add this to contain the animated children */
 }
 
 .dropdown-menu.show {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+}
+
+.dropdown-menu li {
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.dropdown-menu.show li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Sequential animation for dropdown items */
+.dropdown-menu.show li:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.dropdown-menu.show li:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.dropdown-menu.show li:nth-child(3) {
+    transition-delay: 0.15s;
+}
+
+.dropdown-menu.show li:nth-child(4) {
+    transition-delay: 0.2s;
+}
+
+.dropdown-menu.show li:nth-child(5) {
+    transition-delay: 0.25s;
+}
+
+.dropdown-menu.show li:nth-child(6) {
+    transition-delay: 0.3s;
+}
+
+.dropdown-menu.show li:nth-child(7) {
+    transition-delay: 0.35s;
+}
+
+.dropdown-menu.show li:nth-child(8) {
+    transition-delay: 0.4s;
+}
+
+.dropdown-menu.show li:nth-child(9) {
+    transition-delay: 0.45s;
+}
+
+.dropdown-menu.show li:nth-child(10) {
+    transition-delay: 0.5s;
+}
+
+.dropdown-menu.show li:nth-child(11) {
+    transition-delay: 0.55s;
+}
+
+.dropdown-menu.show li:nth-child(12) {
+    transition-delay: 0.6s;
 }
 
 .dropdown-link {
@@ -149,7 +209,6 @@
     position: relative;
     transition: var(--transition-fast);
     white-space: nowrap;
-    /* Added: prevents text wrapping */
 }
 
 .dropdown-link:hover {
@@ -202,23 +261,6 @@
 /* Hover effects */
 .nav-link:hover {
     background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Animation delays for dropdown items */
-.dropdown-menu li:nth-child(1) .dropdown-link {
-    transition-delay: 0.05s;
-}
-
-.dropdown-menu li:nth-child(2) .dropdown-link {
-    transition-delay: 0.1s;
-}
-
-.dropdown-menu li:nth-child(3) .dropdown-link {
-    transition-delay: 0.15s;
-}
-
-.dropdown-menu li:nth-child(4) .dropdown-link {
-    transition-delay: 0.2s;
 }
 
 /* Mobile hamburger menu */
