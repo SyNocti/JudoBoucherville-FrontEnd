@@ -1,10 +1,10 @@
-<header class="header">
+<header class="header" [class.scrolled]="isScrolled">
     <div class="container">
         <div class="header-content">
             <!-- Left section: Logo and brand -->
             <div class="header-left">
                 <div class="logo">
-                    <img src="/assets/logo.png" alt="Judo Boucherville Logo" class="logo-img">
+                    <img src="/assets/images/logo.png" alt="Judo Boucherville Logo" class="logo-img">
                 </div>
                 <div class="brand-name">
                     <h1>Club de Judo Boucherville</h1>
@@ -15,7 +15,7 @@
             <nav class="header-nav">
                 <ul class="nav-menu">
                     <li class="nav-item" [class.active]="currentPage === 'accueil'">
-                        <a href="#" class="nav-link" (mouseenter)="setActiveItem('accueil')">
+                        <a routerLink="/accueil" class="nav-link" (mouseenter)="setActiveItem('accueil')">
                             <span>Accueil</span>
                             <div class="underline"></div>
                         </a>
@@ -23,7 +23,7 @@
 
                     <li class="nav-item dropdown" [class.show]="activeDropdown === 'athletes'"
                         (mouseenter)="showDropdown('athletes')" (mouseleave)="scheduleHideDropdown('athletes')">
-                        <a href="#" class="nav-link dropdown-toggle" [class.active]="currentPage === 'athletes'">
+                        <a class="nav-link dropdown-toggle" [class.active]="currentPage === 'athletes'">
                             <span>Athlètes</span>
                             <i class="fas fa-chevron-down"></i>
                             <div class="underline"></div>
@@ -52,7 +52,7 @@
 
                     <li class="nav-item dropdown" [class.show]="activeDropdown === 'club'"
                         (mouseenter)="showDropdown('club')" (mouseleave)="scheduleHideDropdown('club')">
-                        <a href="#" class="nav-link dropdown-toggle" [class.active]="currentPage === 'club'">
+                        <a class="nav-link dropdown-toggle" [class.active]="currentPage === 'club'">
                             <span>Club</span>
                             <i class="fas fa-chevron-down"></i>
                             <div class="underline"></div>
@@ -78,7 +78,7 @@
 
                     <li class="nav-item dropdown" [class.show]="activeDropdown === 'cours'"
                         (mouseenter)="showDropdown('cours')" (mouseleave)="scheduleHideDropdown('cours')">
-                        <a href="#" class="nav-link dropdown-toggle" [class.active]="currentPage === 'cours'">
+                        <a class="nav-link dropdown-toggle" [class.active]="currentPage === 'cours'">
                             <span>Cours</span>
                             <i class="fas fa-chevron-down"></i>
                             <div class="underline"></div>
@@ -146,7 +146,7 @@
 
                     <li class="nav-item dropdown" [class.show]="activeDropdown === 'archive'"
                         (mouseenter)="showDropdown('archive')" (mouseleave)="scheduleHideDropdown('archive')">
-                        <a href="#" class="nav-link dropdown-toggle" [class.active]="currentPage === 'archive'">
+                        <a class="nav-link dropdown-toggle" [class.active]="currentPage === 'archive'">
                             <span>Archive</span>
                             <i class="fas fa-chevron-down"></i>
                             <div class="underline"></div>
@@ -202,14 +202,14 @@
         <nav class="drawer-nav">
             <ul class="drawer-menu">
                 <li class="nav-item" [class.active]="currentPage === 'accueil'">
-                    <a href="#" class="nav-link" (click)="setActiveItem('accueil'); closeMobileMenu()">
+                    <a routerLink="/accueil" class="nav-link" (click)="setActiveItem('accueil'); closeMobileMenu()">
                         <span>Accueil</span>
                         <div class="underline"></div>
                     </a>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" [class.active]="currentPage === 'athletes'"
+                    <a class="nav-link dropdown-toggle" [class.active]="currentPage === 'athletes'"
                         (click)="toggleMobileDropdown('athletes')">
                         <span>Athlètes</span>
                         <i class="fas fa-chevron-down" [class.rotate]="mobileActiveDropdown === 'athletes'"></i>
@@ -240,7 +240,7 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" [class.active]="currentPage === 'club'"
+                    <a class="nav-link dropdown-toggle" [class.active]="currentPage === 'club'"
                         (click)="toggleMobileDropdown('club')">
                         <span>Club</span>
                         <i class="fas fa-chevron-down" [class.rotate]="mobileActiveDropdown === 'club'"></i>
@@ -266,7 +266,7 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" [class.active]="currentPage === 'cours'"
+                    <a class="nav-link dropdown-toggle" [class.active]="currentPage === 'cours'"
                         (click)="toggleMobileDropdown('cours')">
                         <span>Cours</span>
                         <i class="fas fa-chevron-down" [class.rotate]="mobileActiveDropdown === 'cours'"></i>
@@ -338,7 +338,7 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" [class.active]="currentPage === 'archive'"
+                    <a class="nav-link dropdown-toggle" [class.active]="currentPage === 'archive'"
                         (click)="toggleMobileDropdown('archive')">
                         <span>Archive</span>
                         <i class="fas fa-chevron-down" [class.rotate]="mobileActiveDropdown === 'archive'"></i>

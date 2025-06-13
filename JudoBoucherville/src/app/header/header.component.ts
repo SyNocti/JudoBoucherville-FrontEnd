@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -12,7 +13,14 @@ export class HeaderComponent {
   mobileActiveDropdown: string | null = null;
   currentPage: string = 'accueil';
   mobileMenuOpen: boolean = false;
+  isScrolled: boolean = false;
   private hideTimeout: any;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    // Set isScrolled to true if window is scrolled more than 50px, otherwise false
+    this.isScrolled = window.scrollY > 50;
+  }
 
   // Desktop dropdown methods
   showDropdown(dropdown: string): void {
@@ -31,7 +39,7 @@ export class HeaderComponent {
       this.hideTimeout = setTimeout(() => {
         this.activeDropdown = null;
         this.hideTimeout = null;
-      }, 1000); // 1 second delay
+      }, 500); // 0.5 second delay
     }
   }
 
