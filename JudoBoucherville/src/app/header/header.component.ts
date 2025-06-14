@@ -1,10 +1,12 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { NgxMarqueeComponent } from '@omnedia/ngx-marquee';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, NgxMarqueeComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -15,6 +17,17 @@ export class HeaderComponent {
   mobileMenuOpen: boolean = false;
   isScrolled: boolean = false;
   private hideTimeout: any;
+  announcements: string[] = []
+
+  constructor(private apiService: ApiService) { }
+
+  ngOnInit(): void {
+    this.apiService.getAnnouncements().subscribe(data => {
+      if (data.length == 1)
+        data.push(data[0]);
+      this.announcements = data;
+    });
+  }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {

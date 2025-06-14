@@ -1,4 +1,9 @@
 <header class="header" [class.scrolled]="isScrolled">
+    <om-marquee class="custom-marquee" *ngIf="announcements.length>0" [animationDuration]="'15s'">
+        <div #OmMarqueeContent class="item" *ngFor="let announcement of announcements">
+            {{ announcement }}
+        </div>
+    </om-marquee>
     <div class="container">
         <div class="header-content">
             <!-- Left section: Logo and brand -->

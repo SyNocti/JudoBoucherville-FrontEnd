@@ -19,6 +19,10 @@ export class ApiService {
     return of(this.getMockEvents());
   }
 
+  getAnnouncements(): Observable<string[]> {
+    return of(this.getMockAnnoucements());
+  }
+
   // Mock data for competitions
   private getMockCompetitions(): FuturEvent[] {
     return [
@@ -67,6 +71,12 @@ export class ApiService {
         link: 'https://example.com/event3',
         location: 'Centre sportif'
       }
+    ];
+  }
+
+  private getMockAnnoucements(): string[] {
+    return [
+      'Le dojo sera fermé le 1er janvier pour le Nouvel An.'
     ];
   }
 }

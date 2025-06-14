@@ -16,6 +16,10 @@
     /* Optional shadow for depth */
 }
 
+.header.scrolled om-marquee {
+    display: none;
+}
+
 .header:hover {
     background-color: var(--primary-color);
 }
@@ -23,6 +27,24 @@
 .container {
     max-width: 100%;
     padding: 0 30px;
+}
+
+.custom-marquee {
+    color: white !important;
+    padding: 8px 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Target the marquee content */
+::ng-deep .custom-marquee .om-marquee-content {
+    background-color: red;
+}
+
+/* Style the individual items */
+::ng-deep .custom-marquee .item {
+    margin-right: 50px;
+    white-space: nowrap;
 }
 
 .header-content {
