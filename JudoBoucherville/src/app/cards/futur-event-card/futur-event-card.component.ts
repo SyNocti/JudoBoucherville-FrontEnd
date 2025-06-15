@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FuturEvent } from '../../models/FuturEvent';
 
+
 @Component({
   selector: 'app-futur-event-card',
   standalone: true,

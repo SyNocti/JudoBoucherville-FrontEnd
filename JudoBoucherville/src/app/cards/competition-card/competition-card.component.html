@@ -1,0 +1,59 @@
+<div class="competition-card">
+    <div class="card-image">
+        <img *ngIf="competition.image" [src]="competition.image" [alt]="competition.name" class="competition-image">
+        <img *ngIf="!competition.image" src="/assets/images/logo.png" [alt]="competition.name"
+            class="competition-image placeholder">
+        <div class="medal-overlay">
+            <div class="medal-count">
+                <span class="total-medals">{{ getTotalMedals() }}</span>
+                <span class="medal-label">médailles</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-content">
+        <h3 class="competition-name">{{ competition.name }}</h3>
+
+        <div class="competition-details">
+            <div class="detail-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>{{ formatDate(competition.date) }}</span>
+            </div>
+
+            <div class="detail-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>{{ competition.location }}</span>
+            </div>
+
+            <div class="detail-item">
+                <i class="fas fa-users"></i>
+                <span>{{ competition.participantCount }} participants</span>
+            </div>
+        </div>
+
+        <div class="medals-section">
+            <h4 class="medals-title">Médailles obtenues</h4>
+            <div class="medals-breakdown">
+                <div class="medal-item gold">
+                    <i class="fas fa-medal"></i>
+                    <span>{{ competition.medals.gold }}</span>
+                </div>
+                <div class="medal-item silver">
+                    <i class="fas fa-medal"></i>
+                    <span>{{ competition.medals.silver }}</span>
+                </div>
+                <div class="medal-item bronze">
+                    <i class="fas fa-medal"></i>
+                    <span>{{ competition.medals.bronze }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-actions">
+            <a [routerLink]="['/competition', competition.id]" class="detail-button">
+                <i class="fas fa-eye"></i>
+                Voir détails
+            </a>
+        </div>
+    </div>
+</div>

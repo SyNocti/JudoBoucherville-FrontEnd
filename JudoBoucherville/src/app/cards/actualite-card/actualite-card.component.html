@@ -1,0 +1,25 @@
+<div class="actualite-card">
+    <div class="card-image" *ngIf="actualite.image">
+        <img [src]="actualite.image" [alt]="actualite.title" class="actualite-image">
+    </div>
+
+    <div class="card-image" *ngIf="!actualite.image">
+        <img src="/assets/images/logo.png" [alt]="actualite.title" class="actualite-image placeholder">
+    </div>
+
+    <div class="card-content">
+        <div class="published-date">
+            <i class="fas fa-calendar-alt"></i>
+            <span>{{ formatDate(actualite.publishedDate) }}</span>
+        </div>
+
+        <h3 class="actualite-title">{{ actualite.title }}</h3>
+
+        <div class="card-actions">
+            <a [routerLink]="['/actualite', actualite.id]" class="detail-button">
+                <i class="fas fa-arrow-right"></i>
+                Lire la suite
+            </a>
+        </div>
+    </div>
+</div>

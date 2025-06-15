@@ -1,0 +1,256 @@
+.competition-card {
+    background-color: white;
+    border-radius: 12px;
+    border: solid 1px var(--primary-color);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.competition-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.competition-image.placeholder {
+    object-fit: contain;
+    object-position: center;
+    padding: 20px;
+}
+
+/* Keep the regular image as cover for actual photos */
+.competition-image:not(.placeholder) {
+    object-fit: cover;
+    object-position: center;
+}
+
+.medal-overlay {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.total-medals {
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: block;
+}
+
+.medal-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+}
+
+.card-content {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.competition-name {
+    margin: 0 0 15px 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    line-height: 1.3;
+}
+
+.competition-details {
+    margin-bottom: 20px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.detail-item i {
+    width: 16px;
+    margin-right: 8px;
+    color: var(--accent-color);
+}
+
+.medals-section {
+    margin-top: auto;
+}
+
+.medals-title {
+    margin: 0 0 12px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.medals-breakdown {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.medal-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    padding: 8px;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+}
+
+.medal-item i {
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+}
+
+.medal-item span {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.medal-item.gold i {
+    color: #ffd700;
+}
+
+.medal-item.silver i {
+    color: #c0c0c0;
+}
+
+.medal-item.bronze i {
+    color: #cd7f32;
+}
+
+.medal-item.gold {
+    border: 2px solid #ffd700;
+}
+
+.medal-item.silver {
+    border: 2px solid #c0c0c0;
+}
+
+.medal-item.bronze {
+    border: 2px solid #cd7f32;
+}
+
+.card-actions {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.detail-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 6px 16px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-color);
+}
+
+.detail-button:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.detail-button i {
+    margin-right: 8px;
+    font-size: 0.85rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card-image {
+        height: 150px;
+    }
+
+    .competition-name {
+        font-size: 1.1rem;
+    }
+
+    .detail-item {
+        font-size: 0.85rem;
+    }
+
+    .medals-breakdown {
+        gap: 6px;
+    }
+
+    .medal-item {
+        padding: 6px;
+    }
+
+    .medal-item i {
+        font-size: 1rem;
+    }
+
+    .medal-item span {
+        font-size: 1rem;
+    }
+
+    .detail-button {
+        padding: 5px 14px;
+        font-size: 0.85rem;
+    }
+
+    .detail-button i {
+        margin-right: 6px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-content {
+        padding: 15px;
+    }
+
+    .medal-overlay {
+        top: 8px;
+        right: 8px;
+        padding: 6px 10px;
+    }
+
+    .total-medals {
+        font-size: 1rem;
+    }
+
+    .medal-label {
+        font-size: 0.6rem;
+    }
+
+    .card-actions {
+        margin-top: 8px;
+        padding-top: 8px;
+    }
+
+    .detail-button {
+        padding: 5px 12px;
+        font-size: 0.8rem;
+    }
+}

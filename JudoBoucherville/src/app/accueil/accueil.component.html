@@ -110,3 +110,32 @@
         </div>
     </div>
 </section>
+
+<section class="actualites-section">
+    <div class="container">
+        <h2 class="section-title">Actualités</h2>
+        <div class="actualites-carousel">
+            <swiper-container slides-per-view="auto" space-between="20" pagination="true" navigation="true" loop="false"
+                grab-cursor="true" class="actualites-swiper">
+                <swiper-slide *ngFor="let actualite of actualites" class="actualite-slide">
+                    <app-actualite-card [actualite]="actualite"></app-actualite-card>
+                </swiper-slide>
+            </swiper-container>
+        </div>
+    </div>
+</section>
+
+
+<section class="competitions-section">
+    <div class="container">
+        <h2 class="section-title">Compétitions récentes</h2>
+        <div class="competitions-carousel">
+            <swiper-container slides-per-view="auto" space-between="20" pagination="true" navigation="true" loop="false"
+                grab-cursor="true" class="competitions-swiper">
+                <swiper-slide *ngFor="let competition of recentCompetitions" class="competition-slide">
+                    <app-competition-card [competition]="competition"></app-competition-card>
+                </swiper-slide>
+            </swiper-container>
+        </div>
+    </div>
+</section>

@@ -373,10 +373,82 @@
     text-align: center;
 }
 
-/* Responsive design */
+.competitions-section {
+    padding: 60px 0;
+}
+
+.competitions-section .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.competitions-carousel {
+    position: relative;
+    margin-top: 20px;
+}
+
+.competitions-swiper {
+    padding: 20px 0 60px 0;
+    overflow: visible;
+}
+
+.competition-slide {
+    width: 320px;
+    height: auto;
+}
+
+.competitions-swiper::part(pagination) {
+    bottom: 10px;
+    text-align: center;
+}
+
+.competitions-swiper::part(bullet) {
+    background-color: #d1d5db;
+    opacity: 1;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 4px;
+    transition: all 0.3s ease;
+}
+
+.competitions-swiper::part(bullet-active) {
+    background-color: var(--accent-color);
+    width: 12px;
+    height: 12px;
+    transform: scale(1.2);
+}
+
+.competitions-section .container {
+    position: relative;
+    overflow: visible;
+}
+
+/* Responsive ONLY for competitions */
+@media (max-width: 1200px) {
+    .competitions-section .competition-slide {
+        width: 300px;
+    }
+}
+
 @media (max-width: 992px) {
     .free-trial-content {
         gap: 40px;
+    }
+
+    .competitions-section {
+        padding: 50px 0;
+    }
+
+    .competitions-section .competition-slide {
+        width: 280px;
+    }
+
+    .competitions-section .competitions-swiper {
+        padding: 15px 0 50px 0;
     }
 }
 
@@ -401,6 +473,38 @@
     .trial-description p {
         font-size: 1rem;
     }
+
+    .competitions-section {
+        padding: 40px 0;
+    }
+
+    .competitions-section .competition-slide {
+        width: 260px;
+    }
+
+    .competitions-section .section-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .competitions-section {
+        padding: 30px 0;
+    }
+
+    .competitions-section .competition-slide {
+        width: 240px;
+    }
+
+    .competitions-section .competitions-swiper {
+        padding: 10px 0 40px 0;
+    }
+
+    .competitions-section .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -420,5 +524,166 @@
 
     .training-image {
         height: 250px;
+    }
+
+    .competitions-section .competition-slide {
+        width: 220px;
+    }
+
+    .competitions-section .competitions-carousel {
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 360px) {
+    .competitions-section .competition-slide {
+        width: 200px;
+    }
+
+    .competitions-section .competitions-swiper::part(bullet) {
+        width: 8px;
+        height: 8px;
+    }
+
+    .competitions-section .competitions-swiper::part(bullet-active) {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+
+/* Actualités carousel section */
+.actualites-section {
+    padding: 60px 0;
+}
+
+.actualites-section .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.actualites-carousel {
+    position: relative;
+    margin-top: 20px;
+}
+
+.actualites-swiper {
+    padding: 20px 0 60px 0;
+    overflow: visible;
+}
+
+.actualite-slide {
+    width: 320px;
+    height: auto;
+}
+
+.actualites-swiper::part(pagination) {
+    bottom: 10px;
+    text-align: center;
+}
+
+.actualites-swiper::part(bullet) {
+    background-color: #d1d5db;
+    opacity: 1;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 4px;
+    transition: all 0.3s ease;
+}
+
+.actualites-swiper::part(bullet-active) {
+    background-color: var(--accent-color);
+    width: 12px;
+    height: 12px;
+    transform: scale(1.2);
+}
+
+.actualites-section .container {
+    position: relative;
+    overflow: visible;
+}
+
+/* Responsive design for actualités section */
+@media (max-width: 1200px) {
+    .actualites-section .actualite-slide {
+        width: 300px;
+    }
+}
+
+@media (max-width: 992px) {
+    .actualites-section {
+        padding: 50px 0;
+    }
+
+    .actualites-section .actualite-slide {
+        width: 280px;
+    }
+
+    .actualites-section .actualites-swiper {
+        padding: 15px 0 50px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .actualites-section {
+        padding: 40px 0;
+    }
+
+    .actualites-section .actualite-slide {
+        width: 260px;
+    }
+
+    .actualites-section .section-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .actualites-section {
+        padding: 30px 0;
+    }
+
+    .actualites-section .actualite-slide {
+        width: 240px;
+    }
+
+    .actualites-section .actualites-swiper {
+        padding: 10px 0 40px 0;
+    }
+
+    .actualites-section .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .actualites-section .actualite-slide {
+        width: 220px;
+    }
+
+    .actualites-section .actualites-carousel {
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 360px) {
+    .actualites-section .actualite-slide {
+        width: 200px;
+    }
+
+    .actualites-section .actualites-swiper::part(bullet) {
+        width: 8px;
+        height: 8px;
+    }
+
+    .actualites-section .actualites-swiper::part(bullet-active) {
+        width: 10px;
+        height: 10px;
     }
 }
