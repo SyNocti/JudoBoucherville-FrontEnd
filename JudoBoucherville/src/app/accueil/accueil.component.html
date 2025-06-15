@@ -131,7 +131,7 @@
         <h2 class="section-title">Compétitions récentes</h2>
         <div class="competitions-carousel">
             <swiper-container slides-per-view="auto" space-between="20" pagination="true" navigation="true" loop="false"
-                grab-cursor="true" class="competitions-swiper">
+                grab-cursor="true" class="competitions-swiper" pagination-class="swiper-pagination-lower">
                 <swiper-slide *ngFor="let competition of recentCompetitions" class="competition-slide">
                     <app-competition-card [competition]="competition"></app-competition-card>
                 </swiper-slide>

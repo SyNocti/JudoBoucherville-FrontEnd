@@ -153,6 +153,7 @@
 /* Dropdown styles */
 .dropdown {
     position: relative;
+    cursor: pointer;
 }
 
 .dropdown-menu {

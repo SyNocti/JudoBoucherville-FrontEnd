@@ -3,12 +3,12 @@
         <img *ngIf="competition.image" [src]="competition.image" [alt]="competition.name" class="competition-image">
         <img *ngIf="!competition.image" src="/assets/images/logo.png" [alt]="competition.name"
             class="competition-image placeholder">
-        <div class="medal-overlay">
+        <!-- <div class="medal-overlay">
             <div class="medal-count">
                 <span class="total-medals">{{ getTotalMedals() }}</span>
                 <span class="medal-label">médailles</span>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <div class="card-content">

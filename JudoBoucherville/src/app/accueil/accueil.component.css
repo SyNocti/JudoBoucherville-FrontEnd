@@ -403,6 +403,8 @@
 .competitions-swiper::part(pagination) {
     bottom: 10px;
     text-align: center;
+    pointer-events: none;
+    /* Makes the pagination container not capture mouse events */
 }
 
 .competitions-swiper::part(bullet) {
@@ -413,6 +415,8 @@
     border-radius: 50%;
     margin: 0 4px;
     transition: all 0.3s ease;
+    pointer-events: auto;
+    /* Allows the bullets themselves to be clickable */
 }
 
 .competitions-swiper::part(bullet-active) {
@@ -583,6 +587,8 @@
 .actualites-swiper::part(pagination) {
     bottom: 10px;
     text-align: center;
+    pointer-events: none;
+    /* Makes the pagination container not capture mouse events */
 }
 
 .actualites-swiper::part(bullet) {
@@ -593,6 +599,8 @@
     border-radius: 50%;
     margin: 0 4px;
     transition: all 0.3s ease;
+    pointer-events: auto;
+    /* Allows the bullets themselves to be clickable */
 }
 
 .actualites-swiper::part(bullet-active) {
