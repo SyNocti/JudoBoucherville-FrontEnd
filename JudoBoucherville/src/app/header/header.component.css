@@ -11,17 +11,30 @@
 
 .header.scrolled {
     background-color: var(--primary-color);
-    /* Solid color when scrolled */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    /* Optional shadow for depth */
+    transition-delay: 0s !important;
+    /* Override the delay when scrolled */
 }
 
 .header.scrolled om-marquee {
     display: none;
 }
 
+.header {
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
 .header:hover {
     background-color: var(--primary-color);
+    transition-delay: 0s;
+}
+
+.header:not(:hover) {
+    transition-delay: 0.5s;
+}
+
+.header:not(:hover).dropdown-active {
+    transition-delay: 0s;
 }
 
 .container {
@@ -153,7 +166,7 @@
 /* Dropdown styles */
 .dropdown {
     position: relative;
-    cursor: pointer;
+    cursor: copy;
 }
 
 .dropdown-menu {
