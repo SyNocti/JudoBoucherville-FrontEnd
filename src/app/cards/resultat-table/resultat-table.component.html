@@ -1,0 +1,37 @@
+<div class="table-container" *ngIf="resultats.length > 0">
+    <table class="resultat-table">
+        <thead>
+            <tr>
+                <th *ngIf="showAthleteName">Athlète</th>
+                <th *ngIf="showCompetitionName">Compétition</th>
+                <th>Position</th>
+                <th>Catégorie d'âge</th>
+                <th>Catégorie de poids</th>
+                <th>Victoires</th>
+                <th>Défaites</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let resultat of resultats" class="resultat-row">
+                <td *ngIf="showAthleteName" class="athlete-name" (click)="onAthleteClick(resultat.athleteId)">
+                    {{ resultat.athleteNom }}
+                </td>
+                <td *ngIf="showCompetitionName" class="competition-name"
+                    (click)="onCompetitionClick(resultat.competitionId)">
+                    {{ resultat.competitionNom }}
+                </td>
+                <td [class]="'position ' + getPositionClass(resultat.position)">
+                    {{ getPositionDisplay(resultat.position) }}
+                </td>
+                <td class="category">{{ resultat.categorieAge }}</td>
+                <td class="weight">{{ resultat.categoriePoids }}</td>
+                <td class="victories">{{ resultat.nbVictoire }}</td>
+                <td class="defeats">{{ resultat.nbDefaites }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="no-results" *ngIf="resultats.length === 0">
+    <p>Aucun résultat disponible</p>
+</div>

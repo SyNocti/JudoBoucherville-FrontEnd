@@ -1,0 +1,163 @@
+.table-container {
+  width: 100%;
+  background-color: var(--secondary-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px var(--shadow-light);
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.resultat-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--secondary-color);
+}
+
+.resultat-table thead {
+  background-color: var(--primary-color);
+}
+
+.resultat-table th {
+  padding: 16px 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+}
+
+.resultat-table td {
+  padding: 14px 12px;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  border: none;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.resultat-row:last-child td {
+  border-bottom: none;
+}
+
+.resultat-row:hover {
+  background-color: #f8f9fa;
+}
+
+/* Clickable names */
+.athlete-name,
+.competition-name {
+  cursor: pointer;
+  color: var(--primary-color);
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.athlete-name:hover,
+.competition-name:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+/* Position styling with colors */
+.position {
+  font-weight: 600;
+  text-align: center;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.position-gold {
+  background-color: #ffd700;
+  color: #b8860b;
+}
+
+.position-silver {
+  background-color: #c0c0c0;
+  color: #666;
+}
+
+.position-bronze {
+  background-color: #cd7f32;
+  color: white;
+}
+
+.position-other {
+  background-color: #f8f9fa;
+  color: var(--text-color);
+}
+
+/* Category and stats styling */
+.category {
+  font-weight: 500;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.weight {
+  font-weight: 500;
+  text-align: center;
+}
+
+.victories {
+  text-align: center;
+  color: #28a745;
+  font-weight: 600;
+}
+
+.defeats {
+  text-align: center;
+  color: #dc3545;
+  font-weight: 600;
+}
+
+/* No results message */
+.no-results {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+  font-style: italic;
+}
+
+.no-results p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .resultat-table th,
+  .resultat-table td {
+    padding: 10px 8px;
+    font-size: 0.85rem;
+  }
+  
+  .resultat-table th {
+    font-size: 0.8rem;
+  }
+  
+  .position {
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  .resultat-table {
+    min-width: 600px;
+  }
+  
+  .resultat-table th,
+  .resultat-table td {
+    padding: 8px 6px;
+    font-size: 0.8rem;
+  }
+  
+  .resultat-table th {
+    font-size: 0.75rem;
+  }
+}

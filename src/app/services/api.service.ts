@@ -5,6 +5,8 @@ import { FuturEvent } from '../models/FuturEvent';
 import { CompetitionSummary } from '../models/CompetitionSummary';
 import { ActualiteSummary } from '../models/ActualiteSummary';
 import { AthleteSummary } from '../models/AthleteSummary';
+import { AthleteDetail } from '../models/AthleteDetail';
+import { Resultat } from '../models/Resultat';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +38,10 @@ export class ApiService {
 
   getAllAthletes(): Observable<AthleteSummary[]> {
     return of(this.getMockAllAthletes());
+  }
+
+  getAthleteDetail(id: number): Observable<AthleteDetail | null> {
+    return of(this.getMockAthleteDetail(id));
   }
 
   // Mock data for competitions
@@ -282,5 +288,105 @@ export class ApiService {
         categorieAge: 'U16'
       }
     ];
+  }
+
+  // Mock data for athlete detail
+  private getMockAthleteDetail(id: number): AthleteDetail | null {
+    // For testing, return detailed data for athlete with id 1
+    if (id === 1) {
+      return {
+        nom: 'Vincent-Claude Roberge-Poitras',
+        dateDeNaissance: new Date('2008-03-15'),
+        debutJudo: 2018,
+        grade: 'Ceinture orange',
+        objectifCourtTerme: 'Obtenir ma ceinture verte et participer au championnat provincial',
+        objectifLongTerme: 'Faire partie de l\'équipe du Québec et représenter le Canada aux championnats internationaux',
+        listePhoto: [
+          '/assets/images/forTesting/ana.jpg',
+          '/assets/images/forTesting/comp1-V.jpg',
+          '/assets/images/forTesting/comp2-H.jpg'
+        ],
+        listeShowcasePictures: [
+          '/assets/images/forTesting/ana.jpg',
+          '/assets/images/forTesting/comp1-V.jpg'
+        ],
+        listeResultats: [
+          {
+            nbVictoire: 4,
+            nbDefaites: 1,
+            position: 1,
+            categorieAge: 'U16',
+            categoriePoids: '-55kg',
+            estInteressant: true,
+            athleteId: 1,
+            athleteNom: 'Vincent-Claude Roberge-Poitras',
+            competitionId: 1,
+            competitionNom: 'Championnat provincial de judo 2024'
+          },
+          {
+            nbVictoire: 3,
+            nbDefaites: 2,
+            position: 2,
+            categorieAge: 'U16',
+            categoriePoids: '-55kg',
+            estInteressant: true,
+            athleteId: 1,
+            athleteNom: 'Vincent-Claude Roberge-Poitras',
+            competitionId: 2,
+            competitionNom: 'Coupe Louis Deschênes 2024'
+          },
+          {
+            nbVictoire: 2,
+            nbDefaites: 1,
+            position: 3,
+            categorieAge: 'U16',
+            categoriePoids: '-55kg',
+            estInteressant: false,
+            athleteId: 1,
+            athleteNom: 'Vincent-Claude Roberge-Poitras',
+            competitionId: 3,
+            competitionNom: 'Tournoi régional de Boucherville'
+          },
+          {
+            nbVictoire: 1,
+            nbDefaites: 3,
+            position: 7,
+            categorieAge: 'U16',
+            categoriePoids: '-55kg',
+            estInteressant: false,
+            athleteId: 1,
+            athleteNom: 'Vincent-Claude Roberge-Poitras',
+            competitionId: 4,
+            competitionNom: 'Championnats du Québec 2024'
+          },
+          {
+            nbVictoire: 5,
+            nbDefaites: 0,
+            position: 1,
+            categorieAge: 'U16',
+            categoriePoids: '-55kg',
+            estInteressant: true,
+            athleteId: 1,
+            athleteNom: 'Vincent-Claude Roberge-Poitras',
+            competitionId: 5,
+            competitionNom: 'Tournoi Ne-waza 2024'
+          },
+          {
+            nbVictoire: 2,
+            nbDefaites: 2,
+            categorieAge: 'U16',
+            categoriePoids: '-55kg',
+            estInteressant: false,
+            athleteId: 1,
+            athleteNom: 'Vincent-Claude Roberge-Poitras',
+            competitionId: 6,
+            competitionNom: 'Tournoi local de Longueuil'
+          }
+        ]
+      };
+    }
+
+    // Return null for other athlete IDs (not implemented yet)
+    return null;
   }
 }
