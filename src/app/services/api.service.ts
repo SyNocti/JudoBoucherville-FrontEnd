@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { FuturEvent } from '../models/FuturEvent';
 import { CompetitionSummary } from '../models/CompetitionSummary';
 import { ActualiteSummary } from '../models/ActualiteSummary';
+import { AthleteSummary } from '../models/AthleteSummary';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,10 @@ export class ApiService {
 
   getActualiteSummary(): Observable<ActualiteSummary[]> {
     return of(this.getMockActualiteSummary());
+  }
+
+  getAllAthletes(): Observable<AthleteSummary[]> {
+    return of(this.getMockAllAthletes());
   }
 
   // Mock data for competitions
@@ -199,6 +204,82 @@ export class ApiService {
         title: 'Remise des ceintures de fin d\'année',
         publishedDate: new Date('2024-09-20')
         // No image for this one
+      }
+    ];
+  }
+
+  // Mock data for athletes
+  private getMockAllAthletes(): AthleteSummary[] {
+    return [
+      // Recreation team
+      {
+        id: 1,
+        name: 'Vincent-Claude Roberge-Poitras',
+        categorieAge: 'U16',
+        profilePicture: '/assets/images/forTesting/ana.jpg'
+      },
+      {
+        id: 2,
+        name: 'Marc Dubois',
+        categorieAge: 'U18',
+        profilePicture: '/assets/images/forTesting/ana.jpg'
+      },
+      {
+        id: 3,
+        name: 'Émilie Bouchard',
+        categorieAge: 'Senior'
+      },
+      {
+        id: 4,
+        name: 'Lucas Martin',
+        categorieAge: 'U16',
+        profilePicture: '/assets/images/forTesting/ana.jpg'
+      },
+      {
+        id: 5,
+        name: 'Camille Lavoie',
+        categorieAge: 'U18'
+      },
+
+      // Competition team
+      {
+        id: 6,
+        name: 'Alexandre Côté',
+        categorieAge: 'Senior',
+        profilePicture: '/assets/images/forTesting/ana.jpg'
+      },
+      {
+        id: 7,
+        name: 'Gabrielle Roy',
+        categorieAge: 'U18',
+        profilePicture: '/assets/images/forTesting/ana.jpg'
+      },
+      {
+        id: 8,
+        name: 'Thomas Leblanc',
+        categorieAge: 'U16',
+      },
+      {
+        id: 9,
+        name: 'Sarah Gagnon',
+        categorieAge: 'Senior'
+      },
+      {
+        id: 10,
+        name: 'Antoine Moreau',
+        categorieAge: 'U18',
+        profilePicture: '/assets/images/forTesting/ana.jpg'
+      },
+      {
+        id: 11,
+        name: 'Maxime Girard',
+        categorieAge: 'Senior',
+        profilePicture: '/assets/images/forTesting/ana.jpg'
+      },
+      {
+        id: 12,
+        name: 'Jade Pelletier',
+        categorieAge: 'U16'
       }
     ];
   }

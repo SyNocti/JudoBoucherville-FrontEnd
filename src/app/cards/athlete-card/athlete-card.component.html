@@ -1,0 +1,10 @@
+<div class="athlete-card" (click)="onCardClick()">
+    <div class="profile-picture-container">
+        <img [src]="athlete.profilePicture || getDefaultProfilePicture()" [alt]="athlete.name + ' profile picture'"
+            class="profile-picture" />
+    </div>
+    <div class="athlete-info">
+        <h3 class="athlete-name">{{ athlete.name }}</h3>
+        <p class="athlete-category">{{ athlete.categorieAge }}</p>
+    </div>
+</div>

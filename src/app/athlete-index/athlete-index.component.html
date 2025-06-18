@@ -1,0 +1,22 @@
+<div class="athlete-index-container">
+    <div class="header">
+        <h1 class="page-title">{{ getTeamDisplayName() }}</h1>
+    </div>
+
+    <div class="loading-container" *ngIf="loading">
+        <div class="loading-spinner"></div>
+        <p>Chargement des athlètes...</p>
+    </div>
+
+    <div class="athletes-grid" *ngIf="!loading && athletes.length > 0">
+        <app-athlete-card *ngFor="let athlete of athletes; trackBy: trackByAthleteId" [athlete]="athlete">
+        </app-athlete-card>
+    </div>
+
+    <div class="no-athletes" *ngIf="!loading && athletes.length === 0">
+        <div class="no-athletes-content">
+            <h2>Aucun athlète trouvé</h2>
+            <p>Il n'y a actuellement aucun athlète dans cette équipe.</p>
+        </div>
+    </div>
+</div>
