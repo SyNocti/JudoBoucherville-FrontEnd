@@ -19,7 +19,8 @@
 
 .resultat-table th {
   padding: 16px 12px;
-  text-align: left;
+  text-align: center;
+  /* Center all headers by default */
   font-weight: 600;
   font-size: 0.9rem;
   color: var(--secondary-color);
@@ -28,12 +29,24 @@
   border: none;
 }
 
+/* Left align only the first column headers */
+.resultat-table th:first-child {
+  text-align: left;
+}
+
 .resultat-table td {
   padding: 14px 12px;
   font-size: 0.95rem;
   color: var(--text-color);
   border: none;
   border-bottom: 1px solid #f0f0f0;
+  text-align: center;
+  /* Center all cells by default */
+}
+
+/* Left align only the first column cells */
+.resultat-table td:first-child {
+  text-align: left;
 }
 
 .resultat-row:last-child td {
@@ -62,7 +75,6 @@
 /* Position styling with colors */
 .position {
   font-weight: 600;
-  text-align: center;
   padding: 6px 12px;
   border-radius: 4px;
 }
@@ -97,17 +109,14 @@
 
 .weight {
   font-weight: 500;
-  text-align: center;
 }
 
 .victories {
-  text-align: center;
   color: #28a745;
   font-weight: 600;
 }
 
 .defeats {
-  text-align: center;
   color: #dc3545;
   font-weight: 600;
 }
@@ -127,16 +136,17 @@
 
 /* Responsive design */
 @media (max-width: 768px) {
+
   .resultat-table th,
   .resultat-table td {
     padding: 10px 8px;
     font-size: 0.85rem;
   }
-  
+
   .resultat-table th {
     font-size: 0.8rem;
   }
-  
+
   .position {
     padding: 4px 8px;
   }
@@ -146,17 +156,17 @@
   .table-container {
     overflow-x: auto;
   }
-  
+
   .resultat-table {
     min-width: 600px;
   }
-  
+
   .resultat-table th,
   .resultat-table td {
     padding: 8px 6px;
     font-size: 0.8rem;
   }
-  
+
   .resultat-table th {
     font-size: 0.75rem;
   }

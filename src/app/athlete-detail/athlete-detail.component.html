@@ -31,7 +31,6 @@
             <!-- Right column: Athlete information -->
             <div class="info-section">
                 <div class="info-card">
-                    <h3 class="section-title">Informations personnelles</h3>
                     <div class="info-grid">
                         <div class="info-item">
                             <span class="info-label">Âge:</span>
@@ -46,21 +45,18 @@
 
                         <div class="info-item" *ngIf="athlete.grade">
                             <span class="info-label">Grade:</span>
-                            <span class="info-value grade">{{ athlete.grade }}</span>
+                            <span class="info-value">{{ athlete.grade }}</span>
                         </div>
-                    </div>
-                </div>
 
-                <!-- Goals section -->
-                <div class="goals-section" *ngIf="athlete.objectifCourtTerme || athlete.objectifLongTerme">
-                    <div class="info-card" *ngIf="athlete.objectifCourtTerme">
-                        <h3 class="section-title">Objectif à court terme</h3>
-                        <p class="goal-text">{{ athlete.objectifCourtTerme }}</p>
-                    </div>
+                        <div class="info-item" *ngIf="athlete.objectifCourtTerme">
+                            <span class="info-label">Objectif à court terme:</span>
+                            <span class="info-value goal-text">{{ athlete.objectifCourtTerme }}</span>
+                        </div>
 
-                    <div class="info-card" *ngIf="athlete.objectifLongTerme">
-                        <h3 class="section-title">Objectif à long terme</h3>
-                        <p class="goal-text">{{ athlete.objectifLongTerme }}</p>
+                        <div class="info-item" *ngIf="athlete.objectifLongTerme">
+                            <span class="info-label">Objectif à long terme:</span>
+                            <span class="info-value goal-text">{{ athlete.objectifLongTerme }}</span>
+                        </div>
                     </div>
                 </div>
             </div>

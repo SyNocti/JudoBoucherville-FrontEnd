@@ -67,7 +67,8 @@
 /* Content grid */
 .content-grid {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 400px 1fr;
+    /* Increased from 300px to 400px */
     gap: 40px;
     margin-bottom: 50px;
 }
@@ -80,8 +81,10 @@
 
 .showcase-container {
     position: relative;
-    width: 250px;
-    height: 350px;
+    width: 350px;
+    /* Increased from 250px to 350px */
+    height: 480px;
+    /* Increased from 350px to 480px */
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: 0 8px 25px var(--shadow-medium);
@@ -143,9 +146,12 @@
 .info-item {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    /* Changed to flex-start for multi-line content */
     padding: 10px 0;
     border-bottom: 1px solid #f0f0f0;
+    gap: 20px;
+    /* Added gap between label and value */
 }
 
 .info-item:last-child {
@@ -156,20 +162,26 @@
     font-weight: 600;
     color: var(--text-color);
     font-size: 1rem;
+    white-space: nowrap;
+    /* Prevent label wrapping */
+    min-width: 120px;
+    /* Ensure consistent label width */
 }
 
 .info-value {
     font-size: 1rem;
     color: var(--primary-color);
     font-weight: 500;
+    text-align: right;
+    flex: 1;
+    /* Allow value to take remaining space */
 }
 
-.info-value.grade {
-    background-color: var(--accent-color);
-    color: white;
-    padding: 4px 12px;
-    border-radius: 15px;
-    font-size: 0.9rem;
+.info-value.goal-text {
+    font-style: italic;
+    line-height: 1.4;
+    text-align: right;
+    color: var(--text-color);
 }
 
 /* Goals section */
@@ -226,9 +238,10 @@
 }
 
 .photo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
+    justify-content: center;
 }
 
 .photo-item {
@@ -236,6 +249,7 @@
     overflow: hidden;
     box-shadow: 0 4px 12px var(--shadow-light);
     transition: var(--transition-medium);
+    flex-shrink: 0;
 }
 
 .photo-item:hover {
@@ -244,10 +258,12 @@
 }
 
 .gallery-photo {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
     display: block;
+    height: 250px;
+    /* Fixed height */
+    width: auto;
+    /* Width adjusts to maintain aspect ratio */
+    object-fit: cover;
 }
 
 /* Responsive design */
@@ -266,8 +282,10 @@
     }
 
     .showcase-container {
-        width: 200px;
-        height: 280px;
+        width: 280px;
+        /* Adjusted for smaller screens */
+        height: 380px;
+        /* Adjusted proportionally */
     }
 }
 
@@ -289,17 +307,31 @@
     }
 
     .showcase-container {
-        width: 180px;
-        height: 250px;
+        width: 240px;
+        height: 320px;
     }
 
-    .photo-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 15px;
+    .info-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .info-label {
+        min-width: auto;
+    }
+
+    .info-value {
+        text-align: left;
+    }
+
+    .info-value.goal-text {
+        text-align: left;
     }
 
     .gallery-photo {
         height: 200px;
+        /* Smaller fixed height on tablets */
     }
 }
 
@@ -312,22 +344,13 @@
         font-size: 1.8rem;
     }
 
-    .info-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-    }
-
     .showcase-container {
-        width: 160px;
-        height: 220px;
-    }
-
-    .photo-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        width: 200px;
+        height: 280px;
     }
 
     .gallery-photo {
         height: 150px;
+        /* Even smaller on mobile */
     }
 }
