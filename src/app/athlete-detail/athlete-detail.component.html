@@ -1,99 +1,119 @@
 <div class="athlete-detail-container">
     <!-- Loading state -->
-    <div class="loading-container" *ngIf="loading">
-        <div class="loading-spinner"></div>
-        <p>Chargement des informations de l'athlète...</p>
-    </div>
+    <section class="loading-section" *ngIf="loading">
+        <div class="container">
+            <div class="loading-container">
+                <div class="loading-spinner"></div>
+                <p>Chargement des informations de l'athlète...</p>
+            </div>
+        </div>
+    </section>
 
     <!-- Athlete not found -->
-    <div class="not-found" *ngIf="!loading && !athlete">
-        <h2>Athlète non trouvé</h2>
-        <p>L'athlète demandé n'existe pas ou n'est plus disponible.</p>
-    </div>
+    <section class="not-found-section" *ngIf="!loading && !athlete">
+        <div class="container">
+            <div class="not-found">
+                <h2>Athlète non trouvé</h2>
+                <p>L'athlète demandé n'existe pas ou n'est plus disponible.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- Athlete detail content -->
-    <div class="athlete-content" *ngIf="!loading && athlete">
-        <!-- Header with back button -->
-        <div class="header-section">
-            <h1 class="athlete-name">{{ athlete.nom }}</h1>
-        </div>
+    <div *ngIf="!loading && athlete">
+        <!-- Page title section -->
+        <section class="title-section">
+            <app-page-title [title]="athlete.nom"></app-page-title>
+        </section>
 
-        <div class="content-grid">
-            <!-- Left column: Showcase pictures -->
-            <div class="showcase-section"
-                *ngIf="athlete.listeShowcasePictures && athlete.listeShowcasePictures.length >= 2">
-                <div class="showcase-container">
-                    <img [src]="athlete.listeShowcasePictures[0]" alt="{{ athlete.nom }} - Face" class="showcase-front">
-                    <img [src]="athlete.listeShowcasePictures[1]" alt="{{ athlete.nom }} - Dos" class="showcase-back">
-                </div>
-            </div>
-
-            <!-- Right column: Athlete information -->
-            <div class="info-section">
-                <div class="info-card">
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <span class="info-label">Âge:</span>
-                            <span class="info-value">{{ calculateAge(athlete.dateDeNaissance) }} ans</span>
+        <!-- Showcase and info section -->
+        <section class="athlete-info-section">
+            <div class="container">
+                <div class="content-grid">
+                    <!-- Left column: Showcase pictures -->
+                    <div class="showcase-section"
+                        *ngIf="athlete.listeShowcasePictures && athlete.listeShowcasePictures.length >= 2">
+                        <div class="showcase-container">
+                            <img [src]="athlete.listeShowcasePictures[0]" alt="{{ athlete.nom }} - Face"
+                                class="showcase-front">
+                            <img [src]="athlete.listeShowcasePictures[1]" alt="{{ athlete.nom }} - Dos"
+                                class="showcase-back">
                         </div>
+                    </div>
 
-                        <div class="info-item" *ngIf="athlete.debutJudo">
-                            <span class="info-label">Début judo:</span>
-                            <span class="info-value">{{ athlete.debutJudo }} ({{ getJudoExperience() }} ans
-                                d'expérience)</span>
-                        </div>
+                    <!-- Right column: Athlete information -->
+                    <div class="info-section">
+                        <div class="info-card">
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="info-label">Âge:</span>
+                                    <span class="info-value">{{ calculateAge(athlete.dateDeNaissance) }} ans</span>
+                                </div>
 
-                        <div class="info-item" *ngIf="athlete.grade">
-                            <span class="info-label">Grade:</span>
-                            <span class="info-value">{{ athlete.grade }}</span>
-                        </div>
+                                <div class="info-item" *ngIf="athlete.debutJudo">
+                                    <span class="info-label">Début judo:</span>
+                                    <span class="info-value">{{ athlete.debutJudo }} ({{ getJudoExperience() }} ans
+                                        d'expérience)</span>
+                                </div>
 
-                        <div class="info-item" *ngIf="athlete.objectifCourtTerme">
-                            <span class="info-label">Objectif à court terme:</span>
-                            <span class="info-value goal-text">{{ athlete.objectifCourtTerme }}</span>
-                        </div>
+                                <div class="info-item" *ngIf="athlete.grade">
+                                    <span class="info-label">Grade:</span>
+                                    <span class="info-value">{{ athlete.grade }}</span>
+                                </div>
 
-                        <div class="info-item" *ngIf="athlete.objectifLongTerme">
-                            <span class="info-label">Objectif à long terme:</span>
-                            <span class="info-value goal-text">{{ athlete.objectifLongTerme }}</span>
+                                <div class="info-item" *ngIf="athlete.objectifCourtTerme">
+                                    <span class="info-label">Objectif à court terme:</span>
+                                    <span class="info-value goal-text">{{ athlete.objectifCourtTerme }}</span>
+                                </div>
+
+                                <div class="info-item" *ngIf="athlete.objectifLongTerme">
+                                    <span class="info-label">Objectif à long terme:</span>
+                                    <span class="info-value goal-text">{{ athlete.objectifLongTerme }}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Results section -->
-        <div class="results-section">
-            <!-- Interesting results -->
-            <div class="results-card" *ngIf="interestingResults.length > 0">
-                <h3 class="section-title">Résultats marquants</h3>
-                <app-resultat-table [resultats]="interestingResults" [showAthleteName]="false"
-                    [showCompetitionName]="true">
-                </app-resultat-table>
-            </div>
+        <section class="results-section">
+            <div class="container">
+                <!-- Interesting results -->
+                <div class="results-card" *ngIf="interestingResults.length > 0">
+                    <h3 class="section-title">Résultats marquants</h3>
+                    <app-resultat-table [resultats]="interestingResults" [showAthleteName]="false"
+                        [showCompetitionName]="true">
+                    </app-resultat-table>
+                </div>
 
-            <!-- Other results -->
-            <div class="results-card" *ngIf="otherResults.length > 0">
-                <h3 class="section-title">Autres résultats</h3>
-                <app-resultat-table [resultats]="otherResults" [showAthleteName]="false" [showCompetitionName]="true">
-                </app-resultat-table>
-            </div>
+                <!-- Other results -->
+                <div class="results-card" *ngIf="otherResults.length > 0">
+                    <h3 class="section-title">Autres résultats</h3>
+                    <app-resultat-table [resultats]="otherResults" [showAthleteName]="false"
+                        [showCompetitionName]="true">
+                    </app-resultat-table>
+                </div>
 
-            <!-- No results message -->
-            <div class="no-results-card" *ngIf="interestingResults.length === 0 && otherResults.length === 0">
-                <h3 class="section-title">Résultats de compétition</h3>
-                <p class="no-results-text">Aucun résultat de compétition pour le moment.</p>
-            </div>
-        </div>
-
-        <!-- Photo gallery -->
-        <div class="gallery-section" *ngIf="athlete.listePhoto && athlete.listePhoto.length > 0">
-            <h3 class="section-title">Galerie photos</h3>
-            <div class="photo-grid">
-                <div *ngFor="let photo of athlete.listePhoto" class="photo-item">
-                    <img [src]="photo" [alt]="athlete.nom" class="gallery-photo">
+                <!-- No results message -->
+                <div class="no-results-card" *ngIf="interestingResults.length === 0 && otherResults.length === 0">
+                    <h3 class="section-title">Résultats de compétition</h3>
+                    <p class="no-results-text">Aucun résultat de compétition pour le moment.</p>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Photo gallery section -->
+        <section class="gallery-section" *ngIf="athlete.listePhoto && athlete.listePhoto.length > 0">
+            <div class="container">
+                <h3 class="section-title">Galerie photos</h3>
+                <div class="photo-grid">
+                    <div *ngFor="let photo of athlete.listePhoto" class="photo-item">
+                        <img [src]="photo" [alt]="athlete.nom" class="gallery-photo">
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </div>

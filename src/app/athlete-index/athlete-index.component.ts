@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { ApiService } from '../services/api.service';
 import { AthleteSummary } from '../models/AthleteSummary';
 import { AthleteCardComponent } from '../cards/athlete-card/athlete-card.component';
+import { PageTitleComponent } from '../reusables/page-title/page-title.component';
 
 @Component({
   selector: 'app-athlete-index',
-  imports: [CommonModule, AthleteCardComponent],
+  imports: [CommonModule, AthleteCardComponent, PageTitleComponent],
   templateUrl: './athlete-index.component.html',
   styleUrl: './athlete-index.component.css'
 })

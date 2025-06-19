@@ -1,17 +1,14 @@
-.athlete-detail-container {
-    padding: 170px 20px 60px 20px;
-    max-width: var(--max-width);
-    margin: 0 auto;
-    background-color: var(--secondary-color);
+/* Loading and error sections */
+.loading-section,
+.not-found-section {
+    padding: 200px 0 80px 0;
 }
 
-/* Loading and error states */
 .loading-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 80px 20px;
     text-align: center;
 }
 
@@ -43,7 +40,6 @@
 
 .not-found {
     text-align: center;
-    padding: 80px 20px;
 }
 
 .not-found h2 {
@@ -51,26 +47,21 @@
     margin-bottom: 20px;
 }
 
-/* Header section */
-.header-section {
-    margin-bottom: 40px;
+/* Title section */
+.title-section {
+    background-color: var(--secondary-color);
 }
 
-.athlete-name {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin: 0;
-    text-align: center;
+/* Athlete info section */
+.athlete-info-section {
+    padding: 40px 0;
+    background-color: var(--secondary-color);
 }
 
-/* Content grid */
 .content-grid {
     display: grid;
     grid-template-columns: 400px 1fr;
-    /* Increased from 300px to 400px */
     gap: 40px;
-    margin-bottom: 50px;
 }
 
 /* Showcase section */
@@ -82,9 +73,7 @@
 .showcase-container {
     position: relative;
     width: 350px;
-    /* Increased from 250px to 350px */
     height: 480px;
-    /* Increased from 350px to 480px */
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: 0 8px 25px var(--shadow-medium);
@@ -129,15 +118,6 @@
     box-shadow: 0 4px 12px var(--shadow-light);
 }
 
-.section-title {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--primary-color);
-    margin: 0 0 20px 0;
-    border-bottom: 2px solid var(--accent-color);
-    padding-bottom: 8px;
-}
-
 .info-grid {
     display: grid;
     gap: 15px;
@@ -147,11 +127,9 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    /* Changed to flex-start for multi-line content */
     padding: 10px 0;
     border-bottom: 1px solid #f0f0f0;
     gap: 20px;
-    /* Added gap between label and value */
 }
 
 .info-item:last-child {
@@ -163,9 +141,7 @@
     color: var(--text-color);
     font-size: 1rem;
     white-space: nowrap;
-    /* Prevent label wrapping */
     min-width: 120px;
-    /* Ensure consistent label width */
 }
 
 .info-value {
@@ -174,7 +150,6 @@
     font-weight: 500;
     text-align: right;
     flex: 1;
-    /* Allow value to take remaining space */
 }
 
 .info-value.goal-text {
@@ -184,32 +159,27 @@
     color: var(--text-color);
 }
 
-/* Goals section */
-.goals-section {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.goal-text {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--text-color);
-    margin: 0;
-    font-style: italic;
-}
-
 /* Results section */
 .results-section {
-    margin-bottom: 50px;
+    padding: 60px 0;
+    background-color: var(--secondary-color);
 }
 
 .results-card {
     margin-bottom: 40px;
 }
 
-.results-card .section-title {
-    margin-bottom: 20px;
+.results-card:last-child {
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 20px 0;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 8px;
 }
 
 .no-results-card {
@@ -229,7 +199,8 @@
 
 /* Gallery section */
 .gallery-section {
-    margin-top: 40px;
+    padding: 60px 0;
+    background-color: var(--secondary-color);
 }
 
 .gallery-section .section-title {
@@ -260,16 +231,14 @@
 .gallery-photo {
     display: block;
     height: 250px;
-    /* Fixed height */
     width: auto;
-    /* Width adjusts to maintain aspect ratio */
     object-fit: cover;
 }
 
 /* Responsive design */
 @media (max-width: 992px) {
-    .athlete-detail-container {
-        padding: 140px 20px 50px 20px;
+    .athlete-info-section {
+        padding: 30px 0;
     }
 
     .content-grid {
@@ -283,19 +252,21 @@
 
     .showcase-container {
         width: 280px;
-        /* Adjusted for smaller screens */
         height: 380px;
-        /* Adjusted proportionally */
+    }
+
+    .results-section {
+        padding: 50px 0;
+    }
+
+    .gallery-section {
+        padding: 50px 0;
     }
 }
 
 @media (max-width: 768px) {
-    .athlete-detail-container {
-        padding: 140px 16px 40px 16px;
-    }
-
-    .athlete-name {
-        font-size: 2rem;
+    .athlete-info-section {
+        padding: 25px 0;
     }
 
     .content-grid {
@@ -331,17 +302,22 @@
 
     .gallery-photo {
         height: 200px;
-        /* Smaller fixed height on tablets */
+    }
+
+    .results-section {
+        padding: 40px 0;
+    }
+
+    .gallery-section {
+        padding: 40px 0;
     }
 }
 
 @media (max-width: 576px) {
-    .athlete-detail-container {
-        padding: 130px 12px 30px 12px;
-    }
 
-    .athlete-name {
-        font-size: 1.8rem;
+    .loading-section,
+    .not-found-section {
+        padding: 150px 0 60px 0;
     }
 
     .showcase-container {
@@ -351,6 +327,13 @@
 
     .gallery-photo {
         height: 150px;
-        /* Even smaller on mobile */
+    }
+
+    .results-section {
+        padding: 30px 0;
+    }
+
+    .gallery-section {
+        padding: 30px 0;
     }
 }

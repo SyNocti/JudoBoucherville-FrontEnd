@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { ApiService } from '../services/api.service';
 import { AthleteDetail } from '../models/AthleteDetail';
 import { Resultat } from '../models/Resultat';
-import { ResultatTableComponent } from '../cards/resultat-table/resultat-table.component';
+import { ResultatTableComponent } from '../reusables/resultat-table/resultat-table.component';
+import { PageTitleComponent } from '../reusables/page-title/page-title.component';
 
 @Component({
   selector: 'app-athlete-detail',
-  imports: [CommonModule, ResultatTableComponent],
+  imports: [CommonModule, ResultatTableComponent, PageTitleComponent],
   templateUrl: './athlete-detail.component.html',
   styleUrl: './athlete-detail.component.css'
 })
@@ -66,5 +67,9 @@ export class AthleteDetailComponent implements OnInit {
   getJudoExperience(): number | null {
     if (!this.athlete?.debutJudo) return null;
     return new Date().getFullYear() - this.athlete.debutJudo;
+  }
+
+  goBack(): void {
+    this.router.navigate(['/athletes']);
   }
 }

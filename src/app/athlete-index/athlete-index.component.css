@@ -1,30 +1,20 @@
 .athlete-index-container {
-    padding: 170px 20px 60px 20px;
-    /* Increased top padding for header clearance */
+    padding: 0 20px 60px 20px;
+    /* Removed top padding */
     max-width: var(--max-width);
     margin: 0 auto;
     background-color: var(--secondary-color);
 }
 
-.header {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.page-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin: 0 0 15px 0;
-    text-shadow: 1px 1px 2px var(--shadow-light);
-}
+/* Removed .header and .page-title styles since they're now in page-title component */
 
 .loading-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 80px 20px;
+    padding: 200px 20px 80px 20px;
+    /* Added top padding for loading state */
     text-align: center;
 }
 
@@ -57,7 +47,6 @@
 .athletes-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    /* 4 columns on big screens */
     gap: 30px;
     justify-items: center;
     padding: 0 10px;
@@ -95,48 +84,37 @@
 @media (max-width: 1200px) {
     .athletes-grid {
         grid-template-columns: repeat(3, 1fr);
-        /* 3 columns on medium-large screens */
         gap: 25px;
     }
 }
 
 @media (max-width: 992px) {
     .athlete-index-container {
-        padding: 140px 20px 50px 20px;
+        padding: 0 20px 50px 20px;
+        /* Removed responsive top padding */
     }
 
     .athletes-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
     }
-
-    .page-title {
-        font-size: 2.2rem;
-    }
 }
 
 @media (max-width: 768px) {
     .athlete-index-container {
-        padding: 140px 16px 40px 16px;
-    }
-
-    .header {
-        margin-bottom: 40px;
-    }
-
-    .page-title {
-        font-size: 2rem;
+        padding: 0 16px 40px 16px;
+        /* Removed responsive top padding */
     }
 
     .athletes-grid {
         grid-template-columns: repeat(2, 1fr);
-        /* 2 columns on tablets */
         gap: 20px;
         padding: 0 5px;
     }
 
     .loading-container {
-        padding: 60px 20px;
+        padding: 150px 20px 60px 20px;
+        /* Adjusted for mobile */
     }
 
     .no-athletes {
@@ -155,11 +133,8 @@
 
 @media (max-width: 576px) {
     .athlete-index-container {
-        padding: 130px 12px 30px 12px;
-    }
-
-    .page-title {
-        font-size: 1.8rem;
+        padding: 0 12px 30px 12px;
+        /* Removed responsive top padding */
     }
 
     .athletes-grid {
@@ -175,11 +150,6 @@
 @media (max-width: 480px) {
     .athletes-grid {
         grid-template-columns: 1fr;
-        /* Single column on small phones */
         gap: 12px;
-    }
-
-    .page-title {
-        font-size: 1.6rem;
     }
 }
