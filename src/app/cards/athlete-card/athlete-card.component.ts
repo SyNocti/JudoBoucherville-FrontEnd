@@ -15,7 +15,7 @@ export class AthleteCardComponent {
   constructor(private router: Router) { }
 
   onCardClick(): void {
-    this.router.navigate(['/athlete', this.athlete.id]);
+    this.router.navigate(['/athletes/profile', this.athlete.id]);
   }
 
   getDefaultProfilePicture(): string {

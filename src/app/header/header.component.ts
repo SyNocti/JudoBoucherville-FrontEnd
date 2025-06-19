@@ -13,7 +13,6 @@ import { ApiService } from '../services/api.service';
 export class HeaderComponent {
   activeDropdown: string | null = null;
   mobileActiveDropdown: string | null = null;
-  currentPage: string = 'accueil';
   mobileMenuOpen: boolean = false;
   isScrolled: boolean = false;
   private hideTimeout: any;
@@ -84,10 +83,5 @@ export class HeaderComponent {
     } else {
       this.mobileActiveDropdown = dropdown;
     }
-  }
-
-  // Method to set current page (should be called from router or parent component)
-  setCurrentPage(page: string): void {
-    this.currentPage = page;
   }
 }

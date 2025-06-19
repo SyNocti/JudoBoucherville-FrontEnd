@@ -68,8 +68,4 @@ export class AthleteDetailComponent implements OnInit {
     if (!this.athlete?.debutJudo) return null;
     return new Date().getFullYear() - this.athlete.debutJudo;
   }
-
-  goBack(): void {
-    this.router.navigate(['/athletes']);
-  }
 }

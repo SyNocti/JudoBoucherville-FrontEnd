@@ -19,20 +19,21 @@
             <!-- Middle section: Navigation (Desktop only) -->
             <nav class="header-nav">
                 <ul class="nav-menu">
-                    <li class="nav-item" [class.active]="currentPage === 'accueil'">
+                    <li class="nav-item" routerLinkActive="active">
                         <a routerLink="/accueil" class="nav-link" (mouseenter)="setActiveItem('accueil')">
                             <span>Accueil</span>
                             <div class="underline"></div>
                         </a>
                     </li>
 
-                    <li class="nav-item dropdown" [class.show]="activeDropdown === 'athletes'"
+                    <li class="nav-item dropdown" routerLinkActive="active" [class.show]="activeDropdown === 'athletes'"
                         (mouseenter)="showDropdown('athletes')" (mouseleave)="scheduleHideDropdown('athletes')">
-                        <a class="nav-link dropdown-toggle" [class.active]="currentPage === 'athletes'">
+                        <a class="nav-link dropdown-toggle">
                             <span>Athlètes</span>
                             <i class="fas fa-chevron-down"></i>
                             <div class="underline"></div>
                         </a>
+                        <a routerLink="/athletes" style="display: none;"></a>
                         <ul class="dropdown-menu" [class.show]="activeDropdown === 'athletes'">
                             <li><a href="#" class="dropdown-link"><span>Équipe Canadienne</span>
                                     <div class="underline"></div>
@@ -56,9 +57,9 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item dropdown" [class.show]="activeDropdown === 'club'"
+                    <li class="nav-item dropdown" routerLinkActive="active" [class.show]="activeDropdown === 'club'"
                         (mouseenter)="showDropdown('club')" (mouseleave)="scheduleHideDropdown('club')">
-                        <a class="nav-link dropdown-toggle" [class.active]="currentPage === 'club'">
+                        <a class="nav-link dropdown-toggle">
                             <span>Club</span>
                             <i class="fas fa-chevron-down"></i>
                             <div class="underline"></div>
@@ -82,9 +83,9 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item dropdown" [class.show]="activeDropdown === 'cours'"
+                    <li class="nav-item dropdown" routerLinkActive="active" [class.show]="activeDropdown === 'cours'"
                         (mouseenter)="showDropdown('cours')" (mouseleave)="scheduleHideDropdown('cours')">
-                        <a class="nav-link dropdown-toggle" [class.active]="currentPage === 'cours'">
+                        <a class="nav-link dropdown-toggle">
                             <span>Cours</span>
                             <i class="fas fa-chevron-down"></i>
                             <div class="underline"></div>
@@ -129,30 +130,30 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item" [class.active]="currentPage === 'challenge'">
-                        <a href="#" class="nav-link" (mouseenter)="setActiveItem('challenge')">
+                    <li class="nav-item" routerLinkActive="active">
+                        <a routerLink="challenge" class="nav-link" (mouseenter)="setActiveItem('challenge')">
                             <span>Challenge</span>
                             <div class="underline"></div>
                         </a>
                     </li>
 
-                    <li class="nav-item" [class.active]="currentPage === 'don'">
-                        <a href="#" class="nav-link" (mouseenter)="setActiveItem('don')">
+                    <li class="nav-item" routerLinkActive="active">
+                        <a routerLink="don" class="nav-link" (mouseenter)="setActiveItem('don')">
                             <span>Don</span>
                             <div class="underline"></div>
                         </a>
                     </li>
 
-                    <li class="nav-item" [class.active]="currentPage === 'contact'">
-                        <a href="#" class="nav-link" (mouseenter)="setActiveItem('contact')">
+                    <li class="nav-item" routerLinkActive="active">
+                        <a routerLink="contact" class="nav-link" (mouseenter)="setActiveItem('contact')">
                             <span>Contact</span>
                             <div class="underline"></div>
                         </a>
                     </li>
 
-                    <li class="nav-item dropdown" [class.show]="activeDropdown === 'archive'"
+                    <li class="nav-item dropdown" routerLinkActive="active" [class.show]="activeDropdown === 'archive'"
                         (mouseenter)="showDropdown('archive')" (mouseleave)="scheduleHideDropdown('archive')">
-                        <a class="nav-link dropdown-toggle" [class.active]="currentPage === 'archive'">
+                        <a class="nav-link dropdown-toggle">
                             <span>Archive</span>
                             <i class="fas fa-chevron-down"></i>
                             <div class="underline"></div>
@@ -170,8 +171,9 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item" [class.active]="currentPage === 'telechargements'">
-                        <a href="#" class="nav-link" (mouseenter)="setActiveItem('telechargements')">
+                    <li class="nav-item" routerLinkActive="active">
+                        <a routerLink="telechargements" class="nav-link"
+                            (mouseenter)="setActiveItem('telechargements')">
                             <span>Téléchargements</span>
                             <div class="underline"></div>
                         </a>
@@ -207,20 +209,20 @@
 
         <nav class="drawer-nav">
             <ul class="drawer-menu">
-                <li class="nav-item" [class.active]="currentPage === 'accueil'">
+                <li class="nav-item" routerLinkActive="active">
                     <a routerLink="/accueil" class="nav-link" (click)="setActiveItem('accueil'); closeMobileMenu()">
                         <span>Accueil</span>
                         <div class="underline"></div>
                     </a>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" [class.active]="currentPage === 'athletes'"
-                        (click)="toggleMobileDropdown('athletes')">
+                <li class="nav-item dropdown" routerLinkActive="active">
+                    <a class="nav-link dropdown-toggle" (click)="toggleMobileDropdown('athletes')">
                         <span>Athlètes</span>
                         <i class="fas fa-chevron-down" [class.rotate]="mobileActiveDropdown === 'athletes'"></i>
                         <div class="underline"></div>
                     </a>
+                    <a routerLink="/athletes" style="display: none;"></a>
                     <ul class="dropdown-menu" [class.show]="mobileActiveDropdown === 'athletes'">
                         <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Équipe Canadienne</span>
                                 <div class="underline"></div>
@@ -246,9 +248,8 @@
                     </ul>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" [class.active]="currentPage === 'club'"
-                        (click)="toggleMobileDropdown('club')">
+                <li class="nav-item dropdown" routerLinkActive="active">
+                    <a class="nav-link dropdown-toggle" (click)="toggleMobileDropdown('club')">
                         <span>Club</span>
                         <i class="fas fa-chevron-down" [class.rotate]="mobileActiveDropdown === 'club'"></i>
                         <div class="underline"></div>
@@ -272,9 +273,8 @@
                     </ul>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" [class.active]="currentPage === 'cours'"
-                        (click)="toggleMobileDropdown('cours')">
+                <li class="nav-item dropdown" routerLinkActive="active">
+                    <a class="nav-link dropdown-toggle" (click)="toggleMobileDropdown('cours')">
                         <span>Cours</span>
                         <i class="fas fa-chevron-down" [class.rotate]="mobileActiveDropdown === 'cours'"></i>
                         <div class="underline"></div>
@@ -323,30 +323,29 @@
                     </ul>
                 </li>
 
-                <li class="nav-item" [class.active]="currentPage === 'challenge'">
-                    <a href="#" class="nav-link" (click)="setActiveItem('challenge'); closeMobileMenu()">
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="challenge" class="nav-link" (click)="setActiveItem('challenge'); closeMobileMenu()">
                         <span>Challenge</span>
                         <div class="underline"></div>
                     </a>
                 </li>
 
-                <li class="nav-item" [class.active]="currentPage === 'don'">
-                    <a href="#" class="nav-link" (click)="setActiveItem('don'); closeMobileMenu()">
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="don" class="nav-link" (click)="setActiveItem('don'); closeMobileMenu()">
                         <span>Don</span>
                         <div class="underline"></div>
                     </a>
                 </li>
 
-                <li class="nav-item" [class.active]="currentPage === 'contact'">
-                    <a href="#" class="nav-link" (click)="setActiveItem('contact'); closeMobileMenu()">
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="contact" class="nav-link" (click)="setActiveItem('contact'); closeMobileMenu()">
                         <span>Contact</span>
                         <div class="underline"></div>
                     </a>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" [class.active]="currentPage === 'archive'"
-                        (click)="toggleMobileDropdown('archive')">
+                <li class="nav-item dropdown" routerLinkActive="active">
+                    <a class="nav-link dropdown-toggle" (click)="toggleMobileDropdown('archive')">
                         <span>Archive</span>
                         <i class="fas fa-chevron-down" [class.rotate]="mobileActiveDropdown === 'archive'"></i>
                         <div class="underline"></div>
@@ -364,8 +363,9 @@
                     </ul>
                 </li>
 
-                <li class="nav-item" [class.active]="currentPage === 'telechargements'">
-                    <a href="#" class="nav-link" (click)="setActiveItem('telechargements'); closeMobileMenu()">
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="telechargements" class="nav-link"
+                        (click)="setActiveItem('telechargements'); closeMobileMenu()">
                         <span>Téléchargements</span>
                         <div class="underline"></div>
                     </a>

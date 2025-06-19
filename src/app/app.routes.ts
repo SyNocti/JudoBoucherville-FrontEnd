@@ -4,10 +4,11 @@ import { AthleteIndexComponent } from './athlete-index/athlete-index.component';
 import { AthleteDetailComponent } from './athlete-detail/athlete-detail.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: '/accueil', pathMatch: 'full' }, // Default route redirects to accueil
+    { path: '', redirectTo: '/accueil', pathMatch: 'full' },
     { path: 'accueil', component: AccueilComponent },
     { path: 'athletes/:team', component: AthleteIndexComponent },
+    { path: 'athletes/profile/:id', component: AthleteDetailComponent },
     { path: 'athletes', component: AthleteIndexComponent },
-    { path: 'athlete/:id', component: AthleteDetailComponent },
-    { path: '**', redirectTo: '/accueil' } // Wildcard route for 404 place at the end
+
+    { path: '**', redirectTo: '/accueil' } //Always at the end
 ];
