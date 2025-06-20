@@ -1,1 +1,69 @@
-<p>ceinture-noires works!</p>
+<!-- Page title section -->
+<section class="title-section">
+    <app-page-title title="Ceintures Noires"></app-page-title>
+</section>
+
+<!-- Loading state -->
+<section class="loading-section" *ngIf="loading">
+    <div class="container">
+        <div class="loading-container">
+            <div class="loading-spinner"></div>
+            <p>Chargement des ceintures noires...</p>
+        </div>
+    </div>
+</section>
+
+<!-- Ceintures noires content -->
+<section class="ceintures-section" *ngIf="!loading">
+    <div class="container">
+        <!-- Introduction with wall display image -->
+        <div class="intro-section">
+            <div class="intro-text">
+                <h2>Nos Ceintures Noires</h2>
+                <p>Depuis la fondation du club, nous avons eu l'honneur de former {{ ceinturesNoires.length }} ceintures
+                    noires.
+                    Chaque judoka représenté ici a démontré une maîtrise exceptionnelle des techniques et des valeurs du
+                    judo.</p>
+            </div>
+            <div class="wall-display">
+                <img src="/assets/images/forTesting/comp1-V.jpg" alt="Mur des ceintures noires du club"
+                    class="wall-image">
+                <p class="wall-caption">Notre mur d'honneur des ceintures noires</p>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-number">{{ ceinturesNoires.length }}</div>
+                <div class="stat-label">Ceintures Noires</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ getDecadeGroups().length }}</div>
+                <div class="stat-label">Décennies</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">
+                    {{ ceinturesNoires.length > 1
+                    ? (ceinturesNoires[ceinturesNoires.length - 1].annee - ceinturesNoires[0].annee)
+                    : 0 }}
+                </div>
+                <div class="stat-label">Années d'Histoire</div>
+            </div>
+        </div>
+
+        <!-- Black belts list by decade -->
+        <div class="decades-container">
+            <div *ngFor="let group of getDecadeGroups()" class="decade-group">
+                <h3 class="decade-title">{{ group.decade }}</h3>
+                <div class="belts-grid">
+                    <div *ngFor="let belt of group.belts" class="belt-item">
+                        <span class="belt-number">#{{ belt.numero }}</span>
+                        <span class="belt-name">{{ belt.nom }}</span>
+                        <span class="belt-year">{{ belt.annee }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -8,6 +8,7 @@ import { AthleteSummary } from '../models/AthleteSummary';
 import { AthleteDetail } from '../models/AthleteDetail';
 import { Resultat } from '../models/Resultat';
 import { Administration } from '../models/administration';
+import { CeintureNoire } from '../models/ceintureNoire';
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +48,10 @@ export class ApiService {
 
   getAdministration(): Observable<Administration[]> {
     return of(this.getMockAdministration());
+  }
+
+  getCeinturesNoires(): Observable<CeintureNoire[]> {
+    return of(this.getMockCeinturesNoires());
   }
 
   // Mock data for competitions
@@ -434,5 +439,36 @@ export class ApiService {
         photo: '/assets/images/forTesting/ana.jpg'
       }
     ];
+  }
+
+  // Mock data for ceintures noires
+  private getMockCeinturesNoires(): CeintureNoire[] {
+    const baseData: CeintureNoire[] = [
+      { id: 1, nom: 'Jean-Pierre Martineau', annee: 1975, numero: 1 },
+      { id: 2, nom: 'Marie-Louise Dubois', annee: 1977, numero: 2 },
+      { id: 3, nom: 'Robert Lafleur', annee: 1978, numero: 3 },
+      { id: 4, nom: 'Sylvie Bergeron', annee: 1980, numero: 4 },
+      { id: 5, nom: 'Michel Tremblay', annee: 1982, numero: 5 },
+      { id: 6, nom: 'Diane Pelletier', annee: 1983, numero: 6 },
+      { id: 7, nom: 'André Gagnon', annee: 1985, numero: 7 },
+      { id: 8, nom: 'Nicole Roy', annee: 1987, numero: 8 },
+      { id: 9, nom: 'Claude Moreau', annee: 1988, numero: 9 },
+      { id: 10, nom: 'Francine Leblanc', annee: 1990, numero: 10 }
+    ];
+
+    // Duplicate the data 10 times to simulate ~100 black belts
+    const allData: CeintureNoire[] = [];
+    for (let i = 0; i < 10; i++) {
+      baseData.forEach((item, index) => {
+        allData.push({
+          ...item,
+          id: i * 10 + item.id,
+          numero: i * 10 + item.numero,
+          annee: item.annee + Math.floor(i * 5) // Spread years across decades
+        });
+      });
+    }
+
+    return allData.sort((a, b) => a.numero - b.numero); // Sort by number
   }
 }
