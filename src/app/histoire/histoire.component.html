@@ -11,7 +11,8 @@
                 <p>{{ introText }}</p>
             </div>
             <div class="intro-image">
-                <img src="/assets/images/forTesting/ana.jpg" alt="Club de judo de Boucherville" class="featured-image">
+                <img src="/assets/images/dojo.jpg" alt="Club de judo de Boucherville" class="featured-image"
+                    (load)="onImageLoad($event)">
             </div>
         </div>
     </div>
@@ -29,7 +30,8 @@
                     <p class="timeline-description">{{ section.content }}</p>
                 </div>
                 <div class="timeline-image" *ngIf="section.image">
-                    <img [src]="section.image" [alt]="section.imageAlt" class="history-image">
+                    <img [src]="section.image" [alt]="section.imageAlt" class="history-image"
+                        (load)="onImageLoad($event)">
                 </div>
             </div>
         </div>

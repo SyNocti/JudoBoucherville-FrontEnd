@@ -234,8 +234,10 @@
     }
 
     .members-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        /* Changed from 1fr to repeat(2, 1fr) */
+        gap: 15px;
+        /* Reduced gap slightly for better fit */
     }
 
     .member-info {
@@ -243,16 +245,20 @@
     }
 
     .member-name {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        /* Slightly reduced to fit better */
     }
 
     .member-role {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+        /* Slightly reduced to fit better */
     }
 
     .email-button {
-        padding: 5px 10px;
-        font-size: 0.75rem;
+        padding: 4px 8px;
+        /* Reduced padding for smaller cards */
+        font-size: 0.7rem;
+        /* Smaller font size */
     }
 
     .contact-info {

@@ -39,7 +39,7 @@ export class HistoireComponent {
       nécessite un déménagement vers des installations plus spacieuses. C'est à cette époque que le club commence à se faire 
       connaître sur la scène provinciale, avec ses premiers athlètes participant aux championnats du Québec. 
       L'excellence de l'enseignement et la qualité de la formation commencent à porter leurs fruits.`,
-      image: '/assets/images/forTesting/ana.jpg',
+      image: '/assets/images/forTesting/act1-H.jpg',
       imageAlt: 'Expansion du club dans les années 1980',
       imagePosition: 'left'
     },
@@ -49,7 +49,7 @@ export class HistoireComponent {
       Nos athlètes brillent sur la scène nationale et internationale, ramenant de nombreuses médailles des compétitions prestigieuses. 
       Le club développe un programme d'élite qui attire des judokas de partout au Québec. 
       C'est durant cette décennie que plusieurs de nos athlètes intègrent l'équipe nationale du Canada.`,
-      image: '/assets/images/forTesting/ana.jpg',
+      image: '/assets/images/forTesting/act2-V.jpg',
       imageAlt: 'Athlètes du club dans les années 1990',
       imagePosition: 'right'
     },
@@ -59,7 +59,7 @@ export class HistoireComponent {
       Adoption de nouvelles méthodes d'entraînement, intégration de la technologie dans l'enseignement, 
       et développement de programmes spécialisés pour différents groupes d'âge. 
       Le club investit également dans des équipements de pointe et améliore considérablement ses installations.`,
-      image: '/assets/images/forTesting/ana.jpg',
+      image: '/assets/images/forTesting/comp1-V.jpg',
       imageAlt: 'Modernisation des installations dans les années 2000',
       imagePosition: 'left'
     },
@@ -70,7 +70,7 @@ export class HistoireComponent {
       Nos athlètes participent régulièrement aux championnats nationaux et internationaux, 
       perpétuant la tradition d'excellence qui caractérise notre club depuis ses débuts. 
       Nous demeurons fidèles à notre mission : développer le potentiel de chaque judoka dans le respect des valeurs traditionnelles du judo.`,
-      image: '/assets/images/forTesting/ana.jpg',
+      image: '/assets/images/forTesting/comp2-H.jpg',
       imageAlt: 'Le club aujourd\'hui',
       imagePosition: 'right'
     }
@@ -103,4 +103,16 @@ export class HistoireComponent {
       description: "La modestie dans la victoire et la dignité dans la défaite."
     }
   ];
+
+  // Method to check if image is horizontal based on filename or load event
+  onImageLoad(event: Event): void {
+    const img = event.target as HTMLImageElement;
+    if (img.naturalWidth > img.naturalHeight) {
+      // Horizontal image
+      img.classList.add('horizontal-image');
+    } else {
+      // Vertical image
+      img.classList.add('vertical-image');
+    }
+  }
 }
