@@ -64,20 +64,21 @@
                             <i class="fas fa-chevron-down"></i>
                             <div class="underline"></div>
                         </a>
+                        <a routerLink="/club" style="display: none;"></a>
                         <ul class="dropdown-menu" [class.show]="activeDropdown === 'club'">
-                            <li><a href="#" class="dropdown-link"><span>Histoire</span>
+                            <li><a routerLink="club/histoire" class="dropdown-link"><span>Histoire</span>
                                     <div class="underline"></div>
                                 </a></li>
-                            <li><a href="#" class="dropdown-link"><span>Administration</span>
+                            <li><a routerLink="club/administration" class="dropdown-link"><span>Administration</span>
                                     <div class="underline"></div>
                                 </a></li>
-                            <li><a href="#" class="dropdown-link"><span>Ceintures noires</span>
+                            <li><a routerLink="club/ceintures" class="dropdown-link"><span>Ceintures noires</span>
                                     <div class="underline"></div>
                                 </a></li>
-                            <li><a href="#" class="dropdown-link"><span>Professeurs</span>
+                            <li><a routerLink="club/professeurs/" class="dropdown-link"><span>Professeurs</span>
                                     <div class="underline"></div>
                                 </a></li>
-                            <li><a href="#" class="dropdown-link"><span>Présidents</span>
+                            <li><a routerLink="club/presidents" class="dropdown-link"><span>Présidents</span>
                                     <div class="underline"></div>
                                 </a></li>
                         </ul>
@@ -254,20 +255,26 @@
                         <i class="fas fa-chevron-down" [class.rotate]="mobileActiveDropdown === 'club'"></i>
                         <div class="underline"></div>
                     </a>
+                    <a routerLink="/club" style="display: none;"></a>
                     <ul class="dropdown-menu" [class.show]="mobileActiveDropdown === 'club'">
-                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Histoire</span>
+                        <li><a routerLink="club/histoire" class="dropdown-link"
+                                (click)="closeMobileMenu()"><span>Histoire</span>
                                 <div class="underline"></div>
                             </a></li>
-                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Administration</span>
+                        <li><a routerLink="club/administration" class="dropdown-link"
+                                (click)="closeMobileMenu()"><span>Administration</span>
                                 <div class="underline"></div>
                             </a></li>
-                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Ceintures noires</span>
+                        <li><a routerLink="club/ceintures" class="dropdown-link"
+                                (click)="closeMobileMenu()"><span>Ceintures noires</span>
                                 <div class="underline"></div>
                             </a></li>
-                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Professeurs</span>
+                        <li><a routerLink="club/professeurs" class="dropdown-link"
+                                (click)="closeMobileMenu()"><span>Professeurs</span>
                                 <div class="underline"></div>
                             </a></li>
-                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Présidents</span>
+                        <li><a routerLink="club/presidents" class="dropdown-link"
+                                (click)="closeMobileMenu()"><span>Présidents</span>
                                 <div class="underline"></div>
                             </a></li>
                     </ul>
