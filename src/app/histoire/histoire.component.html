@@ -1,1 +1,79 @@
-<p>histoire works!</p>
+<!-- Page title section -->
+<section class="title-section">
+    <app-page-title title="Histoire du Club"></app-page-title>
+</section>
+
+<!-- Introduction section -->
+<section class="intro-section">
+    <div class="container">
+        <div class="intro-content">
+            <div class="intro-text">
+                <p>{{ introText }}</p>
+            </div>
+            <div class="intro-image">
+                <img src="/assets/images/forTesting/ana.jpg" alt="Club de judo de Boucherville" class="featured-image">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- History timeline section -->
+<section class="timeline-section">
+    <div class="container">
+        <h2 class="section-title">Notre parcours à travers les décennies</h2>
+
+        <div *ngFor="let section of historySections; let i = index" class="timeline-item">
+            <div class="timeline-content" [class.reverse]="section.imagePosition === 'left'">
+                <div class="timeline-text">
+                    <h3 class="timeline-title">{{ section.title }}</h3>
+                    <p class="timeline-description">{{ section.content }}</p>
+                </div>
+                <div class="timeline-image" *ngIf="section.image">
+                    <img [src]="section.image" [alt]="section.imageAlt" class="history-image">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Achievements section -->
+<section class="achievements-section">
+    <div class="container">
+        <h2 class="section-title">Nos réalisations</h2>
+        <div class="achievements-grid">
+            <div *ngFor="let achievement of achievements" class="achievement-item">
+                <i class="fas fa-trophy"></i>
+                <p>{{ achievement }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Values section -->
+<section class="values-section">
+    <div class="container">
+        <h2 class="section-title">Nos valeurs fondamentales</h2>
+        <div class="values-grid">
+            <div *ngFor="let value of values" class="value-card">
+                <h3 class="value-title">{{ value.title }}</h3>
+                <p class="value-description">{{ value.description }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Closing section -->
+<section class="closing-section">
+    <div class="container">
+        <div class="closing-content">
+            <h2>L'héritage continue</h2>
+            <p>Aujourd'hui, le Club de judo de Boucherville poursuit sa mission avec la même passion qui animait ses
+                fondateurs.
+                Nous continuons à former des athlètes d'exception tout en transmettant les valeurs authentiques du judo
+                aux nouvelles générations.</p>
+            <div class="closing-image">
+                <img src="/assets/images/logo.png" alt="Logo du Club de judo de Boucherville" class="logo-image">
+            </div>
+        </div>
+    </div>
+</section>
