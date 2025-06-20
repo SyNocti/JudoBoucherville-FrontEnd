@@ -7,6 +7,7 @@ import { ActualiteSummary } from '../models/ActualiteSummary';
 import { AthleteSummary } from '../models/AthleteSummary';
 import { AthleteDetail } from '../models/AthleteDetail';
 import { Resultat } from '../models/Resultat';
+import { Administration } from '../models/administration';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,10 @@ export class ApiService {
 
   getAthleteDetail(id: number): Observable<AthleteDetail | null> {
     return of(this.getMockAthleteDetail(id));
+  }
+
+  getAdministration(): Observable<Administration[]> {
+    return of(this.getMockAdministration());
   }
 
   // Mock data for competitions
@@ -388,5 +393,46 @@ export class ApiService {
 
     // Return null for other athlete IDs (not implemented yet)
     return null;
+  }
+
+  // Mock data for administration
+  private getMockAdministration(): Administration[] {
+    return [
+      {
+        id: 1,
+        nom: 'Marie-Claire Dupont',
+        role: 'Présidente',
+        email: 'president@judoboucherville.ca',
+        photo: '/assets/images/forTesting/ana.jpg'
+      },
+      {
+        id: 2,
+        nom: 'Jean-François Tremblay',
+        role: 'Vice-président',
+        email: 'vicepresident@judoboucherville.ca'
+        // No photo - will use default
+      },
+      {
+        id: 3,
+        nom: 'Sophie Bergeron',
+        role: 'Secrétaire-trésorière',
+        email: 'secretaire@judoboucherville.ca',
+        photo: '/assets/images/forTesting/ana.jpg'
+      },
+      {
+        id: 4,
+        nom: 'Marc-André Gagnon',
+        role: 'Directeur technique',
+        email: 'technique@judoboucherville.ca'
+        // No photo - will use default
+      },
+      {
+        id: 5,
+        nom: 'Catherine Rousseau',
+        role: 'Responsable communications',
+        email: 'communications@judoboucherville.ca',
+        photo: '/assets/images/forTesting/ana.jpg'
+      }
+    ];
   }
 }

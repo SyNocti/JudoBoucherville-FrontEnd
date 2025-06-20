@@ -1,1 +1,49 @@
-<p>administration works!</p>
+<!-- Page title section -->
+<section class="title-section">
+    <app-page-title title="Administration"></app-page-title>
+</section>
+
+<!-- Loading state -->
+<section class="loading-section" *ngIf="loading">
+    <div class="container">
+        <div class="loading-container">
+            <div class="loading-spinner"></div>
+            <p>Chargement de l'équipe d'administration...</p>
+        </div>
+    </div>
+</section>
+
+<!-- Administration content -->
+<section class="administration-section" *ngIf="!loading">
+    <div class="container">
+        <div class="intro-text">
+            <p>L'équipe d'administration du Club de judo de Boucherville travaille avec dévouement pour assurer le bon
+                fonctionnement du club et offrir la meilleure expérience possible à tous nos membres.</p>
+        </div>
+
+        <div class="members-grid">
+            <div *ngFor="let member of administrationMembers" class="member-card">
+                <div class="member-photo">
+                    <img [src]="getProfileImage(member)" [alt]="member.nom" class="profile-image">
+                </div>
+
+                <div class="member-info">
+                    <h3 class="member-name">{{ member.nom }}</h3>
+                    <p class="member-role">{{ member.role }}</p>
+                    <div class="member-contact">
+                        <button class="email-button" (click)="onEmailClick(member.email)">
+                            <i class="fas fa-envelope"></i>
+                            {{ member.email }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-info">
+            <h3>Nous contacter</h3>
+            <p>N'hésitez pas à contacter les membres de notre équipe pour toute question concernant le club, les
+                inscriptions, ou les activités.</p>
+        </div>
+    </div>
+</section>
