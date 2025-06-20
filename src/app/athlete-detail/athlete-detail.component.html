@@ -41,8 +41,9 @@
                         </div>
                     </div>
 
-                    <!-- Right column: Athlete information -->
-                    <div class="info-section">
+                    <!-- Right column: Info and Statistics -->
+                    <div class="info-statistics-section">
+                        <!-- Personal Information Card -->
                         <div class="info-card">
                             <div class="info-grid">
                                 <div class="info-item">
@@ -69,6 +70,44 @@
                                 <div class="info-item" *ngIf="athlete.objectifLongTerme">
                                     <span class="info-label">Objectif à long terme:</span>
                                     <span class="info-value goal-text">{{ athlete.objectifLongTerme }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Statistics Card -->
+                        <div class="statistics-card"
+                            *ngIf="athlete.listeResultats && athlete.listeResultats.length > 0">
+                            <h3 class="statistics-title">Statistiques</h3>
+
+                            <!-- Podium Statistics -->
+                            <div class="medals-breakdown">
+                                <div class="medal-item gold">
+                                    <i class="fas fa-medal"></i>
+                                    <span>{{ getFirstPlaces() }}</span>
+                                </div>
+                                <div class="medal-item silver">
+                                    <i class="fas fa-medal"></i>
+                                    <span>{{ getSecondPlaces() }}</span>
+                                </div>
+                                <div class="medal-item bronze">
+                                    <i class="fas fa-medal"></i>
+                                    <span>{{ getThirdPlaces() }}</span>
+                                </div>
+                            </div>
+
+                            <!-- Overall Statistics -->
+                            <div class="overall-stats">
+                                <div class="stat-row">
+                                    <span class="stat-label">Victoires totales:</span>
+                                    <span class="stat-value wins">{{ getTotalWins() }}</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Défaites totales:</span>
+                                    <span class="stat-value losses">{{ getTotalLosses() }}</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Ratio de victoires:</span>
+                                    <span class="stat-value ratio">{{ getWinRatio() }}%</span>
                                 </div>
                             </div>
                         </div>

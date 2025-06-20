@@ -68,4 +68,34 @@ export class AthleteDetailComponent implements OnInit {
     if (!this.athlete?.debutJudo) return null;
     return new Date().getFullYear() - this.athlete.debutJudo;
   }
+
+  // Statistics methods
+  getFirstPlaces(): number {
+    return this.athlete?.listeResultats?.filter(r => r.position === 1).length || 0;
+  }
+
+  getSecondPlaces(): number {
+    return this.athlete?.listeResultats?.filter(r => r.position === 2).length || 0;
+  }
+
+  getThirdPlaces(): number {
+    return this.athlete?.listeResultats?.filter(r => r.position === 3).length || 0;
+  }
+
+  getTotalWins(): number {
+    return this.athlete?.listeResultats?.reduce((total, result) => total + result.nbVictoire, 0) || 0;
+  }
+
+  getTotalLosses(): number {
+    return this.athlete?.listeResultats?.reduce((total, result) => total + result.nbDefaites, 0) || 0;
+  }
+
+  getWinRatio(): number {
+    const wins = this.getTotalWins();
+    const losses = this.getTotalLosses();
+    const total = wins + losses;
+
+    if (total === 0) return 0;
+    return Math.round((wins / total) * 100);
+  }
 }
