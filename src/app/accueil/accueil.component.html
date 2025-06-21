@@ -18,22 +18,6 @@
     </div>
 </section>
 
-<section class="events-section">
-    <div class="container">
-        <h2 class="section-title">Événements à venir</h2>
-        <div class="events-container">
-            <div class="event-card-wrapper">
-                <app-futur-event-card title="Compétitions" [futurEvents]="futurCompetitions">
-                </app-futur-event-card>
-            </div>
-            <div class="event-card-wrapper">
-                <app-futur-event-card title="Autres événements" [futurEvents]="futurOtherEvents">
-                </app-futur-event-card>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section class="free-trial-section">
     <div class="container">
         <div class="free-trial-content">
@@ -106,6 +90,22 @@
                 <div class="image-overlay">
                     <p>Venez découvrir l'art du judo dans une ambiance conviviale</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="events-section">
+    <div class="container">
+        <h2 class="section-title">Événements à venir</h2>
+        <div class="events-container">
+            <div class="event-card-wrapper">
+                <app-futur-event-card title="Compétitions" [futurEvents]="futurCompetitions">
+                </app-futur-event-card>
+            </div>
+            <div class="event-card-wrapper">
+                <app-futur-event-card title="Autres événements" [futurEvents]="futurOtherEvents">
+                </app-futur-event-card>
             </div>
         </div>
     </div>

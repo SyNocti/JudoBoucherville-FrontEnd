@@ -78,7 +78,8 @@
                             <li><a routerLink="club/professeurs/" class="dropdown-link"><span>Professeurs</span>
                                     <div class="underline"></div>
                                 </a></li>
-                            <li><a routerLink="club/presidents" class="dropdown-link"><span>Présidents</span>
+                            <li><a routerLink="club/telechargement" class="dropdown-link"><span>Passage de grade<br>et
+                                        ressources</span>
                                     <div class="underline"></div>
                                 </a></li>
                         </ul>
@@ -92,40 +93,16 @@
                             <div class="underline"></div>
                         </a>
                         <ul class="dropdown-menu" [class.show]="activeDropdown === 'cours'">
-                            <li><a href="#" class="dropdown-link"><span>Parents-enfants</span>
+                            <li><a href="#" class="dropdown-link"><span>Quel cours choisir ?</span>
                                     <div class="underline"></div>
                                 </a></li>
-                            <li><a href="#" class="dropdown-link"><span>Initiation débutants</span>
-                                    <div class="underline"></div>
-                                </a></li>
-                            <li><a href="#" class="dropdown-link"><span>Parascolaire</span>
-                                    <div class="underline"></div>
-                                </a></li>
-                            <li><a href="#" class="dropdown-link"><span>Enfants-avancé</span>
-                                    <div class="underline"></div>
-                                </a></li>
-                            <li><a href="#" class="dropdown-link"><span>Enfants-Compétition</span>
+                            <li><a href="#" class="dropdown-link"><span>Liste des cours</span>
                                     <div class="underline"></div>
                                 </a></li>
                             <li><a href="#" class="dropdown-link"><span>Sport-Études</span>
                                     <div class="underline"></div>
                                 </a></li>
-                            <li><a href="#" class="dropdown-link"><span>Compétition</span>
-                                    <div class="underline"></div>
-                                </a></li>
-                            <li><a href="#" class="dropdown-link"><span>Adultes</span>
-                                    <div class="underline"></div>
-                                </a></li>
-                            <li><a href="#" class="dropdown-link"><span>Aiki Jujitsu</span>
-                                    <div class="underline"></div>
-                                </a></li>
-                            <li><a href="#" class="dropdown-link"><span>Jiu-jitsu brésilien</span>
-                                    <div class="underline"></div>
-                                </a></li>
-                            <li><a href="#" class="dropdown-link"><span>Auto-défense pour femmes</span>
-                                    <div class="underline"></div>
-                                </a></li>
-                            <li><a href="#" class="dropdown-link"><span>Camps de jour</span>
+                            <li><a href="#" class="dropdown-link"><span>Camp de jour</span>
                                     <div class="underline"></div>
                                 </a></li>
                         </ul>
@@ -139,43 +116,22 @@
                     </li>
 
                     <li class="nav-item" routerLinkActive="active">
-                        <a routerLink="don" class="nav-link" (mouseenter)="setActiveItem('don')">
-                            <span>Don</span>
-                            <div class="underline"></div>
-                        </a>
-                    </li>
-
-                    <li class="nav-item" routerLinkActive="active">
                         <a routerLink="contact" class="nav-link" (mouseenter)="setActiveItem('contact')">
                             <span>Contact</span>
                             <div class="underline"></div>
                         </a>
                     </li>
 
-                    <li class="nav-item dropdown" routerLinkActive="active" [class.show]="activeDropdown === 'archive'"
-                        (mouseenter)="showDropdown('archive')" (mouseleave)="scheduleHideDropdown('archive')">
-                        <a class="nav-link dropdown-toggle">
-                            <span>Archive</span>
-                            <i class="fas fa-chevron-down"></i>
+                    <li class="nav-item" routerLinkActive="active">
+                        <a routerLink="boutique" class="nav-link" (mouseenter)="setActiveItem('boutique')">
+                            <span>Boutique</span>
                             <div class="underline"></div>
                         </a>
-                        <ul class="dropdown-menu" [class.show]="activeDropdown === 'archive'">
-                            <li><a href="#" class="dropdown-link"><span>Résultats</span>
-                                    <div class="underline"></div>
-                                </a></li>
-                            <li><a href="#" class="dropdown-link"><span>Actualités</span>
-                                    <div class="underline"></div>
-                                </a></li>
-                            <li><a href="#" class="dropdown-link"><span>Journaux</span>
-                                    <div class="underline"></div>
-                                </a></li>
-                        </ul>
                     </li>
 
                     <li class="nav-item" routerLinkActive="active">
-                        <a routerLink="telechargements" class="nav-link"
-                            (mouseenter)="setActiveItem('telechargements')">
-                            <span>Téléchargements</span>
+                        <a routerLink="faq" class="nav-link" (mouseenter)="setActiveItem('faq')">
+                            <span>FAQ</span>
                             <div class="underline"></div>
                         </a>
                     </li>
@@ -273,8 +229,9 @@
                                 (click)="closeMobileMenu()"><span>Professeurs</span>
                                 <div class="underline"></div>
                             </a></li>
-                        <li><a routerLink="club/presidents" class="dropdown-link"
-                                (click)="closeMobileMenu()"><span>Présidents</span>
+                        <li><a routerLink="club/telechargement" class="dropdown-link"
+                                (click)="closeMobileMenu()"><span>Passage de grade<br>et
+                                    ressources</span>
                                 <div class="underline"></div>
                             </a></li>
                     </ul>
@@ -287,44 +244,20 @@
                         <div class="underline"></div>
                     </a>
                     <ul class="dropdown-menu" [class.show]="mobileActiveDropdown === 'cours'">
-                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Parents-enfants</span>
+                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Quel cours choisir
+                                    ?</span>
                                 <div class="underline"></div>
                             </a></li>
-                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Initiation
-                                    débutants</span>
+                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Liste des cours
+                                    ?</span>
                                 <div class="underline"></div>
                             </a></li>
-                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Parascolaire</span>
+                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Sport-Études
+                                    ?</span>
                                 <div class="underline"></div>
                             </a></li>
-                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Enfants-avancé</span>
-                                <div class="underline"></div>
-                            </a></li>
-                        <li><a href="#" class="dropdown-link"
-                                (click)="closeMobileMenu()"><span>Enfants-Compétition</span>
-                                <div class="underline"></div>
-                            </a></li>
-                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Sport-Études</span>
-                                <div class="underline"></div>
-                            </a></li>
-                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Compétition</span>
-                                <div class="underline"></div>
-                            </a></li>
-                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Adultes</span>
-                                <div class="underline"></div>
-                            </a></li>
-                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Aiki Jujitsu</span>
-                                <div class="underline"></div>
-                            </a></li>
-                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Jiu-jitsu
-                                    brésilien</span>
-                                <div class="underline"></div>
-                            </a></li>
-                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Auto-défense pour
-                                    femmes</span>
-                                <div class="underline"></div>
-                            </a></li>
-                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Camps de jour</span>
+                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Camp de jour
+                                    ?</span>
                                 <div class="underline"></div>
                             </a></li>
                     </ul>
@@ -338,42 +271,22 @@
                 </li>
 
                 <li class="nav-item" routerLinkActive="active">
-                    <a routerLink="don" class="nav-link" (click)="setActiveItem('don'); closeMobileMenu()">
-                        <span>Don</span>
-                        <div class="underline"></div>
-                    </a>
-                </li>
-
-                <li class="nav-item" routerLinkActive="active">
                     <a routerLink="contact" class="nav-link" (click)="setActiveItem('contact'); closeMobileMenu()">
                         <span>Contact</span>
                         <div class="underline"></div>
                     </a>
                 </li>
 
-                <li class="nav-item dropdown" routerLinkActive="active">
-                    <a class="nav-link dropdown-toggle" (click)="toggleMobileDropdown('archive')">
-                        <span>Archive</span>
-                        <i class="fas fa-chevron-down" [class.rotate]="mobileActiveDropdown === 'archive'"></i>
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="boutique" class="nav-link" (click)="setActiveItem('boutique'); closeMobileMenu()">
+                        <span>Boutique</span>
                         <div class="underline"></div>
                     </a>
-                    <ul class="dropdown-menu" [class.show]="mobileActiveDropdown === 'archive'">
-                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Résultats</span>
-                                <div class="underline"></div>
-                            </a></li>
-                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Actualités</span>
-                                <div class="underline"></div>
-                            </a></li>
-                        <li><a href="#" class="dropdown-link" (click)="closeMobileMenu()"><span>Journaux</span>
-                                <div class="underline"></div>
-                            </a></li>
-                    </ul>
                 </li>
 
                 <li class="nav-item" routerLinkActive="active">
-                    <a routerLink="telechargements" class="nav-link"
-                        (click)="setActiveItem('telechargements'); closeMobileMenu()">
-                        <span>Téléchargements</span>
+                    <a routerLink="faq" class="nav-link" (click)="setActiveItem('faq'); closeMobileMenu()">
+                        <span>FAQ</span>
                         <div class="underline"></div>
                     </a>
                 </li>
