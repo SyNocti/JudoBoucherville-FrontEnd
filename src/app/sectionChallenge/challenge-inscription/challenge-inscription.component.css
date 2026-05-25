@@ -1,0 +1,328 @@
+/* Title section */
+.title-section {
+    background: url('/assets/images/logos/logo_challenge.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.title-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.title-section app-page-title {
+    position: relative;
+    z-index: 2;
+}
+
+/* Inscriptions Section */
+.inscriptions-section {
+    padding: 60px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo_challenge.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.inscriptions-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.inscriptions-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Loading State */
+.loading-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    padding: 40px 0;
+    position: relative;
+    z-index: 2;
+}
+
+/* Error State */
+.error-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    padding: 40px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.error-content {
+    text-align: center;
+    max-width: 500px;
+    background-color: white;
+    padding: 40px;
+    border-radius: var(--border-radius);
+}
+
+.error-content h2 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin: 0 0 20px 0;
+}
+
+.error-content p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin: 0 0 30px 0;
+    line-height: 1.5;
+}
+
+.retry-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-medium);
+}
+
+.retry-button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.retry-button i {
+    font-size: 0.9rem;
+}
+
+/* No Inscriptions State */
+.no-inscriptions-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    padding: 40px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.no-inscriptions-content {
+    text-align: center;
+    max-width: 500px;
+    background-color: white;
+    padding: 40px;
+    border-radius: var(--border-radius);
+     border: 2px solid var(--primary-color);
+}
+
+.no-inscriptions-content h2 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin: 0 0 20px 0;
+}
+
+.no-inscriptions-content p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin: 0 0 30px 0;
+    line-height: 1.5;
+}
+
+/* Inscriptions Content */
+.inscriptions-content {
+    padding: 20px 0;
+    position: relative;
+    z-index: 2;
+}
+
+/* Back Button */
+.back-button-container {
+    margin-bottom: 30px;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-medium);
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background-color: var(--accent-color);
+    transform: translateX(-2px);
+    text-decoration: none;
+    color: white;
+}
+
+.back-button i {
+    font-size: 0.9rem;
+}
+
+/* Category Groups */
+.category-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    align-items: start;
+}
+
+.category-group {
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.category-header {
+    background-color: var(--primary-color);
+    padding: 15px 20px;
+}
+
+.category-header h3 {
+    margin: 0;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.teams-list {
+    padding: 15px 0;
+}
+
+.team-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border-color-light);
+    transition: var(--transition-fast);
+}
+
+.team-item:last-child {
+    border-bottom: none;
+}
+
+.team-item:hover {
+    background-color: var(--hover-bg-color);
+}
+
+.team-item i {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+}
+
+.team-item span {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .category-list {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 30px;
+    }
+
+    .inscriptions-section {
+        padding: 40px 0;
+    }
+
+    .intro-text h2 {
+        font-size: 1.8rem;
+    }
+
+    .intro-text p {
+        font-size: 1rem;
+    }
+
+    .category-header h3 {
+        font-size: 1.2rem;
+    }
+
+    .error-content,
+    .no-inscriptions-content {
+        padding: 30px 20px;
+    }
+
+    .error-content h2,
+    .no-inscriptions-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .error-content p,
+    .no-inscriptions-content p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .inscriptions-section {
+        padding: 30px 0;
+    }
+
+    .intro-text h2 {
+        font-size: 1.5rem;
+    }
+
+    .intro-text p {
+        font-size: 0.95rem;
+    }
+
+    .category-header {
+        padding: 12px 15px;
+    }
+
+    .category-header h3 {
+        font-size: 1.1rem;
+    }
+
+    .team-item {
+        padding: 10px 15px;
+        gap: 10px;
+    }
+
+    .team-item i {
+        font-size: 1rem;
+    }
+
+    .team-item span {
+        font-size: 0.95rem;
+    }
+
+    .back-button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}

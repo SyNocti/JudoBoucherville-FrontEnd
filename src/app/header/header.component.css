@@ -1,0 +1,581 @@
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+    background-color: var(--primary-color-dark);
+    /* Default visible background for all pages */
+}
+
+/* Only transparent on main page (accueil route) */
+.header.main-page {
+    background-color: rgba(42, 47, 130, 0);
+    /* Start transparent only on main page */
+}
+
+.header.scrolled {
+    background-color: var(--primary-color-dark);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition-delay: 0s !important;
+    /* Override the delay when scrolled */
+}
+
+.header.scrolled om-marquee {
+    display: none;
+}
+
+/* Hover effects only for main page when transparent */
+.header.main-page:hover {
+    background-color: var(--primary-color-dark);
+    transition-delay: 0s !important;
+}
+
+.header.main-page:not(:hover) {
+    transition-delay: 0.5s;
+}
+
+.header.main-page:not(:hover).dropdown-active {
+    transition-delay: 0s;
+}
+
+.container {
+    max-width: 100%;
+    padding: 0 30px;
+}
+
+.custom-marquee {
+    color: white !important;
+    padding: 8px 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Target the marquee content */
+::ng-deep .custom-marquee .om-marquee-content {
+    background-color: var(--marquee-bg-color, #ca0101);
+}
+
+/* Style the individual items */
+::ng-deep .custom-marquee .item {
+    margin-right: 50px;
+    white-space: nowrap;
+}
+
+.header-content {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    min-height: 100px;
+    padding: 20px 0;
+}
+
+/* Left section */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-self: start;
+}
+
+.logo-img {
+    height: 60px;
+    width: auto;
+    filter: drop-shadow(0 0 6px rgba(90, 100, 217, 0.9));
+}
+
+.brand-name h1 {
+    color: white;
+    /* Light color for visibility on any background */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    /* Shadow for better readability */
+    font-size: 1.8rem;
+    margin: 0;
+    font-weight: bold;
+    white-space: nowrap;
+
+}
+
+.brand-name a {
+    text-decoration: none;
+    color: inherit;
+    /* Inherit color from h1 */
+}
+
+/* Middle section - Navigation */
+.header-nav {
+    justify-self: center;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 5px;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    color: var(--secondary-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.2rem;
+    position: relative;
+    transition: var(--transition-fast);
+    border-radius: var(--border-radius);
+    gap: 8px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    /* Shadow for better readability */
+}
+
+.nav-link span:first-child {
+    position: relative;
+    z-index: 2;
+}
+
+/* Font Awesome chevron styling */
+.fa-chevron-down {
+    color: var(--accent-color-header);
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.dropdown.show .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* Underline animation - unified for hover and active states */
+.underline {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    right: 16px;
+    height: 3px;
+    background-color: var(--accent-color-header);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover .underline {
+    transform: scaleX(1);
+}
+
+/* Active page styling */
+.nav-item.active .nav-link .underline {
+    transform: scaleX(1);
+}
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+    cursor: copy;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--primary-color-dark);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    min-width: max-content;
+    width: max-content;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    overflow: hidden;
+    /* Add this to contain the animated children */
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.dropdown-menu.show li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Sequential animation for dropdown items */
+.dropdown-menu.show li:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.dropdown-menu.show li:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.dropdown-menu.show li:nth-child(3) {
+    transition-delay: 0.15s;
+}
+
+.dropdown-menu.show li:nth-child(4) {
+    transition-delay: 0.2s;
+}
+
+.dropdown-menu.show li:nth-child(5) {
+    transition-delay: 0.25s;
+}
+
+.dropdown-menu.show li:nth-child(6) {
+    transition-delay: 0.3s;
+}
+
+.dropdown-menu.show li:nth-child(7) {
+    transition-delay: 0.35s;
+}
+
+.dropdown-menu.show li:nth-child(8) {
+    transition-delay: 0.4s;
+}
+
+.dropdown-menu.show li:nth-child(9) {
+    transition-delay: 0.45s;
+}
+
+.dropdown-menu.show li:nth-child(10) {
+    transition-delay: 0.5s;
+}
+
+.dropdown-menu.show li:nth-child(11) {
+    transition-delay: 0.55s;
+}
+
+.dropdown-menu.show li:nth-child(12) {
+    transition-delay: 0.6s;
+}
+
+.dropdown-link {
+    display: block;
+    color: var(--secondary-color);
+    padding: 12px 20px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    position: relative;
+    transition: var(--transition-fast);
+    white-space: nowrap;
+}
+
+.dropdown-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-link .underline {
+    bottom: 8px;
+    left: 20px;
+    right: 20px;
+    height: 2px;
+}
+
+.dropdown-link:hover .underline {
+    transform: scaleX(1);
+}
+
+/* Right section */
+.header-right {
+    justify-self: end;
+}
+
+.inscription-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(42, 47, 130, 0.5);
+    color: var(--secondary-color);
+    padding: 18px 28px;
+    /* Larger button */
+    border: none;
+    border-radius: calc(var(--border-radius) + 4px);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.7rem;
+    /* Requested size */
+    line-height: 1;
+    /* Keep height tight */
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-fast);
+}
+
+/* Subtle accent bar to set it apart */
+.inscription-btn::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 5px;
+    /* Thicker underline for larger button */
+    width: 100%;
+    background: linear-gradient(90deg, var(--accent-color-header) 0%, var(--primary-color) 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.inscription-btn:hover,
+.inscription-btn:focus-visible {
+    background-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.inscription-btn:hover::after,
+.inscription-btn:focus-visible::after {
+    transform: scaleX(1);
+}
+
+/* Add delay when inscription button background returns on main page */
+.header.main-page:not(:hover):not(.dropdown-active):not(.scrolled) .inscription-btn {
+    transition-delay: 0.5s;
+}
+
+/* Keep drawer full-width styling compatible */
+.drawer-inscription .inscription-btn {
+    justify-content: center;
+    width: 100%;
+    padding: 22px;
+    /* Larger inside drawer */
+    font-size: 1.7rem;
+}
+
+/* Hover effects */
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile hamburger menu */
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    transition: var(--transition-fast);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile drawer */
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    background-color: var(--primary-color-dark);
+    z-index: 2000;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    border-left: 3px solid var(--border-color);
+}
+
+.mobile-drawer.open {
+    right: 0;
+}
+
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.drawer-title {
+    color: var(--secondary-color);
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.drawer-close {
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: var(--border-radius);
+    transition: var(--transition-fast);
+}
+
+.drawer-close:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--accent-color-header);
+}
+
+.drawer-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.drawer-menu .nav-link {
+    display: block;
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+}
+
+.drawer-menu .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+.drawer-menu .dropdown-menu.show {
+    max-height: 600px;
+    padding: 10px 0;
+}
+
+.drawer-menu .dropdown-link {
+    padding: 10px 30px;
+    font-size: 1rem;
+}
+
+.drawer-inscription {
+    padding: 20px;
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* (Removed duplicate smaller drawer inscription style) */
+
+/* Overlay */
+.mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1500;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive Design 1024p->1770*/
+@media (max-width: 1770px) {
+    .brand-name h1 {
+        display: none;
+    }
+
+    .header-content {
+        grid-template-columns: auto 1fr auto;
+    }
+}
+
+/*768->1400*/
+@media (max-width: 1400px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    .header-content {
+        grid-template-columns: auto 1fr;
+        padding: 15px 0;
+        min-height: 80px;
+    }
+
+    .header-nav,
+    .header-right {
+        display: none;
+    }
+
+    .mobile-toggle {
+        display: block;
+        justify-self: end;
+    }
+
+    .logo-img {
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .mobile-drawer {
+        width: 80%;
+        right: -80%;
+    }
+
+    .logo-img {
+        height: 45px;
+    }
+}
+
+/* Add this for mobile chevron rotation */
+.drawer-menu .fa-chevron-down {
+    transition: transform 0.3s ease;
+}
+
+.drawer-menu .fa-chevron-down.rotate {
+    transform: rotate(180deg);
+}
+
+/* Clear Cache Button (Development) */
+.clear-cache-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 3000;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #1c41ff;
+    color: white;
+    padding: 8px 16px;
+    border: 2px solid #1c41ff;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition-medium);
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+}
+
+.clear-cache-btn:hover {
+    background-color: #0400ff;
+    transform: translateY(-2px);
+}
+
+.clear-cache-btn i {
+    font-size: 0.8rem;
+}

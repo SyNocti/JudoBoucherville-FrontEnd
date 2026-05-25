@@ -1,0 +1,149 @@
+<div class="cours-detail-container">
+    <!-- Page title section -->
+    <section class="title-section" *ngIf="cours">
+        <app-page-title [title]="cours.nom"></app-page-title>
+    </section>
+
+    <!-- Course content -->
+    <section class="cours-content-section">
+        <div class="container">
+            <!-- Loading state -->
+            <div class="loading-wrapper" *ngIf="loading">
+                <app-loading-spinner message="Chargement du cours..." size="medium">
+                </app-loading-spinner>
+            </div>
+
+            <!-- Error state -->
+            <div class="error-state" *ngIf="!loading && error">
+                <div class="error-content">
+                    <h2>Erreur de chargement</h2>
+                    <p>Une erreur s'est produite lors du chargement des détails du cours. Veuillez réessayer plus tard.
+                    </p>
+                    <button class="back-button" (click)="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                        Retour à la liste
+                    </button>
+                </div>
+            </div>
+
+            <!-- Course details -->
+            <div class="cours-details" *ngIf="!loading && !error && cours">
+                <!-- Back button -->
+                <div class="back-button-container">
+                    <button class="back-button" (click)="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                        Retour à la liste
+                    </button>
+                </div>
+
+                <div class="cours-layout">
+                    <!-- Course image -->
+                    <div class="cours-image-section">
+                        <img [src]="getImageUrl(cours.imageUrl)" [alt]="cours.nom" class="cours-image">
+                    </div>
+
+                    <!-- Course information -->
+                    <div class="cours-info-section">
+                        <div class="cours-header">
+                            <p class="cours-category">{{ formatCategory(cours.categorie) }}</p>
+                        </div>
+
+                        <div class="cours-description">
+                            <h3>Description</h3>
+                            <p>{{ cours.description }}</p>
+                        </div>
+
+                        <div class="cours-clientele" *ngIf="cours.clientele">
+                            <h3>Clientèle visée</h3>
+                            <div [innerHTML]="formatTextWithBullets(cours.clientele)"></div>
+                        </div>
+
+                        <div class="cours-schedule" *ngIf="cours.horaire">
+                            <h3>Horaire</h3>
+                            <div [innerHTML]="formatTextWithBullets(cours.horaire)"></div>
+                        </div>
+
+                        <div class="cours-prerequisites" *ngIf="cours.prealable">
+                            <h3>Prérequis</h3>
+                            <div [innerHTML]="formatTextWithBullets(cours.prealable)"></div>
+                        </div>
+
+                        <div class="cours-additional-info" *ngIf="cours.infoSupplementaire">
+                            <h3>Informations supplémentaires</h3>
+                            <div [innerHTML]="formatTextWithBullets(cours.infoSupplementaire)"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professors section -->
+                <div class="professeurs-section" *ngIf="cours.professeurs && cours.professeurs.length > 0">
+                    <div class="section-header">
+                        <h3>{{ cours.professeurs.length === 1 ? 'Professeur' : 'Professeurs' }}</h3>
+                        <a routerLink="/club/professeurs" class="view-all-button">
+                            Voir tous les professeurs
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="professeurs-grid">
+                        <div *ngFor="let professeur of cours.professeurs" class="professeur-card">
+                            <div class="professeur-info">
+                                <div class="professeur-name-title">
+                                    <span class="professeur-nom">{{ professeur.nom }}</span>
+                                    <span class="professeur-titre" *ngIf="professeur.titre"> - {{ professeur.titre
+                                        }}</span>
+                                </div>
+                                <div class="professeur-credentials">
+                                    <span class="professeur-grade">{{ professeur.grade }}</span>
+                                    <span class="professeur-separator">•</span>
+                                    <span class="professeur-certification">{{ professeur.certification }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment options section -->
+                <div class="payment-section" *ngIf="cours.optionsPaiement && cours.optionsPaiement.length > 0">
+                    <h3>{{ cours.optionsPaiement.length === 1 ? 'Forfait de cours' : 'Forfaits de cours' }}</h3>
+                    <div class="payment-options">
+                        <div *ngFor="let option of cours.optionsPaiement" class="payment-option-card">
+                            <div class="payment-info">
+                                <div class="payment-duration">
+                                    <h4>Durée du cours</h4>
+                                    <p class="duration-dates">{{ formatDate(option.dateDebut) }} - {{
+                                        formatDate(option.dateFin) }}</p>
+                                    <p class="duration-weeks">{{ calculateWeeks(option.dateDebut, option.dateFin) }}
+                                        semaines</p>
+                                </div>
+                                <div class="payment-deadline">
+                                    <h4>Date limite tarif préférentiel</h4>
+                                    <p>{{ formatDate(option.dateLimiteTarifPreferentiel) }}</p>
+                                </div>
+                            </div>
+                            <div class="payment-prices">
+                                <div class="price-item early">
+                                    <span class="price-label">Tarif préférentiel</span>
+                                    <span class="price-value early-price">{{ formatPrice(option.prixAvantDateLimite)
+                                        }}</span>
+                                </div>
+                                <div class="price-item late">
+                                    <span class="price-label">Tarif régulier</span>
+                                    <span class="price-value late-price">{{ formatPrice(option.prixApresDateLimite)
+                                        }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Registration section -->
+                <div class="registration-section" *ngIf="cours.inscriptionUrl">                    
+                    <a [href]="cours.inscriptionUrl" target="_blank" class="registration-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        S'inscrire en ligne
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

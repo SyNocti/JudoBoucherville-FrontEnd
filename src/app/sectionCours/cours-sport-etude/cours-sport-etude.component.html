@@ -1,0 +1,108 @@
+<div class="sport-etude-container">
+    <!-- Page title section -->
+    <section class="title-section">
+        <app-page-title title="Sport-Études"></app-page-title>
+    </section>
+
+    <!-- Sport-Études content -->
+    <section class="content-section">
+        <div class="container">
+            <!-- Loading state -->
+            <div class="loading-wrapper" *ngIf="loading">
+                <app-loading-spinner message="Chargement des informations Sport-Études..." size="medium">
+                </app-loading-spinner>
+            </div>
+
+            <!-- Error state -->
+            <div class="error-state" *ngIf="!loading && error">
+                <div class="error-content">
+                    <h2>Erreur de chargement</h2>
+                    <p>Une erreur s'est produite lors du chargement des informations Sport-Études. Veuillez réessayer
+                        plus tard.</p>
+                </div>
+            </div>
+
+            <!-- Sport-Études details -->
+            <div class="sport-etude-content" *ngIf="!loading && !error && sportEtude">
+                <!-- Contact and Director Sections Side by Side -->
+                <div class="contact-director-wrapper">
+                    <!-- Contact Section -->
+                    <div class="contact-section"
+                        *ngIf="sportEtude.contactName || sportEtude.contactPhone || sportEtude.contactEmail">
+                        <h3>Pour information immédiate sur le programme Sport-Études</h3>
+                        <div class="contact-info">
+                            <div class="contact-item" *ngIf="sportEtude.contactName">
+                                <i class="fas fa-user"></i>
+                                <span>{{ sportEtude.contactName }}</span>
+                            </div>
+                            <div class="contact-item" *ngIf="sportEtude.contactPhone">
+                                <i class="fas fa-phone"></i>
+                                <a href="tel:{{ sportEtude.contactPhone }}">{{ sportEtude.contactPhone }}</a>
+                            </div>
+                            <div class="contact-item" *ngIf="sportEtude.contactEmail">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:{{ sportEtude.contactEmail }}">{{ sportEtude.contactEmail }}</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Director Section -->
+                    <div class="director-section"
+                        *ngIf="sportEtude.directorName || sportEtude.directorPhone || sportEtude.directorEmail || sportEtude.webUrl">
+                        <h3>Pour information académique: École Secondaire De Mortagne</h3>
+                        <div class="director-info">
+                            <div class="contact-item" *ngIf="sportEtude.directorName">
+                                <i class="fas fa-user-tie"></i>
+                                <span>{{ sportEtude.directorName }}</span>
+                            </div>
+                            <div class="contact-item" *ngIf="sportEtude.directorPhone">
+                                <i class="fas fa-phone"></i>
+                                <a href="tel:{{ sportEtude.directorPhone }}">{{ sportEtude.directorPhone }}</a>
+                            </div>
+                            <div class="contact-item" *ngIf="sportEtude.directorEmail">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:{{ sportEtude.directorEmail }}">{{ sportEtude.directorEmail }}</a>
+                            </div>
+                            <div class="contact-item" *ngIf="sportEtude.webUrl">
+                                <i class="fas fa-globe"></i>
+                                <a [href]="sportEtude.webUrl" target="_blank">Visiter le site web</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Files Section -->
+                <div class="files-section" *ngIf="sportEtude.fichierNoms && sportEtude.fichierNoms.length > 0">
+                    <h3>Documents</h3>
+                    <div class="files-grid">
+                        <a *ngFor="let fileName of sportEtude.fichierNoms" [href]="getFileUrl(fileName)" target="_blank"
+                            class="file-card">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>{{ getCleanFileName(fileName) }}</span>
+                            <i class="fas fa-external-link-alt file-open-icon"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Show this if no sections have data -->
+                <div class="no-sections"
+                    *ngIf="!sportEtude.contactName && !sportEtude.contactPhone && !sportEtude.contactEmail && 
+                                                !sportEtude.directorName && !sportEtude.directorPhone && !sportEtude.directorEmail &&
+                                                !sportEtude.webUrl && (!sportEtude.fichierNoms || sportEtude.fichierNoms.length === 0)">
+                    <div class="no-data-content">
+                        <h2>Données reçues mais vides</h2>
+                        <p>Les informations Sport-Études ont été récupérées mais ne contiennent aucune donnée.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No data state -->
+            <div class="no-data-state" *ngIf="!loading && !error && !sportEtude">
+                <div class="no-data-content">
+                    <h2>Aucune information disponible</h2>
+                    <p>Les informations Sport-Études ne sont pas disponibles pour le moment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

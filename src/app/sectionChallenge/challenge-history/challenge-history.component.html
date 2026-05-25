@@ -1,0 +1,71 @@
+<div class="challenge-history-container">
+    <app-page-title title="Historique du Challenge"></app-page-title>
+
+    <app-loading-spinner *ngIf="loading" message="Chargement de l'historique..." size="medium">
+    </app-loading-spinner>
+
+    <!-- Year filter -->
+    <div class="filter-row" *ngIf="!loading && !error && availableYears.length > 0">
+        <label for="yearSelect">Filtrer par année :</label>
+        <select id="yearSelect" [(ngModel)]="selectedYear">
+            <option value="all">Toutes les années</option>
+            <option *ngFor="let year of availableYears" [value]="year">{{ year }}</option>
+        </select>
+    </div>
+
+    <!-- Error message -->
+    <div class="error-message" *ngIf="!loading && error">
+        <div class="error-content">
+            <h2>Erreur de chargement</h2>
+            <p>Une erreur s'est produite lors du chargement de l'historique. Veuillez réessayer plus tard.</p>
+        </div>
+    </div>
+
+    <!-- Results by year -->
+    <div class="results-wrapper" *ngIf="!loading && !error">
+        <div class="year-section" *ngFor="let yearData of filteredResults">
+            <h2 class="year-title">{{ yearData.year }}</h2>
+            
+            <div class="category-section" *ngFor="let category of yearData.categories">
+                <h3 class="category-title">{{ getCategoryLabel(category.categoryAgeValue) }}</h3>
+                
+                <div class="results-table">
+                    <div class="result-row header-row">
+                        <div class="result-cell placement-cell">Pos.</div>
+                        <div class="result-cell team-cell">Équipe/Nom</div>
+                        <div class="result-cell sponsor-cell">Commanditaire</div>
+                    </div>
+                    
+                    <div class="result-row" *ngFor="let result of category.results" 
+                         [class.best-fighter-row]="result.placement === 0">
+                        <div class="result-cell placement-cell">
+                            <!-- Show trophy for best fighter (placement === 0) -->
+                            <div class="best-fighter-badge" *ngIf="result.placement === 0">
+                                <i class="fas fa-trophy"></i>
+                                <span class="best-fighter-text">Meilleur<br>Athlète</span>
+                            </div>
+                            <!-- Show placement badge for regular positions -->
+                            <span class="placement-badge" [class]="getPlacementClass(result.placement)" *ngIf="result.placement !== 0">
+                                {{ result.placement }}
+                            </span>
+                        </div>
+                        <div class="result-cell team-cell">
+                            <span class="team-name">{{ result.teamName }}</span>
+                        </div>
+                        <div class="result-cell sponsor-cell">
+                            <span class="sponsor-name">{{ result.sponsorName }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- No results message -->
+        <div class="no-results" *ngIf="filteredResults.length === 0">
+            <div class="no-results-content">
+                <h2>Aucun résultat trouvé</h2>
+                <p>Il n'y a actuellement aucun résultat disponible pour cette sélection.</p>
+            </div>
+        </div>
+    </div>
+</div>

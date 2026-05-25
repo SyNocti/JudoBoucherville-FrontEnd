@@ -1,0 +1,292 @@
+/* Title section */
+.title-section {
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.title-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.title-section app-page-title {
+    position: relative;
+    z-index: 2;
+}
+
+app-loading-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    /* or 100vh if you want it fullscreen */
+    width: 100%;
+}
+
+/* Archive items section */
+.archive-items-section {
+    padding: 60px 0;
+    min-height: 45vh;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.archive-items-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.archive-items-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Items content wrapper */
+.items-content {
+    margin-bottom: 60px;
+}
+
+/* Loading wrapper */
+.loading-wrapper {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Error state */
+.error-state,
+.no-items-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.error-content,
+.no-items-content {
+    text-align: center;
+    max-width: 500px;
+    color: #666;
+}
+
+.error-content h2,
+.no-items-content h2 {
+    font-size: 2rem;
+    margin: 0 0 20px 0;
+    color: var(--primary-color);
+}
+
+.error-content p,
+.no-items-content p {
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Items count info */
+.items-info {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.items-info p {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin: 0;
+    font-style: italic;
+}
+
+/* Items grid */
+.items-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Fixed width for actualite and competition cards - match home page slide width */
+.items-grid app-actualite-card,
+.items-grid app-competition-card {
+    width: 320px;
+    flex-shrink: 0;
+}
+
+/* Fixed width for journal cards - half width on large screens */
+.items-grid app-journal-card {
+    width: 500px;
+    flex-shrink: 0;
+}
+
+/* Navigation */
+.navigation {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 25px;
+    background-color: var(--primary-color-dark);
+    color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: var(--transition-medium);
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.back-button:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-medium);
+    text-decoration: none;
+}
+
+.back-button i {
+    font-size: 0.9rem;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+
+    .items-grid app-actualite-card,
+    .items-grid app-competition-card {
+        width: 300px;
+    }
+
+    .items-grid app-journal-card {
+        width: 450px;
+    }
+}
+
+@media (max-width: 992px) {
+
+    .items-grid app-actualite-card,
+    .items-grid app-competition-card {
+        width: 280px;
+    }
+
+    .items-grid app-journal-card {
+        width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .archive-items-section {
+        padding: 40px 0;
+    }
+
+    .items-content {
+        margin-bottom: 40px;
+    }
+
+    .loading-wrapper,
+    .error-state,
+    .no-items-state {
+        padding: 30px 20px;
+    }
+
+    .error-content h2,
+    .no-items-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .error-content p,
+    .no-items-content p {
+        font-size: 1.1rem;
+    }
+
+    .items-grid {
+        gap: 20px;
+        padding: 0 20px;
+    }
+
+    .items-grid app-actualite-card,
+    .items-grid app-competition-card {
+        width: 260px;
+    }
+
+    .items-grid app-journal-card {
+        width: 350px;
+    }
+}
+
+@media (max-width: 576px) {
+    .archive-items-section {
+        padding: 30px 0;
+    }
+
+    .loading-wrapper,
+    .error-state,
+    .no-items-state {
+        padding: 20px 15px;
+    }
+
+    .error-content h2,
+    .no-items-content h2 {
+        font-size: 1.6rem;
+    }
+
+    .items-grid {
+        gap: 15px;
+        padding: 0 15px;
+    }
+
+    .items-grid app-actualite-card,
+    .items-grid app-competition-card {
+        width: 240px;
+    }
+
+    .items-grid app-journal-card {
+        width: 300px;
+    }
+
+    .back-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .items-grid app-actualite-card,
+    .items-grid app-competition-card {
+        width: 220px;
+    }
+
+    .items-grid app-journal-card {
+        width: 280px;
+    }
+}
+
+@media (max-width: 360px) {
+
+    .items-grid app-actualite-card,
+    .items-grid app-competition-card {
+        width: 200px;
+    }
+
+    .items-grid app-journal-card {
+        width: 250px;
+    }
+}

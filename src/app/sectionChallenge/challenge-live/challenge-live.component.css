@@ -1,0 +1,449 @@
+/* Title section */
+.title-section {
+    background: url('/assets/images/logos/logo_challenge.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.title-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.title-section app-page-title {
+    position: relative;
+    z-index: 2;
+}
+
+.challenge-live-container {
+    min-height: 100vh;
+    background: var(--secondary-color) url('/assets/images/logos/logo_challenge.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.challenge-live-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+/* Live Section */
+.live-section {
+    padding: 60px 0;
+    background-color: transparent;
+    position: relative;
+    z-index: 2;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Loading State */
+.loading-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    padding: 40px 0;
+    position: relative;
+    z-index: 2;
+}
+
+/* Error State */
+.error-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    padding: 40px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.error-content {
+    text-align: center;
+    max-width: 500px;
+    background-color: white;
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.error-content h2 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin: 0 0 20px 0;
+}
+
+.error-content p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin: 0 0 30px 0;
+    line-height: 1.5;
+}
+
+.retry-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-medium);
+}
+
+.retry-button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.retry-button i {
+    font-size: 0.9rem;
+}
+
+/* Live Content */
+.live-content {
+    padding: 20px 0;
+    position: relative;
+    z-index: 2;
+}
+
+/* Challenge Header */
+.challenge-header {
+    text-align: center;
+    margin-bottom: 40px;
+    background-color: white;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.challenge-header h2 {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin: 0 0 20px 0;
+    font-weight: 600;
+}
+
+.challenge-details {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-color);
+}
+
+.detail-item i {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+}
+
+.detail-item span {
+    font-size: 1rem;
+    text-align: start;
+}
+
+/* Livestream Wrapper */
+.livestream-wrapper {
+    margin-bottom: 40px;
+    
+}
+
+/* Active Livestream */
+.livestream-active {
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 12px var(--shadow-light);
+     border: 2px solid var(--primary-color);
+
+}
+
+.livestream-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.live-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.live-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #ff4444;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 68, 68, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 68, 68, 0);
+    }
+}
+
+.live-text {
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.livestream-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    /* 16:9 Aspect Ratio */
+    background-color: #000;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Inactive Livestream */
+.livestream-inactive {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 60px 30px;
+    text-align: center;
+    box-shadow: 0 4px 12px var(--shadow-light);
+     border: 2px solid var(--primary-color);
+}
+
+.inactive-content i {
+    font-size: 4rem;
+    color: var(--text-color-light);
+    margin-bottom: 20px;
+}
+
+.inactive-content h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin: 0 0 15px 0;
+}
+
+.inactive-content p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin: 0 0 30px 0;
+    line-height: 1.6;
+}
+
+.event-info {
+    background-color: var(--secondary-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-top: 20px;
+}
+
+.event-info p {
+    margin: 8px 0;
+    font-size: 1rem;
+}
+
+/* Livestream Error */
+.livestream-error {
+    background-color: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: var(--border-radius);
+    padding: 40px;
+    text-align: center;
+}
+
+.livestream-error i {
+    font-size: 3rem;
+    color: #f39c12;
+    margin-bottom: 20px;
+}
+
+.livestream-error h3 {
+    font-size: 1.6rem;
+    color: #d68910;
+    margin: 0 0 15px 0;
+}
+
+.livestream-error p {
+    font-size: 1rem;
+    color: #8c6239;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Navigation Section */
+.navigation-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.back-button,
+.inscriptions-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: var(--transition-medium);
+}
+
+.back-button {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.back-button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    text-decoration: none;
+    color: white;
+}
+
+.inscriptions-button {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.inscriptions-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .live-section {
+        padding: 40px 0;
+    }
+
+    .challenge-header {
+        padding: 25px 20px;
+    }
+
+    .challenge-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .challenge-details {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .livestream-header {
+        padding: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .livestream-header h3 {
+        font-size: 1.1rem;
+    }
+
+    .livestream-inactive {
+        padding: 40px 20px;
+    }
+
+    .inactive-content i {
+        font-size: 3rem;
+    }
+
+    .inactive-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .navigation-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .back-button,
+    .inscriptions-button {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .challenge-header {
+        padding: 20px 15px;
+    }
+
+    .challenge-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .livestream-inactive {
+        padding: 30px 15px;
+    }
+
+    .inactive-content h3 {
+        font-size: 1.3rem;
+    }
+
+    .inactive-content p {
+        font-size: 1rem;
+    }
+
+    .back-button,
+    .inscriptions-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,310 @@
+<header class="header" [class.scrolled]="isScrolled" [class.main-page]="isMainPage">
+    <om-marquee class="custom-marquee" *ngIf="announcements.length>0" [animationDuration]="animationDuration"
+        [style.--marquee-bg-color]="marqueeBackgroundColor">
+        <div #OmMarqueeContent class="item" *ngFor="let announcement of announcements">
+            {{ announcement }}
+        </div>
+    </om-marquee>
+    <div class="container">
+        <div class="header-content">
+            <!-- Left section: Logo and brand -->
+            <div class="header-left">
+                <div class="logo">
+                    <a routerLink="/accueil">
+                        <img src="/assets/images/logos/logo-small.png" alt="Judo Boucherville Logo" class="logo-img">
+                    </a>
+                </div>
+                <div class="brand-name">
+                    <a routerLink="/accueil">
+                        <h1>Club de Judo Boucherville</h1>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Middle section: Navigation (Desktop only) -->
+            <nav class="header-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item" routerLinkActive="active">
+                        <a routerLink="/accueil" class="nav-link" (mouseenter)="setActiveItem('accueil')">
+                            <span>Accueil</span>
+                            <div class="underline"></div>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown" routerLinkActive="active" [class.show]="activeDropdown === 'club'"
+                        (mouseenter)="showDropdown('club')" (mouseleave)="scheduleHideDropdown('club')">
+                        <a class="nav-link dropdown-toggle">
+                            <span>Club</span>
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="underline"></div>
+                        </a>
+                        <a routerLink="/club" style="display: none;"></a>
+                        <ul class="dropdown-menu" [class.show]="activeDropdown === 'club'">
+                            <li><a routerLink="club/histoire" class="dropdown-link"><span>Histoire</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                            <li><a routerLink="club/administration" class="dropdown-link"><span>Administration</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                            <li><a routerLink="club/ceintures" class="dropdown-link"><span>Ceintures noires</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                            <li><a routerLink="club/professeurs/" class="dropdown-link"><span>Professeurs</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                            <li><a routerLink="club/telechargement" class="dropdown-link"><span>Passage de grade<br>et
+                                        ressources</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown" routerLinkActive="active" [class.show]="activeDropdown === 'athletes'"
+                        (mouseenter)="showDropdown('athletes')" (mouseleave)="scheduleHideDropdown('athletes')">
+                        <a class="nav-link dropdown-toggle">
+                            <span>Athlètes</span>
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="underline"></div>
+                        </a>
+                        <a routerLink="/athletes" style="display: none;"></a>
+                        <ul class="dropdown-menu" [class.show]="activeDropdown === 'athletes'">
+                            <li><a routerLink="/athletes/international" class="dropdown-link"><span>Niveau
+                                        International</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                            <li><a routerLink="/athletes/national" class="dropdown-link"><span>Niveau National</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                            <li><a routerLink="/athletes/provincial" class="dropdown-link"><span>Niveau
+                                        Provincial</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                            <li><a routerLink="/athletes/equipes" class="dropdown-link"><span>Équipes</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                            <li><a routerLink="/athletes/anciens" class="dropdown-link"><span>Anciens Athlètes</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown" routerLinkActive="active" [class.show]="activeDropdown === 'cours'"
+                        (mouseenter)="showDropdown('cours')" (mouseleave)="scheduleHideDropdown('cours')">
+                        <a class="nav-link dropdown-toggle">
+                            <span>Cours</span>
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="underline"></div>
+                        </a>
+                        <ul class="dropdown-menu" [class.show]="activeDropdown === 'cours'">
+                            <li><a routerLink="/cours/liste" class="dropdown-link"><span>Liste des cours</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                            <li><a routerLink="/cours/sport-etude" class="dropdown-link"><span>Sport-Études</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                            <li><a routerLink="/cours/camps-de-jour" class="dropdown-link"><span>Camp de jour</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                            <li><a routerLink="/cours/parascolaire" class="dropdown-link"><span>Parascolaire</span>
+                                    <div class="underline"></div>
+                                </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item" routerLinkActive="active">
+                        <a routerLink="challenge" class="nav-link" (mouseenter)="setActiveItem('challenge')">
+                            <span>Challenge</span>
+                            <div class="underline"></div>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" routerLinkActive="active">
+                        <a routerLink="boutique" class="nav-link" (mouseenter)="setActiveItem('boutique')">
+                            <span>Boutique</span>
+                            <div class="underline"></div>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" routerLinkActive="active">
+                        <a routerLink="faq" class="nav-link" (mouseenter)="setActiveItem('faq')">
+                            <span>FAQ</span>
+                            <div class="underline"></div>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" routerLinkActive="active">
+                        <a routerLink="contact" class="nav-link" (mouseenter)="setActiveItem('contact')">
+                            <span>Contact</span>
+                            <div class="underline"></div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Right section: Inscription button and Clear Cache (Desktop only) -->
+            <div class="header-right">
+                <!-- DEV: Clear Cache Button
+                <button class="clear-cache-btn" (click)="clearSessionCache()">
+                    <i class="fas fa-refresh"></i>
+                </button> -->
+
+                <a [href]="getInscriptionLink()" target="_blank" class="inscription-btn">
+                    <span>{{ getInscriptionText() }}</span>
+                </a>
+            </div>
+
+            <!-- Mobile hamburger menu -->
+            <button class="mobile-toggle" (click)="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" [class.show]="mobileMenuOpen" (click)="closeMobileMenu()"></div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" [class.open]="mobileMenuOpen">
+        <div class="drawer-header">
+            <span class="drawer-title">Menu</span>
+            <button class="drawer-close" (click)="closeMobileMenu()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <nav class="drawer-nav">
+            <ul class="drawer-menu">
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="/accueil" class="nav-link" (click)="setActiveItem('accueil'); closeMobileMenu()">
+                        <span>Accueil</span>
+                        <div class="underline"></div>
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown" routerLinkActive="active">
+                    <a class="nav-link dropdown-toggle" (click)="toggleMobileDropdown('club')">
+                        <span>Club</span>
+                        <i class="fas fa-chevron-down" [class.rotate]="mobileActiveDropdown === 'club'"></i>
+                        <div class="underline"></div>
+                    </a>
+                    <a routerLink="/club" style="display: none;"></a>
+                    <ul class="dropdown-menu" [class.show]="mobileActiveDropdown === 'club'">
+                        <li><a routerLink="club/histoire" class="dropdown-link"
+                                (click)="closeMobileMenu()"><span>Histoire</span>
+                                <div class="underline"></div>
+                            </a></li>
+                        <li><a routerLink="club/administration" class="dropdown-link"
+                                (click)="closeMobileMenu()"><span>Administration</span>
+                                <div class="underline"></div>
+                            </a></li>
+                        <li><a routerLink="club/ceintures" class="dropdown-link"
+                                (click)="closeMobileMenu()"><span>Ceintures noires</span>
+                                <div class="underline"></div>
+                            </a></li>
+                        <li><a routerLink="club/professeurs" class="dropdown-link"
+                                (click)="closeMobileMenu()"><span>Professeurs</span>
+                                <div class="underline"></div>
+                            </a></li>
+                        <li><a routerLink="club/telechargement" class="dropdown-link"
+                                (click)="closeMobileMenu()"><span>Passage de grade<br>et
+                                    ressources</span>
+                                <div class="underline"></div>
+                            </a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown" routerLinkActive="active">
+                    <a class="nav-link dropdown-toggle" (click)="toggleMobileDropdown('athletes')">
+                        <span>Athlètes</span>
+                        <i class="fas fa-chevron-down" [class.rotate]="mobileActiveDropdown === 'athletes'"></i>
+                        <div class="underline"></div>
+                    </a>
+                    <a routerLink="/athletes" style="display: none;"></a>
+                    <ul class="dropdown-menu" [class.show]="mobileActiveDropdown === 'athletes'">
+                        <li><a routerLink="athletes/international" class="dropdown-link"
+                                (click)="closeMobileMenu()"><span>Niveau International</span>
+                                <div class="underline"></div>
+                            </a></li>
+                        <li><a routerLink="athletes/national" class="dropdown-link"
+                                (click)="closeMobileMenu()"><span>Niveau National</span>
+                                <div class="underline"></div>
+                            </a></li>
+                        <li><a routerLink="athletes/provincial" class="dropdown-link"
+                                (click)="closeMobileMenu()"><span>Niveau Provincial</span>
+                                <div class="underline"></div>
+                            </a></li>
+                        <li><a routerLink="athletes/equipes" class="dropdown-link"
+                                (click)="closeMobileMenu()"><span>Équipes</span>
+                                <div class="underline"></div>
+                            </a></li>
+                        <li><a routerLink="athletes/anciens" class="dropdown-link"
+                                (click)="closeMobileMenu()"><span>Anciens Athlètes</span>
+                                <div class="underline"></div>
+                            </a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown" routerLinkActive="active">
+                    <a class="nav-link dropdown-toggle" (click)="toggleMobileDropdown('cours')">
+                        <span>Cours</span>
+                        <i class="fas fa-chevron-down" [class.rotate]="mobileActiveDropdown === 'cours'"></i>
+                        <div class="underline"></div>
+                    </a>
+                    <ul class="dropdown-menu" [class.show]="mobileActiveDropdown === 'cours'">
+                        <li><a routerLink="/cours/liste" class="dropdown-link" (click)="closeMobileMenu()"><span>Liste
+                                    des cours</span>
+                                <div class="underline"></div>
+                            </a></li>
+                        <li><a routerLink="/cours/sport-etude" class="dropdown-link"
+                                (click)="closeMobileMenu()"><span>Sport-Études</span>
+                                <div class="underline"></div>
+                            </a></li>
+                        <li><a routerLink="/cours/camps-de-jour" class="dropdown-link"
+                                (click)="closeMobileMenu()"><span>Camp de jour</span>
+                                <div class="underline"></div>
+                            </a></li>
+                        <li><a routerLink="/cours/parascolaire" class="dropdown-link"
+                                (click)="closeMobileMenu()"><span>Parascolaire</span>
+                                <div class="underline"></div>
+                            </a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="challenge" class="nav-link" (click)="setActiveItem('challenge'); closeMobileMenu()">
+                        <span>Challenge</span>
+                        <div class="underline"></div>
+                    </a>
+                </li>
+
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="boutique" class="nav-link" (click)="setActiveItem('boutique'); closeMobileMenu()">
+                        <span>Boutique</span>
+                        <div class="underline"></div>
+                    </a>
+                </li>
+
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="faq" class="nav-link" (click)="setActiveItem('faq'); closeMobileMenu()">
+                        <span>FAQ</span>
+                        <div class="underline"></div>
+                    </a>
+                </li>
+
+                <li class="nav-item" routerLinkActive="active">
+                    <a routerLink="contact" class="nav-link" (click)="setActiveItem('contact'); closeMobileMenu()">
+                        <span>Contact</span>
+                        <div class="underline"></div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="drawer-inscription">
+
+            <a [href]="getInscriptionLink()" class="inscription-btn" target="_blank" (click)="closeMobileMenu()">
+                <span>{{ getInscriptionText() }}</span>
+            </a>
+        </div>
+    </div>
+</header>

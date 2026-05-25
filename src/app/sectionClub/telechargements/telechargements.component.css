@@ -1,0 +1,272 @@
+/* Title section */
+.title-section {
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.title-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.title-section app-page-title {
+    position: relative;
+    z-index: 2;
+}
+
+/* Resources section */
+.resources-section {
+    padding: 60px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.resources-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.resources-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Introduction - Always visible */
+.intro-text {
+    text-align: center;
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.intro-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-color);
+}
+
+
+/* Loading wrapper */
+.loading-wrapper {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Error state and no-data state - no min-height as requested */
+.error-state,
+.no-resources-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.error-content,
+.no-resources-content {
+    text-align: center;
+    max-width: 500px;
+    color: #666;
+}
+
+.error-content h2,
+.no-resources-content h2 {
+    font-size: 2rem;
+    margin: 0 0 20px 0;
+    color: var(--primary-color);
+}
+
+.error-content p,
+.no-resources-content p {
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Resources grid */
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    margin-bottom: 60px;
+}
+
+/* Resource card */
+.resource-card {
+    background-color: var(--card-background);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    transition: var(--transition-medium);
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.resource-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--shadow-medium);
+    border-color: var(--accent-color);
+}
+
+/* File icon */
+.file-icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(64, 74, 195, 0.1);
+    border-radius: var(--border-radius);
+}
+
+.file-icon i {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
+/* File info */
+.file-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.file-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 5px 0;
+    line-height: 1.3;
+}
+
+.file-type {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* Open indicator */
+.open-indicator {
+    flex-shrink: 0;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: var(--transition-medium);
+}
+
+.resource-card:hover .open-indicator {
+    color: var(--primary-color);
+    transform: translateX(3px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .resources-section {
+        padding: 40px 0;
+    }
+
+    .intro-text {
+        margin-bottom: 40px;
+        padding: 0 20px;
+    }
+
+    .intro-text p {
+        font-size: 1rem;
+    }
+
+    .loading-wrapper,
+    .error-state,
+    .no-resources-state {
+        padding: 30px 20px;
+    }
+
+    .error-content h2,
+    .no-resources-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .error-content p,
+    .no-resources-content p {
+        font-size: 1.1rem;
+    }
+
+    .resources-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+
+    .resource-card {
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .file-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .file-icon i {
+        font-size: 1.6rem;
+    }
+
+    .file-name {
+        font-size: 1rem;
+    }
+
+    .file-type {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .resources-section {
+        padding: 30px 0;
+    }
+
+    .loading-wrapper,
+    .error-state,
+    .no-resources-state {
+        padding: 20px 15px;
+    }
+
+    .error-content h2,
+    .no-resources-content h2 {
+        font-size: 1.6rem;
+    }
+
+    .resource-card {
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .file-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .file-icon i {
+        font-size: 1.4rem;
+    }
+
+    .file-name {
+        font-size: 0.95rem;
+    }
+}

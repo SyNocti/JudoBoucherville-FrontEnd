@@ -1,0 +1,529 @@
+/* Program info and contact side by side */
+.info-contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+    .info-contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* Title section */
+.title-section {
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.title-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.title-section app-page-title {
+    position: relative;
+    z-index: 2;
+}
+
+/* Content section */
+.content-section {
+    padding: 60px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.content-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.content-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Loading wrapper */
+.loading-wrapper {
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+/* Error state */
+.error-state,
+.no-data-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    min-height: 400px;
+}
+
+.error-content,
+.no-data-content {
+    text-align: center;
+    max-width: 500px;
+}
+
+.error-content h2,
+.no-data-content h2 {
+    font-size: 2rem;
+    margin: 0 0 20px 0;
+    color: var(--primary-color);
+}
+
+.error-content p,
+.no-data-content p {
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Main content */
+.parascolaire-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Description and Contact wrapper for side-by-side layout */
+.description-contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* Section styles */
+.description-section,
+.contact-section,
+.program-section,
+.inscription-section,
+.files-section {
+    background-color: var(--background-light);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.description-section h3,
+.contact-section h3,
+.program-section h3,
+.inscription-section h3,
+.files-section h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 25px 0;
+    text-align: center;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 15px;
+}
+
+/* Description section */
+.description-text {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: var(--text-color);
+    text-align: justify;
+    margin: 0;
+}
+
+/* Markdown content styling */
+.description-text h1,
+.description-text h2,
+.description-text h3,
+.description-text h4,
+.description-text h5,
+.description-text h6 {
+    color: var(--primary-color);
+    margin: 1.5em 0 0.5em 0;
+}
+
+.description-text h1:first-child,
+.description-text h2:first-child,
+.description-text h3:first-child,
+.description-text h4:first-child,
+.description-text h5:first-child,
+.description-text h6:first-child {
+    margin-top: 0;
+}
+
+.description-text p {
+    margin: 0 0 1em 0;
+    text-align: justify;
+}
+
+.description-text ul,
+.description-text ol {
+    padding-left: 2em;
+    margin: 1em 0;
+}
+
+.description-text li {
+    margin: 0.5em 0;
+}
+
+.description-text strong {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.description-text em {
+    font-style: italic;
+}
+
+.description-text a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: var(--transition-medium);
+}
+
+.description-text a:hover {
+    color: var(--accent-color-dark);
+    text-decoration: underline;
+}
+
+.description-text blockquote {
+    border-left: 4px solid var(--accent-color);
+    padding-left: 1em;
+    margin: 1em 0;
+    font-style: italic;
+    background-color: rgba(var(--accent-color-rgb), 0.05);
+    padding: 1em;
+    border-radius: var(--border-radius);
+}
+
+.description-text code {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+.description-text pre {
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+    padding: 1em;
+    border-radius: var(--border-radius);
+    overflow-x: auto;
+    border: 1px solid rgba(var(--primary-color-rgb), 0.2);
+}
+
+.description-text pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+/* Contact info */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--primary-color);
+}
+
+.contact-item i {
+    color: var(--accent-color);
+    width: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.contact-item span {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.contact-item a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: var(--transition-medium);
+}
+
+.contact-item a:hover {
+    color: var(--accent-color-dark);
+    text-decoration: underline;
+}
+
+/* Program section */
+.program-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.program-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--primary-color);
+}
+
+.program-item i {
+    color: var(--accent-color);
+    width: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.program-item .label {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    min-width: 80px;
+}
+
+.program-item .value {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* Inscription section */
+.inscription-content {
+    text-align: center;
+}
+
+.inscription-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin: 0 0 25px 0;
+}
+
+.inscription-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--primary-color-dark);
+    color: var(--secondary-color);
+    padding: 15px 30px;
+    border: none;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-fast);
+}
+
+/* Subtle accent bar to set it apart */
+.inscription-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 5px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--accent-color-header) 0%, var(--primary-color) 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.inscription-link:hover,
+.inscription-link:focus-visible {
+    background-color: var(--primary-color-dark);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.inscription-link:hover::after,
+.inscription-link:focus-visible::after {
+    transform: scaleX(1);
+}
+
+/* Files section */
+.files-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.file-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background-color: var(--secondary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    color: var(--text-color);
+    transition: var(--transition-medium);
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.file-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px var(--shadow-medium);
+    border-color: var(--accent-color);
+}
+
+.file-card i:first-child {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.file-card span {
+    flex: 1;
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.file-card i:last-child {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.file-open-icon {
+    color: #007bff !important;
+    /* Blue color for open icon */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .content-section {
+        padding: 40px 0;
+    }
+
+    .parascolaire-content {
+        gap: 30px;
+    }
+
+    /* Stack description and contact sections on mobile */
+    .description-contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .description-section,
+    .contact-section,
+    .program-section,
+    .inscription-section,
+    .files-section {
+        padding: 20px;
+    }
+
+    .description-section h3,
+    .contact-section h3,
+    .program-section h3,
+    .inscription-section h3,
+    .files-section h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .description-text {
+        font-size: 1.1rem;
+    }
+
+    .contact-item,
+    .program-item {
+        padding: 12px;
+    }
+
+    .inscription-link {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+
+    .files-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .file-card {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-section {
+        padding: 30px 0;
+    }
+
+    .description-section,
+    .contact-section,
+    .program-section,
+    .inscription-section,
+    .files-section {
+        padding: 15px;
+    }
+
+    .description-section h3,
+    .contact-section h3,
+    .program-section h3,
+    .inscription-section h3,
+    .files-section h3 {
+        font-size: 1.3rem;
+    }
+
+    .description-text {
+        font-size: 1rem;
+        text-align: left;
+    }
+
+    .contact-item,
+    .program-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .contact-item i,
+    .program-item i {
+        align-self: center;
+    }
+
+    .program-item .label {
+        min-width: auto;
+    }
+
+    .files-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .file-card {
+        padding: 15px;
+    }
+}

@@ -1,0 +1,64 @@
+<section class="title-section">
+        <app-page-title title="Équipes inscrites au Challenge"></app-page-title>
+    </section>
+<!-- Main Content Section -->
+<section class="inscriptions-section">
+    <div class="container">
+        <!-- Loading State -->
+        <div class="loading-wrapper" *ngIf="loading">
+            <app-loading-spinner message="Chargement des inscriptions..." size="medium"></app-loading-spinner>
+        </div>
+
+        <!-- Error State -->
+        <div class="error-state" *ngIf="!loading && error">
+            <div class="error-content">
+                <h2>Erreur de chargement</h2>
+                <p>Une erreur s'est produite lors du chargement des inscriptions. Veuillez réessayer plus tard.</p>
+                <button class="retry-button" (click)="retry()">
+                    <i class="fas fa-refresh"></i>
+                    Réessayer
+                </button>
+            </div>
+        </div>
+
+        <!-- No Inscriptions State -->
+        <div class="no-inscriptions-state" *ngIf="!loading && !error && inscriptions.length === 0">
+            <div class="no-inscriptions-content">
+                <h2>Aucune inscription</h2>
+                <p>Il n'y a pas encore d'équipes inscrites au Challenge.</p>
+                <a routerLink="/challenge" class="back-button">
+                    <i class="fas fa-arrow-left"></i>
+                    Retour au Challenge
+                </a>
+            </div>
+        </div>
+
+        <!-- Inscriptions List -->
+        <div class="inscriptions-content" *ngIf="!loading && !error && inscriptions.length > 0">
+            <div class="inscriptions-grid">
+                <!-- Back button -->
+                <div class="back-button-container">
+                    <a routerLink="/challenge" class="back-button">
+                        <i class="fas fa-arrow-left"></i>
+                        Retour au Challenge
+                    </a>
+                </div>
+
+                <!-- Categories and Teams -->
+                <div class="category-list">
+                    <div *ngFor="let category of categories" class="category-group">
+                        <div class="category-header">
+                            <h3>{{ getAgeCategoryDisplay(category) }}</h3>
+                        </div>
+                        <div class="teams-list">
+                            <div *ngFor="let team of groupedInscriptions.get(category)" class="team-item">
+                                <i class="fas fa-users"></i>
+                                <span>{{ team }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

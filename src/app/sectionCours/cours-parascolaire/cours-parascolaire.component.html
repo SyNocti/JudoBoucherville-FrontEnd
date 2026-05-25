@@ -1,0 +1,125 @@
+<div class="parascolaire-container">
+    <!-- Page title section -->
+    <section class="title-section">
+        <app-page-title title="Parascolaire"></app-page-title>
+    </section>
+
+    <!-- ParaScolaire content -->
+    <section class="content-section">
+        <div class="container">
+            <!-- Loading state -->
+            <div class="loading-wrapper" *ngIf="loading">
+                <app-loading-spinner message="Chargement des informations ParaScolaire..." size="medium">
+                </app-loading-spinner>
+            </div>
+
+            <!-- Error state -->
+            <div class="error-state" *ngIf="!loading && error">
+                <div class="error-content">
+                    <h2>Erreur de chargement</h2>
+                    <p>Une erreur s'est produite lors du chargement des informations ParaScolaire. Veuillez réessayer
+                        plus tard.</p>
+                </div>
+            </div>
+
+            <!-- ParaScolaire details -->
+            <div class="parascolaire-content" *ngIf="!loading && !error && paraScolaire">
+
+                <!-- Program Information and Contact Side by Side -->
+                <div class="info-contact-wrapper">
+                    <div class="program-section"
+                        *ngIf="paraScolaire.titre || paraScolaire.years || paraScolaire.season">
+                        <h3>Informations du Programme</h3>
+                        <div class="program-details">
+                            <div class="program-item" *ngIf="paraScolaire.titre">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span class="label">Programme:</span>
+                                <span class="value">{{ paraScolaire.titre }}</span>
+                            </div>
+                            <div class="program-item" *ngIf="paraScolaire.years">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span class="label">Années:</span>
+                                <span class="value">{{ paraScolaire.years }}</span>
+                            </div>
+                            <div class="program-item" *ngIf="paraScolaire.season">
+                                <i class="fas fa-leaf"></i>
+                                <span class="label">Saison:</span>
+                                <span class="value">{{ paraScolaire.season }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-section"
+                        *ngIf="paraScolaire.contactName || paraScolaire.contactPhone || paraScolaire.contactEmail">
+                        <h3>Contact</h3>
+                        <div class="contact-info">
+                            <div class="contact-item" *ngIf="paraScolaire.contactName">
+                                <i class="fas fa-user"></i>
+                                <span>{{ paraScolaire.contactName }}</span>
+                            </div>
+                            <div class="contact-item" *ngIf="paraScolaire.contactPhone">
+                                <i class="fas fa-phone"></i>
+                                <a href="tel:{{ paraScolaire.contactPhone }}">{{ paraScolaire.contactPhone }}</a>
+                            </div>
+                            <div class="contact-item" *ngIf="paraScolaire.contactEmail">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:{{ paraScolaire.contactEmail }}">{{ paraScolaire.contactEmail }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Inscription Section -->
+                <div class="inscription-section" *ngIf="paraScolaire.inscriptionUrl">
+                    <h3>Inscription</h3>
+                    <div class="inscription-content">
+                        <p>Inscrivez-vous dès maintenant au programme ParaScolaire!</p>
+                        <a [href]="paraScolaire.inscriptionUrl" target="_blank" class="inscription-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            S'inscrire en ligne
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Description Section with markdown support -->
+                <div class="description-section" *ngIf="paraScolaire.description">
+                    <h3>Description</h3>
+                    <div class="description-text" [innerHTML]="getMarkdownHtml(paraScolaire.description)"></div>
+                </div>
+
+                <!-- Files Section with sport-etude styling -->
+                <div class="files-section" *ngIf="paraScolaire.fichierNoms && paraScolaire.fichierNoms.length > 0">
+                    <h3>Documents</h3>
+                    <div class="files-grid">
+                        <a *ngFor="let fileName of paraScolaire.fichierNoms" [href]="getFileUrl(fileName)"
+                            target="_blank" class="file-card">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>{{ getCleanFileName(fileName) }}</span>
+                            <i class="fas fa-external-link-alt file-open-icon"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Show this if no sections have data -->
+                <div class="no-sections" *ngIf="!paraScolaire.description && !paraScolaire.contactName && !paraScolaire.contactPhone && 
+                                                !paraScolaire.contactEmail && !paraScolaire.titre && !paraScolaire.years && 
+                                                !paraScolaire.season && !paraScolaire.inscriptionUrl && 
+                                                (!paraScolaire.fichierNoms || paraScolaire.fichierNoms.length === 0)">
+                    <div class="no-data-content">
+                        <h2>Données reçues mais vides</h2>
+                        <p>Les informations sur le ParaScolaire ont été récupérées mais ne contiennent aucune donnée.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No data state -->
+            <div class="no-data-state" *ngIf="!loading && !error && !paraScolaire">
+                <div class="no-data-content">
+                    <h2>Aucune information disponible</h2>
+                    <p>Les informations sur le ParaScolaire ne sont pas disponibles pour le moment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

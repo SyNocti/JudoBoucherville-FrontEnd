@@ -1,0 +1,374 @@
+/* Loading and error sections */
+.loading-section,
+.not-found-section {
+    padding: 200px 0 80px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.loading-section::before,
+.not-found-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.loading-section,
+.not-found-section {
+    padding: 200px 0 80px 0;
+    min-height: 70vh;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+    z-index: 2;
+}
+
+.loading-section>*,
+.not-found-section>* {
+    position: relative;
+    z-index: 2;
+}
+
+app-loading-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    /* or 100vh if you want it fullscreen */
+    width: 100%;
+}
+
+.loading-section .container,
+.not-found-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-container p {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.not-found {
+    text-align: center;
+    color: var(--text-color);
+}
+
+.not-found h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* Title section */
+.title-section {
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.title-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.title-section app-page-title {
+    position: relative;
+    z-index: 2;
+}
+
+/* Actualite content section */
+.actualite-content-section {
+    padding: 40px 0;
+    min-height: 50vh;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.actualite-content-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.actualite-content-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Article metadata */
+.article-metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px var(--shadow-light);
+}
+
+.metadata-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.metadata-item i {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+/* Article content */
+.article-content {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 40px;
+    box-shadow: 0 4px 8px var(--shadow-light);
+    margin-bottom: 40px;
+}
+
+.content-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+.content-text h3,
+.content-text h4 {
+    color: var(--primary-color);
+    margin: 25px 0 15px 0;
+    font-weight: 600;
+}
+
+.content-text h3 {
+    font-size: 1.3rem;
+}
+
+.content-text h4 {
+    font-size: 1.2rem;
+}
+
+.content-text p {
+    margin-bottom: 15px;
+}
+
+.content-text ul,
+.content-text ol {
+    margin: 15px 0;
+    padding-left: 25px;
+}
+
+.content-text li {
+    margin-bottom: 8px;
+}
+
+/* External link section */
+.external-link-section {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.external-link-btn {
+    background-color: var(--primary-color-dark);
+    color: var(--secondary-color);
+    border: none;
+    padding: 12px 25px;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.external-link-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-light);
+    color: var(--primary-color-dark)
+}
+
+.external-link-btn i {
+    font-size: 0.9rem;
+}
+
+/* Gallery section - copied from athlete page */
+.images-section {
+    padding: 60px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.images-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.images-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.section-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 30px 0;
+    text-align: center;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 8px;
+}
+
+.photo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.photo-item {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 12px var(--shadow-light);
+    transition: var(--transition-medium);
+    flex-shrink: 0;
+}
+
+.photo-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px var(--shadow-medium);
+}
+
+.gallery-photo {
+    display: block;
+    height: 250px;
+    width: auto;
+    object-fit: cover;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .actualite-content-section {
+        padding: 30px 0;
+    }
+
+    .images-section {
+        padding: 40px 0;
+    }
+
+    .article-metadata {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .article-content {
+        padding: 25px;
+    }
+
+    .content-text {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .section-title {
+        font-size: 1.2rem;
+    }
+
+    .gallery-photo {
+        height: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .loading-section,
+    .not-found-section {
+        padding: 150px 0 60px 0;
+    }
+
+    .article-content {
+        padding: 20px;
+    }
+
+    .content-text {
+        font-size: 0.95rem;
+    }
+
+    .external-link-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        font-size: 1.1rem;
+    }
+
+    .gallery-photo {
+        height: 150px;
+    }
+
+    .images-section {
+        padding: 30px 0;
+    }
+}

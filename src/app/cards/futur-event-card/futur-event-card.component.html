@@ -1,0 +1,42 @@
+<div class="event-card">
+    <div class="card-header">
+        <h3 class="card-title">{{ title }}</h3>
+    </div>
+    <div class="card-content">
+        <!-- Loading state -->
+        <div *ngIf="loading" class="no-events">
+            <p>Chargement...</p>
+        </div>
+
+        <!-- Error state -->
+        <div *ngIf="!loading && error" class="no-events">
+            <p>Erreur de chargement.</p>
+        </div>
+
+        <!-- No events -->
+        <div *ngIf="!loading && !error && futurEvents.length === 0" class="no-events">
+            <p>Aucun événement à venir</p>
+        </div>
+
+        <!-- Events list -->
+        <ul class="event-list" *ngIf="!loading && !error && futurEvents.length > 0">
+            <li *ngFor="let event of futurEvents" class="event-item">
+                <div class="event-date">
+                    {{ formatDate(event.date) }}
+                </div>
+                <div class="event-details">
+                    <h4 class="event-name">{{ event.name }}</h4>
+                    <p *ngIf="event.location" class="event-location">
+                        <i class="fas fa-map-marker-alt"></i> {{ event.location }}
+                    </p>
+                </div>
+                <div class="event-actions" *ngIf="event.link">
+                    <a [href]="event.link" target="_blank" rel="noopener noreferrer" class="event-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>Info</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

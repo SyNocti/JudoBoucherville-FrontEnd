@@ -1,0 +1,20 @@
+<div class="journal-card">
+    <!-- File icon -->
+    <div class="file-icon">
+        <i [class]="getFileIcon()"></i>
+    </div>
+
+    <!-- Journal info -->
+    <div class="journal-info">
+        <h3 class="journal-name">{{ journal.nom }}</h3>
+        <p class="journal-date">{{ formatDate(journal.date) }}</p>
+    </div>
+
+    <!-- Open button -->
+    <div class="journal-actions">
+        <button class="open-btn" (click)="openPdf()" [disabled]="!journal.fichierNom" title="Ouvrir le journal">
+            <i class="fas fa-external-link-alt"></i>
+            <span>Ouvrir</span>
+        </button>
+    </div>
+</div>

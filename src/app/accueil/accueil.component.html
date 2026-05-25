@@ -1,0 +1,233 @@
+<section class="hero-section">
+    <div class="hero-image-container">
+        <img src="/assets/images/dojo.jpg" alt="Dojo Judo Boucherville" class="hero-image">
+    </div>
+    <div class="hero-content">
+        <h1 class="hero-title">Club de Judo Boucherville</h1>
+    </div>
+    <div class="scroll-indicator" (click)="scrollToNextSection()">
+        <div class="scroll-triangle">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </div>
+</section>
+
+<section class="sponsors-section">
+    <div class="container">
+        <div class="sponsors-container">
+            <a *ngFor="let sponsor of sponsors" [href]="sponsor.url" target="_blank" rel="noopener noreferrer"
+                class="sponsor-item" [title]="sponsor.name">
+                <img [src]="sponsor.image" [alt]="sponsor.name + ' logo'" class="sponsor-logo">
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="judo-values-section">
+    <div class="container">
+        <div class="values-container">
+            <div *ngFor="let valeur of valeursMorale" class="value-item">
+                {{ valeur }}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="free-trial-section">
+    <div class="container">
+        <div class="free-trial-content">
+            <div class="trial-info">
+                <h2 class="section-title">Essai gratuit</h2>
+                <div class="trial-description">
+                    <h3>Découvrez le judo sans engagement !</h3>
+                    <p>
+                        Vous êtes curieux de découvrir le judo ? Nous offrons des <strong>essais gratuits</strong>
+                        pour les enfants et les adultes. Aucun équipement requis, aucune inscription préalable
+                        nécessaire !
+                    </p>
+                    <p>
+                        Vous pouvez simplement vous présenter à l'un de nos cours, mais nous vous recommandons
+                        de nous contacter d'abord pour que nous puissions vous proposer la classe qui vous
+                        conviendra le mieux.
+                    </p>
+                </div>
+
+                <div class="trial-benefits">
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Aucun équipement nécessaire</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Aucune inscription préalable</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Pour enfants et adultes</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Instructeurs qualifiés</span>
+                    </div>
+                </div>
+
+                <div class="contact-info">
+                    <h4>Contactez-nous pour planifier votre essai</h4>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-text">
+                                <strong>Adresse</strong>
+                                <a href="https://maps.app.goo.gl/71nY77AnHG6WVmH69" target="_blank">490, chemin du Lac,
+                                    Boucherville, (Québec), J4B 6X3</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div class="contact-text">
+                                <strong>Téléphone</strong>
+                                <a href="tel:4506551888">(450) 655-1888</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-text">
+                                <strong>Courriel</strong>
+                                <a href="mailto:info@judoboucherville.com">info&#64;judoboucherville.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trial-image">
+                <img src="/assets/images/essaigratuit.jpg" alt="Entraînement de judo" class="training-image">
+                <div class="image-overlay">
+                    <p>Venez découvrir l'art du judo dans une ambiance conviviale</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="crd-section">
+    <div class="container">
+        <div class="crd-content">
+            <div class="crd-image">
+                <img src="/assets/images/crd.jpg" alt="Centre régional de développement" class="crd-training-image">
+                <div class="crd-image-overlay">
+                    <p>Développement d'athlètes de haut niveau</p>
+                </div>
+            </div>
+
+            <div class="crd-info">
+                <h2 class="section-title">Centre Régional de Développement</h2>
+                <div class="crd-description">
+                    <h3>Centre Régional de Développement de la Montérégie</h3>
+                    <p>
+                        Notre club est fier d'être le <strong>Centre Régional de Développement (CRD) de la
+                            Montérégie</strong>.
+                        Un CRD contribue au développement des athlètes vers un plus haut niveau de performance et
+                        d'excellence.
+                    </p>
+                    <p>
+                        En tant que CRD, nous offrons un entraînement spécialisé et des ressources avancées
+                        pour accompagner les judokas dans leur progression vers les compétitions provinciales,
+                        nationales et internationales.
+                    </p>
+                </div>
+
+                <div class="crd-highlight">
+                    <div class="highlight-content">
+                        <i class="fas fa-star"></i>
+                        <div class="highlight-text">
+                            <h4>Cours de compétition ouvert à tous</h4>
+                            <p>
+                                Le <strong>cours de compétition du vendredi de 19h à 21h</strong> est ouvert à tous les
+                                judokas de la Montérégie! Venez vous entraîner gratuitement avec nous tous les
+                                vendredis soirs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="crd-benefits">
+                    <div class="crd-benefit-item">
+                        <i class="fas fa-trophy"></i>
+                        <span>Entraînement de haut niveau</span>
+                    </div>
+                    <div class="crd-benefit-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Vendredi 19h à 21h</span>
+                    </div>
+                    <div class="crd-benefit-item">
+                        <i class="fas fa-gift"></i>
+                        <span>Entraînement gratuit</span>
+                    </div>
+                    <div class="crd-benefit-item">
+                        <i class="fas fa-user-graduate"></i>
+                        <span>Réservé aux athlètes expérimentés</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="events-section">
+    <div class="container">
+        <h2 class="section-title">Événements à venir</h2>
+        <div class="events-container">
+            <div class="event-card-wrapper">
+                <app-futur-event-card title="Compétitions" [futurEvents]="futurCompetitions"
+                    [loading]="loadingStates.futurCompetitions" [error]="errorStates.futurCompetitions">
+                </app-futur-event-card>
+            </div>
+            <div class="event-card-wrapper">
+                <app-futur-event-card title="Autres événements" [futurEvents]="futurOtherEvents"
+                    [loading]="loadingStates.futurOtherEvents" [error]="errorStates.futurOtherEvents">
+                </app-futur-event-card>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="actualites-section">
+    <div class="container">
+        <h2 class="section-title">Actualités</h2>
+        <p *ngIf="loadingStates.actualites" class="simple-message">Chargement des actualités...</p>
+        <p *ngIf="!loadingStates.actualites && errorStates.actualites" class="simple-message">Erreur de chargement des
+            actualités.</p>
+        <p *ngIf="!loadingStates.actualites && !errorStates.actualites && actualites.length === 0"
+            class="simple-message">Aucune actualité disponible.</p>
+        <div class="actualites-carousel"
+            *ngIf="!loadingStates.actualites && !errorStates.actualites && actualites.length > 0">
+            <swiper-container slides-per-view="auto" space-between="20" pagination="true" navigation="true" loop="false"
+                grab-cursor="true" class="actualites-swiper">
+                <swiper-slide *ngFor="let actualite of actualites" class="actualite-slide">
+                    <app-actualite-card [actualite]="actualite"></app-actualite-card>
+                </swiper-slide>
+            </swiper-container>
+        </div>
+    </div>
+</section>
+
+<section class="competitions-section">
+    <div class="container">
+        <h2 class="section-title">Compétitions récentes</h2>
+        <p *ngIf="loadingStates.recentCompetitions" class="simple-message">Chargement des compétitions...</p>
+        <p *ngIf="!loadingStates.recentCompetitions && errorStates.recentCompetitions" class="simple-message">Erreur de
+            chargement des compétitions.</p>
+        <p *ngIf="!loadingStates.recentCompetitions && !errorStates.recentCompetitions && recentCompetitions.length === 0"
+            class="simple-message">Aucune compétition récente disponible.</p>
+        <div class="competitions-carousel"
+            *ngIf="!loadingStates.recentCompetitions && !errorStates.recentCompetitions && recentCompetitions.length > 0">
+            <swiper-container slides-per-view="auto" space-between="20" pagination="true" navigation="true" loop="false"
+                grab-cursor="true" class="competitions-swiper" pagination-class="swiper-pagination-lower">
+                <swiper-slide *ngFor="let competition of recentCompetitions" class="competition-slide">
+                    <app-competition-card [competition]="competition"></app-competition-card>
+                </swiper-slide>
+            </swiper-container>
+        </div>
+    </div>
+</section>

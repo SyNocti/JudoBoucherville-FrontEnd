@@ -1,0 +1,108 @@
+<div class="camps-de-jour-container">
+    <!-- Page title section -->
+    <section class="title-section">
+        <app-page-title title="Camp de Jour"></app-page-title>
+    </section>
+
+    <!-- Camps de Jour content -->
+    <section class="content-section">
+        <div class="container">
+            <!-- Loading state -->
+            <div class="loading-wrapper" *ngIf="loading">
+                <app-loading-spinner message="Chargement des informations Camps de Jour..." size="medium">
+                </app-loading-spinner>
+            </div>
+
+            <!-- Error state -->
+            <div class="error-state" *ngIf="!loading && error">
+                <div class="error-content">
+                    <h2>Erreur de chargement</h2>
+                    <p>Une erreur s'est produite lors du chargement des informations Camps de Jour. Veuillez réessayer
+                        plus tard.</p>
+                </div>
+            </div>
+
+            <!-- Camps de Jour details -->
+            <div class="camps-content" *ngIf="!loading && !error && campsDeJour">
+                <!-- Description and Contact Sections Side by Side -->
+                <div class="description-contact-wrapper">
+                    <!-- Description Section -->
+                    <div class="description-section" *ngIf="campsDeJour.description">
+                        <h3>Description</h3>
+                        <p class="description-text">{{ campsDeJour.description }}</p>
+                    </div>
+
+                    <!-- Contact Section -->
+                    <div class="contact-section"
+                        *ngIf="campsDeJour.contactName || campsDeJour.contactPhone || campsDeJour.contactEmail">
+                        <h3>Contact</h3>
+                        <div class="contact-info">
+                            <div class="contact-item" *ngIf="campsDeJour.contactName">
+                                <i class="fas fa-user"></i>
+                                <span>{{ campsDeJour.contactName }}</span>
+                            </div>
+                            <div class="contact-item" *ngIf="campsDeJour.contactPhone">
+                                <i class="fas fa-phone"></i>
+                                <a href="tel:{{ campsDeJour.contactPhone }}">{{ campsDeJour.contactPhone }}</a>
+                            </div>
+                            <div class="contact-item" *ngIf="campsDeJour.contactEmail">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:{{ campsDeJour.contactEmail }}">{{ campsDeJour.contactEmail }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inscription Section -->
+                <div class="inscription-section" *ngIf="campsDeJour.webUrl">
+                    <h3>Inscription</h3>
+                    <div class="inscription-content">
+                        <p>Inscrivez-vous dès maintenant au camp de jour de judo!</p>
+                        <a [href]="campsDeJour.webUrl" target="_blank" class="inscription-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            S'inscrire en ligne
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Boucherville Program Activities Section -->
+                <div class="boucherville-section">
+                    <h3>Programme d'activités de Boucherville</h3>
+                    <div class="boucherville-content">
+                        <div class="boucherville-logo">
+                            <img src="/assets/images/logos/ville_boucherville_logo-small.png"
+                                alt="Ville de Boucherville Logo">
+                        </div>
+                        <div class="boucherville-info">
+                            <p>Découvrez tous les programmes et activités offerts par la Ville de Boucherville, incluant
+                                nos camps de jour de judo.</p>
+                            <a href="https://www.boucherville.ca/programme-activites/" target="_blank"
+                                class="boucherville-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Consulter le programme d'activités
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Show this if no sections have data -->
+                <div class="no-sections" *ngIf="!campsDeJour.description && !campsDeJour.contactName && !campsDeJour.contactPhone && 
+                                                !campsDeJour.contactEmail && !campsDeJour.webUrl">
+                    <div class="no-data-content">
+                        <h2>Données reçues mais vides</h2>
+                        <p>Les informations sur les Camps de Jour ont été récupérées mais ne contiennent aucune donnée.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No data state -->
+            <div class="no-data-state" *ngIf="!loading && !error && !campsDeJour">
+                <div class="no-data-content">
+                    <h2>Aucune information disponible</h2>
+                    <p>Les informations sur les Camps de Jour ne sont pas disponibles pour le moment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

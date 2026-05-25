@@ -1,0 +1,75 @@
+<div class="archive-item-list-container">
+    <!-- Page title section - Always visible -->
+    <section class="title-section">
+        <app-page-title [title]="pageTitle"></app-page-title>
+    </section>
+
+    <!-- Archive items section -->
+    <section class="archive-items-section">
+        <div class="container">
+            <!-- Dynamic content with loading/error/content states -->
+            <div class="items-content">
+                <!-- Loading state -->
+                <div class="loading-wrapper" *ngIf="loading">
+                    <app-loading-spinner [message]="'Chargement des ' + getArchiveTypeDisplayName() + '...'"
+                        size="medium">
+                    </app-loading-spinner>
+                </div>
+
+                <!-- Error state -->
+                <div class="error-state" *ngIf="!loading && error">
+                    <div class="error-content">
+                        <h2>Erreur de chargement</h2>
+                        <p>Une erreur s'est produite lors du chargement des archives. Veuillez réessayer plus tard.</p>
+                    </div>
+                </div>
+
+                <!-- Items count info -->
+                <div class="items-info" *ngIf="!loading && !error && getTotalCount() > 0">
+                    <p>{{ getTotalCount() }} {{ getArchiveTypeDisplayName() }} trouvé{{ getTotalCount() > 1 ? 's' : ''
+                        }}</p>
+                </div>
+
+                <!-- Actualites grid -->
+                <div class="items-grid"
+                    *ngIf="!loading && !error && archiveType === 'actualites' && actualites.length > 0">
+                    <app-actualite-card *ngFor="let actualite of actualites" [actualite]="actualite">
+                    </app-actualite-card>
+                </div>
+
+                <!-- Competitions grid -->
+                <div class="items-grid"
+                    *ngIf="!loading && !error && archiveType === 'resultats' && competitions.length > 0">
+                    <app-competition-card *ngFor="let competition of competitions" [competition]="competition">
+                    </app-competition-card>
+                </div>
+
+                <!-- Journals grid -->
+                <div class="items-grid" *ngIf="!loading && !error && archiveType === 'journaux' && journals.length > 0">
+                    <app-journal-card *ngFor="let journal of journals" [journal]="journal">
+                    </app-journal-card>
+                </div>
+
+                <!-- No items message -->
+                <div class="no-items-state" *ngIf="!loading && !error && getTotalCount() === 0">
+                    <div class="no-items-content">
+                        <h2>Aucun élément trouvé</h2>
+                        <p>Aucun {{ getArchiveTypeDisplayName() }} n'est disponible pour
+                            <span *ngIf="archiveType !== 'journaux'">la saison</span>
+                            <span *ngIf="archiveType === 'journaux'">l'année</span>
+                            {{ displayYear }}.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="navigation">
+                <a [routerLink]="getBackLink()" class="back-button">
+                    <i class="fas fa-arrow-left"></i>
+                    Retour aux archives {{ getArchiveTypeDisplayName() }}
+                </a>
+            </div>
+        </div>
+    </section>
+</div>

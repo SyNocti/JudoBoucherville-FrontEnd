@@ -1,0 +1,317 @@
+/* Loading section */
+.loading-section {
+    padding: 200px 0 80px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.loading-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.loading-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Error section */
+.error-section {
+    padding: 200px 0 80px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.error-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.error-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.error-state,
+.no-presidents-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.error-content,
+.no-presidents-content {
+    text-align: center;
+    max-width: 500px;
+    color: #666;
+}
+
+.error-content h2,
+.no-presidents-content h2 {
+    font-size: 2rem;
+    margin: 0 0 20px 0;
+    color: var(--primary-color);
+}
+
+.error-content p,
+.no-presidents-content p {
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Title section */
+.title-section {
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.title-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.title-section app-page-title {
+    position: relative;
+    z-index: 2;
+}
+
+/* Presidents section */
+.presidents-section {
+    padding: 60px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.presidents-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.presidents-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Presidents list */
+.presidents-list {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Timeline line */
+.presidents-list::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 40px;
+    bottom: 40px;
+    width: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* President card */
+.president-card {
+    position: relative;
+    margin-bottom: 25px;
+    padding-left: 80px;
+}
+
+.president-card::before {
+    content: '';
+    position: absolute;
+    left: 21px;
+    top: 15px;
+    width: 18px;
+    height: 18px;
+    background-color: var(--primary-color);
+    border: 3px solid var(--secondary-color);
+    border-radius: 50%;
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.current-president::before {
+    background-color: var(--accent-color);
+    box-shadow: 0 2px 8px var(--shadow-medium);
+}
+
+/* President info */
+.president-info {
+    border: 1px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    padding: 15px 20px;
+    box-shadow: 0 2px 8px var(--shadow-light);
+    transition: var(--transition-medium);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+
+}
+
+.president-info:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-medium);
+}
+
+.current-president .president-info {
+    border-color: var(--accent-color);
+}
+
+/* President name and years */
+.president-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.president-years {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+/* No presidents */
+.no-presidents {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-color);
+}
+
+.no-presidents h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+
+    .loading-section,
+    .error-section {
+        padding: 150px 0 60px 0;
+    }
+
+    .error-state,
+    .no-presidents-state {
+        min-height: 300px;
+        padding: 40px 20px;
+    }
+
+    .error-content h2,
+    .no-presidents-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .error-content p,
+    .no-presidents-content p {
+        font-size: 1.1rem;
+    }
+
+    .presidents-section {
+        padding: 40px 0;
+    }
+
+    .presidents-list {
+        padding: 0 20px;
+    }
+
+    .presidents-list::before {
+        left: 39px;
+        top: 20px;
+        bottom: 28px;
+    }
+
+    .president-card {
+        padding-left: 60px;
+        margin-bottom: 20px;
+    }
+
+    .president-card::before {
+        left: 12px;
+        width: 16px;
+        height: 16px;
+        top: 12px;
+    }
+
+    .president-info {
+        padding: 12px 15px;
+    }
+
+    .president-name {
+        font-size: 1.1rem;
+    }
+
+    .president-years {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .loading-section,
+    .error-section {
+        padding: 120px 0 50px 0;
+    }
+
+    .error-state,
+    .no-presidents-state {
+        padding: 30px 15px;
+    }
+
+    .error-content h2,
+    .no-presidents-content h2 {
+        font-size: 1.6rem;
+    }
+
+    .presidents-section {
+        padding: 30px 0;
+    }
+
+    .presidents-list::before {
+        bottom: 45px;
+    }
+
+    .president-info {
+        padding: 10px 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .president-name {
+        font-size: 1rem;
+    }
+
+    .president-years {
+        font-size: 0.85rem;
+    }
+}

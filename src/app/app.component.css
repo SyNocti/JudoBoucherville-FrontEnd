@@ -1,0 +1,5 @@
+.content-wrapper {
+    min-height: calc(100vh - 338px);
+    display: flex;
+    flex-direction: column;
+}

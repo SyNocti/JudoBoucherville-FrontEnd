@@ -1,0 +1,34 @@
+<div class="athlete-index-container">
+    <app-page-title [title]="getGroupDisplayName()"></app-page-title>
+
+    <app-loading-spinner *ngIf="loading" message="Chargement des athlètes..." size="medium">
+    </app-loading-spinner>
+
+    <!-- Filtre par catégorie disponible uniquement pour l'équipe Boucherville -->
+    <div class="filter-row" *ngIf="!loading && !error && group.toLowerCase() === 'boucherville' && categories.length > 0">
+        <label for="categorySelect">Filtrer par catégorie :</label>
+        <select id="categorySelect" [(ngModel)]="selectedCategory">
+            <option value="all">Tous</option>
+            <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+        </select>
+    </div>
+
+    <div class="athletes-grid" *ngIf="!loading && !error && athletes.length > 0">
+        <app-athlete-card *ngFor="let athlete of filteredAthletes; trackBy: trackByAthleteId" [athlete]="athlete">
+        </app-athlete-card>
+    </div>
+
+    <div class="no-athletes" *ngIf="!loading && error">
+        <div class="no-athletes-content">
+            <h2>Erreur de chargement</h2>
+            <p>Une erreur s'est produite lors du chargement des athlètes. Veuillez réessayer plus tard.</p>
+        </div>
+    </div>
+
+    <div class="no-athletes" *ngIf="!loading && !error && athletes.length === 0">
+        <div class="no-athletes-content">
+            <h2>Aucun athlète trouvé</h2>
+            <p>Il n'y a actuellement aucun athlète sur cette page.</p>
+        </div>
+    </div>
+</div>

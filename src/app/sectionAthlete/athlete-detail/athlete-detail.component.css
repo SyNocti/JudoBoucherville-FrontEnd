@@ -1,0 +1,598 @@
+/* Loading and error sections */
+.loading-section,
+.not-found-section {
+    padding: 200px 0 80px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.loading-section::before,
+.not-found-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.loading-section,
+.not-found-section {
+    padding: 200px 0 80px 0;
+    min-height: 70vh;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+    z-index: 2;
+}
+
+.loading-section>*,
+.not-found-section>* {
+    position: relative;
+    z-index: 2;
+}
+
+app-loading-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    /* or 100vh if you want it fullscreen */
+    width: 100%;
+}
+
+.not-found {
+    text-align: center;
+}
+
+.not-found h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.not-found p {
+    color: var(--text-color);
+}
+
+/* Title section */
+.title-section {
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.title-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.title-section app-page-title {
+    position: relative;
+    z-index: 2;
+}
+
+/* Athlete info section */
+.athlete-info-section {
+    padding: 40px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.athlete-info-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.athlete-info-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Content grid - back to 2 columns */
+.content-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    /* Showcase, Info+Statistics */
+    gap: 40px;
+}
+
+/* Showcase section */
+.showcase-section {
+    display: flex;
+    justify-content: center;
+}
+
+.showcase-container {
+    position: relative;
+    width: 280px;
+    /* Slightly increased */
+    height: 380px;
+    /* Slightly increased */
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 8px 25px var(--shadow-medium);
+    cursor: pointer;
+}
+
+/* Default showcase styling - simplified */
+.showcase-container.default-showcase {
+    cursor: default;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    /* Removed dashed border */
+}
+
+.showcase-default {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Removed opacity reduction */
+}
+
+/* Showcase images - fixed hover effect */
+.showcase-front,
+.showcase-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.showcase-back {
+    opacity: 0;
+}
+
+.showcase-container:hover .showcase-front {
+    opacity: 0;
+}
+
+.showcase-container:hover .showcase-back {
+    opacity: 1;
+}
+
+/* Info and Statistics section */
+.info-statistics-section {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    /* Info takes available space, statistics takes what it needs */
+    gap: 30px;
+    align-items: start;
+}
+
+/* Info section */
+.info-card {
+    background-color: var(--secondary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.info-grid {
+    display: grid;
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    gap: 20px;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 1rem;
+    white-space: nowrap;
+    min-width: 120px;
+}
+
+.info-value {
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    text-align: right;
+    flex: 1;
+}
+
+.info-value.goal-text {
+    font-style: italic;
+    line-height: 1.4;
+    text-align: right;
+    color: var(--text-color);
+}
+
+.info-value.placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/* Statistics Card */
+.statistics-card {
+    background-color: var(--secondary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: 0 4px 12px var(--shadow-light);
+    height: fit-content;
+    min-width: 240px;
+}
+
+.statistics-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 15px 0;
+    text-align: center;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 8px;
+}
+
+/* Medals section - side by side with numbers underneath */
+.medals-breakdown {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.medal-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 8px;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.medal-item i {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.medal-item span {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.medal-item.gold {
+    border: 2px solid #ffd700;
+}
+
+.medal-item.gold i {
+    color: #ffd700;
+}
+
+.medal-item.silver {
+    border: 2px solid #c0c0c0;
+}
+
+.medal-item.silver i {
+    color: #c0c0c0;
+}
+
+.medal-item.bronze {
+    border: 2px solid #cd7f32;
+}
+
+.medal-item.bronze i {
+    color: #cd7f32;
+}
+
+/* Overall Statistics */
+.overall-stats {
+    border-top: 1px solid #f0f0f0;
+    padding-top: 15px;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid #f8f8f8;
+}
+
+.stat-row:last-child {
+    border-bottom: none;
+}
+
+.stat-label {
+    font-weight: 500;
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+.stat-value {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--primary-color);
+}
+
+.stat-value.wins {
+    color: #28a745;
+}
+
+.stat-value.losses {
+    color: #dc3545;
+}
+
+.stat-value.ratio {
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+/* Gallery section - fixed aspect ratio */
+.gallery-section {
+    padding: 60px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.gallery-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.gallery-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.gallery-section .section-title {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.photo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.photo-item {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 12px var(--shadow-light);
+    transition: var(--transition-medium);
+    flex-shrink: 0;
+}
+
+.photo-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px var(--shadow-medium);
+}
+
+.gallery-photo {
+    display: block;
+    height: 250px;
+    /* Fixed height */
+    width: auto;
+    /* Width adjusts to maintain aspect ratio */
+    object-fit: cover;
+}
+
+/* Results section */
+.results-section {
+    padding: 60px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.results-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.results-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.results-card {
+    margin-bottom: 40px;
+}
+
+.results-card:last-child {
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 20px 0;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 8px;
+}
+
+.no-results-card {
+    background-color: var(--secondary-color);
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    padding: 40px;
+    text-align: center;
+}
+
+.no-results-text {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 0;
+    font-style: italic;
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .showcase-section {
+        order: -1;
+        justify-content: center;
+    }
+
+    .info-statistics-section {
+        order: 0;
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .showcase-container {
+        width: 250px;
+        height: 340px;
+    }
+
+    .statistics-card {
+        min-width: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-grid {
+        gap: 25px;
+    }
+
+    .info-statistics-section {
+        gap: 20px;
+    }
+
+    .info-card {
+        padding: 20px;
+    }
+
+    .statistics-card {
+        padding: 15px;
+    }
+
+    .statistics-title {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+    }
+
+    .medal-item {
+        padding: 12px 6px;
+    }
+
+    .medal-item i {
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+    }
+
+    .medal-item span {
+        font-size: 1.1rem;
+    }
+
+    .showcase-container {
+        width: 220px;
+        height: 300px;
+    }
+
+    .info-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .info-label {
+        min-width: auto;
+    }
+
+    .info-value {
+        text-align: left;
+    }
+
+    .info-value.goal-text {
+        text-align: left;
+    }
+
+    .gallery-photo {
+        height: 200px;
+        /* Smaller fixed height on tablets */
+    }
+
+    .results-section {
+        padding: 40px 0;
+    }
+
+    .gallery-section {
+        padding: 40px 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .showcase-container {
+        width: 200px;
+        height: 280px;
+    }
+
+    .medal-item {
+        padding: 10px 4px;
+    }
+
+    .medal-item i {
+        font-size: 1.3rem;
+        margin-bottom: 5px;
+    }
+
+    .medal-item span {
+        font-size: 1rem;
+    }
+
+    .statistics-card {
+        padding: 12px;
+    }
+
+    .gallery-photo {
+        height: 150px;
+        /* Even smaller on mobile */
+    }
+
+    .results-section {
+        padding: 30px 0;
+    }
+
+    .gallery-section {
+        padding: 30px 0;
+    }
+}

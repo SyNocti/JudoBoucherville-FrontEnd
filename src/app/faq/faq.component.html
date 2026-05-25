@@ -1,0 +1,71 @@
+<div class="faq-container">
+    <!-- Page title section - Always visible -->
+    <section class="title-section">
+        <app-page-title title="Questions fréquentes"></app-page-title>
+    </section>
+
+    <!-- FAQ section -->
+    <section class="faq-section">
+        <div class="container">
+            <!-- Introduction - Always visible -->
+            <div class="intro-text">
+                <p>Vous trouverez ici les réponses aux questions les plus fréquemment posées concernant notre club
+                    de judo, les cours et les inscriptions.</p>
+            </div>
+
+            <!-- Dynamic content with loading/error/content states -->
+            <div class="questions-content">
+                <!-- Loading state -->
+                <div class="loading-wrapper" *ngIf="loading">
+                    <app-loading-spinner message="Chargement des questions fréquentes..." size="medium">
+                    </app-loading-spinner>
+                </div>
+
+                <!-- Error state -->
+                <div class="error-state" *ngIf="!loading && error">
+                    <div class="error-content">
+                        <h2>Erreur de chargement</h2>
+                        <p>Une erreur s'est produite lors du chargement des questions fréquentes. Veuillez réessayer
+                            plus tard.</p>
+                    </div>
+                </div>
+
+                <!-- Questions list -->
+                <div class="questions-list" *ngIf="!loading && !error && questions.length > 0">
+                    <div *ngFor="let question of questions" class="question-item">
+                        <div class="question-header" (click)="toggleQuestion(question.id)">
+                            <h3 class="question-text">{{ question.questionText }}</h3>
+                            <div class="expand-icon" [class.expanded]="isExpanded(question.id)">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+
+                        <div class="answer-container" [class.expanded]="isExpanded(question.id)">
+                            <div class="answer-content">
+                                <p class="answer-text">{{ question.answer }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No questions message -->
+                <div class="no-questions-state" *ngIf="!loading && !error && questions.length === 0">
+                    <div class="no-questions-content">
+                        <h2>Aucune question disponible</h2>
+                        <p>Les questions fréquentes seront bientôt disponibles.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact section - Always visible -->
+            <div class="contact-section">
+                <h3>Vous ne trouvez pas la réponse à votre question ?</h3>
+                <p>N'hésitez pas à nous contacter directement. Notre équipe se fera un plaisir de vous aider.</p>
+                <a routerLink="/contact" class="contact-button">
+                    <i class="fas fa-envelope"></i>
+                    Nous contacter
+                </a>
+            </div>
+        </div>
+    </section>
+</div>

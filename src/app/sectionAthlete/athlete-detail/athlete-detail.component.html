@@ -1,0 +1,199 @@
+<div class="athlete-detail-container">
+    <!-- Loading state using reusable spinner -->
+    <section class="loading-section" *ngIf="loading">
+        <div class="container">
+            <app-loading-spinner message="Chargement des informations de l'athlète..." size="medium">
+            </app-loading-spinner>
+        </div>
+    </section>
+
+    <!-- Error state (server errors, network errors, etc.) -->
+    <section class="not-found-section" *ngIf="!loading && error">
+        <div class="container">
+            <div class="not-found">
+                <h2>Erreur de chargement</h2>
+                <p>Une erreur s'est produite lors du chargement des informations de l'athlète. Veuillez réessayer plus
+                    tard.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Athlete not found (404 error) -->
+    <section class="not-found-section" *ngIf="!loading && notFound">
+        <div class="container">
+            <div class="not-found">
+                <h2>Athlète non trouvé</h2>
+                <p>L'athlète demandé n'existe pas ou n'est pas disponible.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Athlete detail content -->
+    <div *ngIf="!loading && !error && !notFound && athlete">
+        <!-- Page title section -->
+        <section class="title-section">
+            <app-page-title [title]="athlete.nom"></app-page-title>
+        </section>
+
+        <!-- Showcase and info section -->
+        <section class="athlete-info-section">
+            <div class="container">
+                <div class="content-grid">
+                    <!-- Left column: Showcase pictures -->
+                    <div class="showcase-section">
+                        <!-- Front and back showcase when both pictures exist -->
+                        <div class="showcase-container" *ngIf="athlete.profilePicture && athlete.backPicture">
+                            <img [src]="getImageUrl(athlete.profilePicture)" alt="{{ athlete.nom }} - Face"
+                                class="showcase-front">
+                            <img [src]="getImageUrl(athlete.backPicture)" alt="{{ athlete.nom }} - Dos"
+                                class="showcase-back">
+                        </div>
+
+                        <!-- Profile picture only when no back picture -->
+                        <div class="showcase-container default-showcase"
+                            *ngIf="athlete.profilePicture && !athlete.backPicture">
+                            <img [src]="getImageUrl(athlete.profilePicture)" [alt]="athlete.nom"
+                                class="showcase-default">
+                        </div>
+
+                        <!-- Default profile picture when no pictures -->
+                        <div class="showcase-container default-showcase" *ngIf="!athlete.profilePicture">
+                            <img [src]="getDefaultImageUrl()" [alt]="athlete.nom" class="showcase-default">
+                        </div>
+                    </div>
+
+                    <!-- Right column: Info and Statistics -->
+                    <div class="info-statistics-section">
+                        <!-- Personal Information Card -->
+                        <div class="info-card">
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="info-label">Date de naissance:</span>
+                                    <span class="info-value">{{ getBirthDateWithCategory() }}</span>
+                                </div>
+
+                                <div class="info-item">
+                                    <span class="info-label">Équipe:</span>
+                                    <span class="info-value">{{ getEquipeDisplayName(athlete.equipe) }}</span>
+                                </div>
+
+                                <div class="info-item">
+                                    <span class="info-label">Niveau:</span>
+                                    <span class="info-value" *ngIf="athlete.niveau">{{ athlete.niveau }}</span>
+                                    <span class="info-value placeholder" *ngIf="!athlete.niveau">—</span>
+                                </div>
+
+                                <div class="info-item">
+                                    <span class="info-label">Expérience:</span>
+                                    <span class="info-value" *ngIf="athlete.debutJudo">
+                                        {{ getJudoExperience() }}
+                                    </span>
+                                    <span class="info-value placeholder" *ngIf="!athlete.debutJudo">—</span>
+                                </div>
+
+                                <div class="info-item">
+                                    <span class="info-label">Grade:</span>
+                                    <span class="info-value" *ngIf="athlete.grade">{{ getGradeDisplayName(athlete.grade)
+                                        }}</span>
+                                    <span class="info-value placeholder" *ngIf="!athlete.grade">—</span>
+                                </div>
+
+                                <div class="info-item">
+                                    <span class="info-label">Objectif à court terme:</span>
+                                    <span class="info-value goal-text" *ngIf="athlete.objectifCourtTerme">
+                                        {{ athlete.objectifCourtTerme }}
+                                    </span>
+                                    <span class="info-value placeholder" *ngIf="!athlete.objectifCourtTerme">—</span>
+                                </div>
+
+                                <div class="info-item">
+                                    <span class="info-label">Objectif à long terme:</span>
+                                    <span class="info-value goal-text" *ngIf="athlete.objectifLongTerme">
+                                        {{ athlete.objectifLongTerme }}
+                                    </span>
+                                    <span class="info-value placeholder" *ngIf="!athlete.objectifLongTerme">—</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Statistics Card - Always show -->
+                        <div class="statistics-card">
+                            <h3 class="statistics-title">Statistiques</h3>
+
+                            <!-- Podium Statistics -->
+                            <div class="medals-breakdown">
+                                <div class="medal-item gold">
+                                    <i class="fas fa-medal"></i>
+                                    <span>{{ firstPlaces || '—' }}</span>
+                                </div>
+                                <div class="medal-item silver">
+                                    <i class="fas fa-medal"></i>
+                                    <span>{{ secondPlaces || '—' }}</span>
+                                </div>
+                                <div class="medal-item bronze">
+                                    <i class="fas fa-medal"></i>
+                                    <span>{{ thirdPlaces || '—' }}</span>
+                                </div>
+                            </div>
+
+                            <!-- Overall Statistics -->
+                            <div class="overall-stats">
+                                <div class="stat-row">
+                                    <span class="stat-label">Victoires totales:</span>
+                                    <span class="stat-value wins">{{ totalWins || '—' }}</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Défaites totales:</span>
+                                    <span class="stat-value losses">{{ totalLosses || '—' }}</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Ratio de victoires:</span>
+                                    <span class="stat-value ratio">{{ winRatio ? winRatio + '%' : '—' }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results section -->
+        <section class="results-section">
+            <div class="container">
+                <!-- Interesting results -->
+                <div class="results-card" *ngIf="interestingResults.length > 0">
+                    <h3 class="section-title">Résultats marquants</h3>
+                    <app-resultat-table [resultats]="interestingResults" [showAthleteName]="false"
+                        [showCompetitionName]="true">
+                    </app-resultat-table>
+                </div>
+
+                <!-- Other results -->
+                <div class="results-card" *ngIf="otherResults.length > 0">
+                    <h3 class="section-title">Autres résultats</h3>
+                    <app-resultat-table [resultats]="otherResults" [showAthleteName]="false"
+                        [showCompetitionName]="true">
+                    </app-resultat-table>
+                </div>
+
+                <!-- No results message -->
+                <div class="no-results-card" *ngIf="interestingResults.length === 0 && otherResults.length === 0">
+                    <h3 class="section-title">Résultats de compétition</h3>
+                    <p class="no-results-text">Aucun résultat de compétition pour le moment.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photo gallery section -->
+        <section class="gallery-section" *ngIf="athlete.listePhoto && athlete.listePhoto.length > 0">
+            <div class="container">
+                <h3 class="section-title">Galerie photos</h3>
+                <div class="photo-grid">
+                    <div *ngFor="let photo of athlete.listePhoto" class="photo-item">
+                        <img [src]="getImageUrl(photo)" [alt]="athlete.nom" class="gallery-photo">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

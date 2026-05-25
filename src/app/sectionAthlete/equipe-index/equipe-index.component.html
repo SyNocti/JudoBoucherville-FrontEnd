@@ -1,0 +1,32 @@
+<div class="equipe-index-container">
+    <!-- Page title section -->
+    <section class="title-section">
+        <app-page-title title="Nos équipes"></app-page-title>
+    </section>
+
+    <!-- Teams section -->
+    <section class="teams-section">
+        <div class="container">
+            <!-- Teams grid -->
+            <div class="teams-grid">
+                <div *ngFor="let team of teams" class="team-card" (click)="navigateToTeam(team)">
+                    <!-- Team image -->
+                    <div class="team-image-container">
+                        <img [src]="team.image" [alt]="team.name" class="team-image">
+                    </div>
+
+                    <!-- Team info -->
+                    <div class="team-info">
+                        <h3 class="team-name">{{ team.name }}</h3>
+                        <p class="team-description">{{ team.description }}</p>
+
+                        <!-- Click indicator -->
+                        <div class="click-indicator">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,570 @@
+/* Title section */
+.title-section {
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.title-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.title-section app-page-title {
+    position: relative;
+    z-index: 2;
+}
+
+/* Course content section */
+.cours-content-section {
+    padding: 60px 0;
+    min-height: 70vh;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.cours-content-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.cours-content-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Loading wrapper */
+.loading-wrapper {
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+/* Error state */
+.error-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    min-height: 400px;
+}
+
+.error-content {
+    text-align: center;
+    max-width: 500px;
+}
+
+.error-content h2 {
+    font-size: 2rem;
+    margin: 0 0 20px 0;
+    color: var(--primary-color);
+}
+
+.error-content p {
+    font-size: 1.2rem;
+    margin: 0 0 30px 0;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Back button */
+.back-button-container {
+    margin-bottom: 30px;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: var(--primary-color-dark);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-medium);
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color-dark);
+    transform: translateX(-2px);
+}
+
+.back-button i {
+    font-size: 0.9rem;
+}
+
+/* Course layout */
+.cours-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+/* Course image section */
+.cours-image-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.cours-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px var(--shadow-light);
+    border: 2px solid var(--primary-color);
+}
+
+/* Course info section */
+.cours-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.cours-header {
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 20px;
+}
+
+.cours-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0 0 10px 0;
+    line-height: 1.2;
+}
+
+.cours-category {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cours-description h3,
+.cours-clientele h3,
+.cours-schedule h3,
+.cours-prerequisites h3,
+.cours-additional-info h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 10px 0;
+}
+
+.cours-description p,
+.cours-clientele p,
+.cours-schedule p,
+.cours-prerequisites p,
+.cours-additional-info p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin: 0;
+}
+
+/* Professors section */
+.professeurs-section {
+    margin-bottom: 50px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.professeurs-section h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.view-all-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: var(--primary-color-dark);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition-medium);
+}
+
+.view-all-button:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color-dark);
+    transform: translateX(2px);
+    text-decoration: none;
+}
+
+.professeurs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.professeur-card {
+    padding: 15px 20px;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px var(--shadow-light);
+    transition: var(--transition-medium);
+    border: 2px solid var(--primary-color);
+}
+
+.professeur-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-medium);
+}
+
+/* Desktop layout for professors */
+.professeur-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.professeur-name-title {
+    flex: 1;
+}
+
+.professeur-nom {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.professeur-titre {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--primary-color);
+}
+
+.professeur-credentials {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.professeur-grade,
+.professeur-certification {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.professeur-separator {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Payment section */
+.payment-section {
+    margin-bottom: 50px;
+}
+
+.payment-section h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 25px 0;
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.payment-option-card {
+    background-color: white;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px var(--shadow-light);
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    align-items: start;
+    border: 2px solid var(--primary-color);
+}
+
+.payment-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.payment-duration h4,
+.payment-deadline h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 8px 0;
+}
+
+.duration-dates,
+.payment-deadline p {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin: 0 0 5px 0;
+}
+
+.duration-weeks {
+    font-size: 1rem;
+    color: var(--accent-color);
+    font-weight: 500;
+    margin: 0;
+}
+
+.payment-prices {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: var(--border-radius);
+    background-color: var(--secondary-color);
+}
+
+.price-label {
+    font-weight: 500;
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+.price-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.early-price {
+    color: #28a745;
+}
+
+.late-price {
+    color: #4a6fa5;
+}
+
+/* Registration section */
+.registration-section {
+    text-align: center;
+}
+
+.registration-section h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 25px 0;
+}
+
+.registration-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--primary-color-dark);
+    color: var(--secondary-color);
+    padding: 15px 30px;
+    border: none;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-fast);
+}
+
+/* Subtle accent bar to set it apart */
+.registration-button::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 5px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--accent-color-header) 0%, var(--primary-color) 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.registration-button:hover,
+.registration-button:focus-visible {
+    background-color: var(--primary-color-dark);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.registration-button:hover::after,
+.registration-button:focus-visible::after {
+    transform: scaleX(1);
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+    .cours-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .cours-image {
+        height: 250px;
+    }
+
+    .cours-title {
+        font-size: 2rem;
+    }
+
+    .payment-option-card {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .payment-info {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cours-content-section {
+        padding: 40px 0;
+    }
+
+    .cours-image {
+        height: 200px;
+    }
+
+    .cours-title {
+        font-size: 1.8rem;
+    }
+
+    .cours-category {
+        font-size: 1.1rem;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .professeurs-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .professeur-card {
+        padding: 15px;
+    }
+
+    .professeur-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .professeur-name-title {
+        margin-bottom: 8px;
+        width: 100%;
+    }
+
+    .professeur-credentials {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 4px;
+        width: 100%;
+    }
+
+    .payment-option-card {
+        padding: 20px;
+    }
+
+    .payment-prices {
+        flex-direction: row;
+        gap: 12px;
+    }
+
+    .price-item {
+        flex: 1 1 0;
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
+
+    .registration-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cours-content-section {
+        padding: 30px 0;
+    }
+
+    .cours-image {
+        height: 180px;
+    }
+
+    .cours-title {
+        font-size: 1.5rem;
+    }
+
+    .back-button {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    .professeurs-section,
+    .payment-section,
+    .registration-section {
+        margin-bottom: 30px;
+    }
+
+    .payment-option-card {
+        padding: 15px;
+    }
+
+    .view-all-button {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}

@@ -1,0 +1,374 @@
+/* Title section */
+.title-section {
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.title-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.title-section app-page-title {
+    position: relative;
+    z-index: 2;
+}
+
+/* Archive years section */
+.archive-years-section {
+    padding: 60px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+app-loading-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    /* or 100vh if you want it fullscreen */
+    width: 100%;
+}
+
+.archive-years-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.archive-years-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Introduction - Always visible */
+.intro-text {
+    text-align: center;
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.intro-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-color);
+}
+
+/* Years content wrapper */
+.years-content {
+    margin-bottom: 60px;
+}
+
+/* Loading wrapper */
+.loading-wrapper {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Error state */
+.error-state,
+.no-years-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.error-content,
+.no-years-content {
+    text-align: center;
+    max-width: 500px;
+    color: #666;
+}
+
+.error-content h2,
+.no-years-content h2 {
+    font-size: 2rem;
+    margin: 0 0 20px 0;
+    color: var(--primary-color);
+}
+
+.error-content p,
+.no-years-content p {
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Years grid - 4 columns on large screens */
+.years-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Year card - reduced height */
+.year-card {
+    background-color: var(--card-background);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: var(--transition-medium);
+    box-shadow: 0 2px 8px var(--shadow-light);
+    min-height: 70px;
+}
+
+.year-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--shadow-medium);
+    border-color: var(--accent-color);
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Year icon - smaller */
+.year-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(64, 74, 195, 0.1);
+    border-radius: var(--border-radius);
+}
+
+.year-icon i {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+}
+
+/* Year info - centered */
+.year-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.year-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0;
+    line-height: 1.2;
+    text-align: center;
+}
+
+/* Arrow indicator - smaller */
+.arrow-indicator {
+    flex-shrink: 0;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: var(--transition-medium);
+}
+
+.year-card:hover .arrow-indicator {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+/* Back navigation */
+.back-navigation {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 25px;
+    background-color: var(--primary-color-dark);
+    color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: var(--transition-medium);
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.back-button:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-medium);
+    text-decoration: none;
+}
+
+.back-button i {
+    font-size: 0.9rem;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .years-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .archive-years-section {
+        padding: 40px 0;
+    }
+
+    .intro-text {
+        margin-bottom: 40px;
+        padding: 0 20px;
+    }
+
+    .intro-text p {
+        font-size: 1rem;
+    }
+
+    .years-content {
+        margin-bottom: 40px;
+    }
+
+    .loading-wrapper,
+    .error-state,
+    .no-years-state {
+        padding: 30px 20px;
+    }
+
+    .error-content h2,
+    .no-years-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .error-content p,
+    .no-years-content p {
+        font-size: 1.1rem;
+    }
+
+    .years-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 0 20px;
+    }
+
+    .year-card {
+        padding: 18px;
+        gap: 12px;
+        min-height: 60px;
+    }
+
+    .year-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .year-icon i {
+        font-size: 1.1rem;
+    }
+
+    .year-text {
+        font-size: 1.1rem;
+    }
+
+    .arrow-indicator {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .archive-years-section {
+        padding: 30px 0;
+    }
+
+    .loading-wrapper,
+    .error-state,
+    .no-years-state {
+        padding: 20px 15px;
+    }
+
+    .error-content h2,
+    .no-years-content h2 {
+        font-size: 1.6rem;
+    }
+
+    .years-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 0 15px;
+    }
+
+    .year-card {
+        padding: 15px;
+        gap: 10px;
+        min-height: 55px;
+    }
+
+    .year-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .year-icon i {
+        font-size: 1rem;
+    }
+
+    .year-text {
+        font-size: 1rem;
+    }
+
+    .arrow-indicator {
+        font-size: 0.8rem;
+    }
+
+    .back-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .years-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .year-card {
+        padding: 18px;
+        gap: 15px;
+        min-height: 60px;
+    }
+
+    .year-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .year-icon i {
+        font-size: 1.1rem;
+    }
+
+    .year-text {
+        font-size: 1.1rem;
+    }
+}

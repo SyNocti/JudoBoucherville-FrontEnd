@@ -1,0 +1,116 @@
+<div class="competition-detail-container">
+    <!-- Loading state -->
+    <section class="loading-section" *ngIf="loading">
+        <div class="container">
+            <div class="loading-container">
+                <div class="loading-spinner"></div>
+                <p>Chargement des détails de la compétition...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competition not found -->
+    <section class="not-found-section" *ngIf="!loading && !competition">
+        <div class="container">
+            <div class="not-found">
+                <h2>Compétition non trouvée</h2>
+                <p>La compétition demandée n'existe pas ou n'est plus disponible.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competition detail content -->
+    <div *ngIf="!loading && competition">
+        <!-- Page title section -->
+        <section class="title-section">
+            <app-page-title [title]="getTitle()"></app-page-title>
+        </section>
+
+        <!-- Competition info and photo section -->
+        <section class="competition-info-section">
+            <div class="container">
+                <div class="content-grid">
+                    <!-- Left column: Competition photo -->
+                    <div class="photo-section">
+                        <div class="competition-photo">
+                            <img [src]="getImageUrl(competition.photo)" [alt]="competition.nom"
+                                class="competition-image">
+                        </div>
+                    </div>
+
+                    <!-- Right column: Info and Statistics -->
+                    <div class="info-statistics-section">
+                        <!-- Competition Information Card -->
+                        <div class="info-card">
+                            <h3 class="card-title">Informations générales</h3>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="info-label">Date:</span>
+                                    <span class="info-value">{{ formatDate(competition.date) }}</span>
+                                </div>
+
+                                <div class="info-item">
+                                    <span class="info-label">Lieu:</span>
+                                    <span class="info-value">{{ competition.lieu }}</span>
+                                </div>
+
+                                <div class="info-item">
+                                    <span class="info-label">Participants:</span>
+                                    <span class="info-value">{{ totalParticipants }} athlètes</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Statistics Card -->
+                        <div class="statistics-card">
+                            <h3 class="card-title">Résultats du club</h3>
+
+                            <!-- Medal breakdown -->
+                            <div class="medals-breakdown">
+                                <div class="medal-item gold">
+                                    <i class="fas fa-medal"></i>
+                                    <span class="medal-count">{{ goldMedals }}</span>
+                                    <span class="medal-label">Or</span>
+                                </div>
+                                <div class="medal-item silver">
+                                    <i class="fas fa-medal"></i>
+                                    <span class="medal-count">{{ silverMedals }}</span>
+                                    <span class="medal-label">Argent</span>
+                                </div>
+                                <div class="medal-item bronze">
+                                    <i class="fas fa-medal"></i>
+                                    <span class="medal-count">{{ bronzeMedals }}</span>
+                                    <span class="medal-label">Bronze</span>
+                                </div>
+                            </div>
+
+                            <!-- Total medals -->
+                            <div class="total-medals">
+                                <span class="total-label">Total des médailles:</span>
+                                <span class="total-count">{{ goldMedals + silverMedals + bronzeMedals }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results section -->
+        <section class="results-section">
+            <div class="container">
+                <!-- All results in a single table -->
+                <div class="results-container" *ngIf="allResults.length > 0">
+                    <h3 class="section-title">Résultats</h3>
+                    <app-resultat-table [resultats]="allResults" [showAthleteName]="true" [showCompetitionName]="false">
+                    </app-resultat-table>
+                </div>
+
+                <!-- No results message -->
+                <div class="no-results-container" *ngIf="allResults.length === 0">
+                    <h3 class="section-title">Résultats</h3>
+                    <p class="no-results-text">Aucun résultat disponible pour cette compétition.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

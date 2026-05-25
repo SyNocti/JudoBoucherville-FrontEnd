@@ -1,0 +1,187 @@
+.journal-card {
+    background-color: var(--card-background);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: var(--transition-medium);
+    box-shadow: 0 2px 8px var(--shadow-light);
+    width: 100%;
+}
+
+.journal-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px var(--shadow-medium);
+    border-color: var(--accent-color);
+}
+
+/* File icon */
+.file-icon {
+    flex-shrink: 0;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(64, 74, 195, 0.1);
+    border-radius: var(--border-radius);
+}
+
+.file-icon i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+/* Journal info */
+.journal-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.journal-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+    word-break: break-word;
+}
+
+.journal-date {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin: 0;
+    font-style: italic;
+}
+
+/* Journal actions */
+.journal-actions {
+    flex-shrink: 0;
+}
+
+.open-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-medium);
+    text-decoration: none;
+    background-color: var(--primary-color-dark);
+    color: var(--secondary-color);
+}
+
+.open-btn:hover:not(:disabled) {
+    background-color: var(--accent-color);
+    color: var(--primary-color-dark);
+    transform: translateY(-1px);
+}
+
+.open-btn:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.open-btn:disabled:hover {
+    transform: none;
+}
+
+.open-btn i {
+    font-size: 0.8rem;
+}
+
+/* Responsive design - maintain horizontal layout on all screen sizes */
+@media (max-width: 768px) {
+    .journal-card {
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .file-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .file-icon i {
+        font-size: 1.3rem;
+    }
+
+    .journal-name {
+        font-size: 1rem;
+    }
+
+    .journal-date {
+        font-size: 0.85rem;
+    }
+
+    .open-btn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .journal-card {
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .file-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .file-icon i {
+        font-size: 1.2rem;
+    }
+
+    .journal-name {
+        font-size: 0.95rem;
+    }
+
+    .journal-date {
+        font-size: 0.8rem;
+    }
+
+    .open-btn {
+        padding: 5px 8px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .journal-card {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .file-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .file-icon i {
+        font-size: 1.1rem;
+    }
+
+    .journal-name {
+        font-size: 0.9rem;
+    }
+
+    .journal-date {
+        font-size: 0.75rem;
+    }
+
+    .open-btn {
+        padding: 4px 6px;
+        font-size: 0.75rem;
+    }
+}

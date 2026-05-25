@@ -1,0 +1,1261 @@
+/* Challenge Container */
+.challenge-container {
+  background-color: var(--secondary-color);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Hero Section - With overlay effect */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* center vertically */
+  color: white;
+}
+
+.hero-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(64, 74, 195, 0.8) 0%, rgba(202, 155, 82, 0.8) 100%);
+  z-index: 2;
+}
+
+.hero-logo-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: .35;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  padding: 20px;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-height: 70vh;
+  /* ensures decent vertical presence */
+  /* Added to replicate the previous 4 <br> spacing (approx 4 line-heights) */
+  padding-top: 90px;
+}
+
+/* Lift only the livestream text slightly toward center if needed */
+.livestream-section {
+  transform: translateY(-35px);
+  /* lifted further up */
+}
+
+@media (max-width: 768px) {
+  .livestream-section {
+    transform: translateY(-25px);
+    /* slightly less lift on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .livestream-section {
+    transform: translateY(-20px);
+    /* adjust for very small screens */
+  }
+}
+
+.challenge-logo {
+  height: 650px;
+  width: auto;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 1);
+  color: white;
+}
+
+.hero-intro {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  margin: 0 0 40px 0;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 1);
+}
+
+/* Countdown Section */
+.countdown-section {
+  margin-bottom: 30px;
+}
+
+.countdown-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: white;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 1);
+}
+
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.countdown-item {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--border-radius);
+  /* Further reduced overall size (desktop/base) */
+  padding: 10px 10px;
+  min-width: 60px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+}
+
+.countdown-number {
+  display: inline;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.countdown-label {
+  display: inline;
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  line-height: 1;
+}
+
+/* Livestream Section */
+.livestream-section {
+  margin-top: 20px;
+}
+
+.livestream-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: white;
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.livestream-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  background: var(--accent-color);
+  color: black;
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  transition: var(--transition-medium);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.livestream-button:hover {
+  background: var(--primary-color-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+  color: white;
+}
+
+/* Scroll indicator removed */
+
+/* Content Loading/Error States - Positioned in middle sections */
+.content-loading-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  background: var(--secondary-color) url('/assets/images/logos/logo_challenge.png') no-repeat center center/contain fixed;
+  position: relative;
+}
+
+.content-loading-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+  z-index: 1;
+}
+
+.content-loading-wrapper app-loading-spinner {
+  position: relative;
+  z-index: 2;
+}
+
+.content-error-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  background: var(--secondary-color) url('/assets/images/logos/logo_challenge.png') no-repeat center center/contain fixed;
+  padding: 40px 20px;
+  position: relative;
+}
+
+.content-error-state::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+  z-index: 1;
+}
+
+.error-content {
+  text-align: center;
+  max-width: 500px;
+  background: white;
+  padding: 40px;
+  border-radius: var(--border-radius);
+  position: relative;
+  z-index: 2;
+}
+
+.error-content h2 {
+  font-size: 2rem;
+  margin: 0 0 20px 0;
+  color: var(--primary-color);
+}
+
+.error-content p {
+  font-size: 1.2rem;
+  margin: 0 0 30px 0;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.retry-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-medium);
+}
+
+.retry-button:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.retry-button i {
+  font-size: 0.9rem;
+}
+
+/* Partners Section - Full width carousel */
+.partners-section {
+  padding: 20px 0;
+  background: var(--secondary-color) url('/assets/images/logos/logo_challenge.png') no-repeat center center/contain fixed;
+  scroll-margin-top: 90px;
+  position: relative;
+}
+
+.partners-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.partners-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.partners-carousel {
+  width: 100%;
+}
+
+.partner-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 80px;
+  transition: var(--transition-medium);
+}
+
+.partner-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-medium);
+  cursor: pointer;
+}
+
+.partner-link:hover {
+  transform: translateY(-2px);
+}
+
+.partner-logo {
+  height: 70px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  transition: var(--transition-medium);
+}
+
+/* Quick Info Section */
+.quick-info-section {
+  padding: 60px 0;
+  background: white url('/assets/images/logos/logo_challenge.png') no-repeat center center/contain fixed;
+  scroll-margin-top: 75px;
+  position: relative;
+}
+
+.quick-info-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+  z-index: 1;
+}
+
+.quick-info-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 20px;
+  background: var(--secondary-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px var(--shadow-light);
+  transition: var(--transition-medium);
+  border: 2px solid var(--primary-color);
+}
+
+/* Location card anchor styling (remove underline) */
+.info-item.location-link {
+  text-decoration: none;
+}
+
+.info-item.location-link:hover,
+.info-item.location-link:focus-visible {
+  text-decoration: none;
+  border: 2px solid var(--accent-color);
+}
+
+.info-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px var(--shadow-medium);
+}
+
+.info-item i {
+  font-size: 2rem;
+  color: var(--primary-color);
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+/* Ensure text container can shrink and wrap properly inside flex parent */
+.info-content {
+  flex: 1;
+  min-width: 0;
+  /* allow flexbox to actually shrink and wrap content */
+}
+
+.info-content h4 {
+  margin: 0 0 8px 0;
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.info-content p {
+  margin: 0;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  white-space: normal;
+  /* allow wrapping */
+  word-break: break-word;
+  /* break long words/URLs if needed */
+  overflow-wrap: anywhere;
+  /* modern wrap for very long tokens */
+  max-width: 100%;
+}
+
+/* Info Packs Section */
+.info-packs-section {
+  padding: 60px 0;
+  background: var(--secondary-color) url('/assets/images/logos/logo_challenge.png') no-repeat center center/contain fixed;
+  position: relative;
+}
+
+.info-packs-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+  z-index: 1;
+}
+
+.info-packs-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.info-packs-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.info-packs-section p {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 30px;
+}
+
+.info-packs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin: 0 auto;
+}
+
+.info-pack-card {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 2px 8px var(--shadow-light);
+  transition: var(--transition-medium);
+  min-height: 80px;
+}
+
+.info-pack-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px var(--shadow-medium);
+}
+
+.info-pack-card i {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.info-pack-card h3 {
+  margin: 0;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.open-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  background: var(--primary-color-dark);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-medium);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.open-btn:hover {
+  background: var(--accent-color);
+  transform: translateY(-1px);
+  color: var(--primary-color-dark);
+}
+
+.open-btn i {
+  color: white;
+}
+
+.open-btn:hover i {
+  color: var(--primary-color-dark);
+}
+
+/* Gallery Section */
+.gallery-section {
+  padding: 60px 0;
+  background: white url('/assets/images/logos/logo_challenge.png') no-repeat center center/contain fixed;
+  position: relative;
+}
+
+.gallery-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+  z-index: 1;
+}
+
+.gallery-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.gallery-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 40px;
+}
+
+.gallery-carousel {
+  position: relative;
+  margin-top: 20px;
+}
+
+.gallery-swiper {
+  padding: 20px 0 60px 0;
+  overflow: visible;
+}
+
+.gallery-slide {
+  width: auto;
+  height: auto;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.gallery-image {
+  width: auto;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Contact Section */
+.contact-section {
+  padding: 60px 0;
+  background: var(--secondary-color) url('/assets/images/logos/logo_challenge.png') no-repeat center center/contain fixed;
+  position: relative;
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+  z-index: 1;
+}
+
+.contact-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.contact-content {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-content h2 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.contact-content p {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 30px;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  background: var(--primary-color-dark);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: var(--transition-medium);
+  box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.contact-btn:hover {
+  background: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px var(--shadow-medium);
+  text-decoration: none;
+  color: var(--primary-color-dark);
+}
+
+/* Registration and Social Section */
+.registration-social-section {
+  padding: 60px 0;
+  background: var(--secondary-color) url('/assets/images/logos/logo_challenge.png') no-repeat center center/contain fixed;
+  position: relative;
+}
+
+.registration-social-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+  z-index: 1;
+}
+
+.registration-social-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.registration-social-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.registration-card,
+.facebook-card {
+  background: white;
+  padding: 30px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px var(--shadow-light);
+  text-align: center;
+  transition: var(--transition-medium);
+  border: 2px solid var(--primary-color);
+}
+
+.registration-card:hover,
+.facebook-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px var(--shadow-medium);
+}
+
+.registration-card h3,
+.facebook-card h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin: 0 0 15px 0;
+  font-weight: 600;
+}
+
+.registration-card p,
+.facebook-card p {
+  font-size: 1rem;
+  color: var(--text-color);
+  line-height: 1.5;
+  margin: 0 0 25px 0;
+}
+
+.registration-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 25px;
+  background: var(--primary-color-dark);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: var(--transition-medium);
+  box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.registration-btn:hover {
+  background: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px var(--shadow-medium);
+  text-decoration: none;
+  color: var(--primary-color-dark);
+}
+
+.facebook-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 25px;
+  background: #1877f2;
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-medium);
+  box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.facebook-btn:hover {
+  background: #166fe5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px var(--shadow-medium);
+}
+
+.facebook-btn i {
+  font-size: 1.1rem;
+}
+
+/* Loading wrapper */
+.loading-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--secondary-color);
+}
+
+/* Error state */
+.error-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--secondary-color);
+  padding: 40px 20px;
+}
+
+.error-content {
+  text-align: center;
+  max-width: 500px;
+  background: white;
+  padding: 40px;
+  border-radius: var(--border-radius);
+}
+
+.error-content h2 {
+  font-size: 2rem;
+  margin: 0 0 20px 0;
+  color: var(--primary-color);
+}
+
+.error-content p {
+  font-size: 1.2rem;
+  margin: 0 0 30px 0;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.retry-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-medium);
+}
+
+.retry-button:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.retry-button i {
+  font-size: 0.9rem;
+}
+
+/* Conditional sections - hide if no data */
+.partners-section:empty,
+.info-packs-section:empty,
+.gallery-section:empty {
+  display: none;
+}
+
+/* Scroll Indicator (restored) */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.scroll-triangle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.scroll-triangle i {
+  color: white;
+  font-size: 1.2rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-indicator:hover .scroll-triangle {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(3px);
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 15px;
+    max-width: 100%;
+    gap: 14px;
+    min-height: 60vh;
+    padding-top: 60px;
+    /* reduced top spacing on tablets */
+  }
+
+  .challenge-logo {
+    height: 400px;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .hero-intro {
+    display: none;
+  }
+
+  .countdown-section {
+    margin-bottom: 20px;
+  }
+
+  .countdown-section h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+
+  .countdown-timer {
+    gap: 10px;
+  }
+
+  .countdown-item {
+    min-width: 55px;
+    padding: 8px 8px;
+    gap: 3px;
+  }
+
+  .countdown-number {
+    font-size: 1.1rem;
+  }
+
+  .countdown-label {
+    font-size: 0.55rem;
+    line-height: 1;
+  }
+
+  .livestream-info {
+    font-size: 1rem;
+  }
+
+  .livestream-button {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+
+  .scroll-triangle {
+    display: none;
+  }
+
+  .scroll-triangle i {
+    display: none;
+  }
+
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .info-item {
+    padding: 15px;
+    gap: 10px;
+
+  }
+
+  .info-item i {
+    font-size: 1.5rem;
+  }
+
+  .info-content h4 {
+    font-size: 0.9rem;
+  }
+
+  .info-content p {
+    font-size: 0.8rem;
+  }
+
+  .info-packs-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .info-pack-card {
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .info-pack-card h3 {
+    font-size: 1rem;
+  }
+
+  .gallery-image {
+    height: 200px;
+  }
+
+  .partner-logo {
+    height: 45px;
+    max-width: 110px;
+  }
+
+  .partner-item {
+    margin-right: 50px;
+  }
+
+  .partners-section {
+    scroll-margin-top: 80px;
+  }
+
+  .registration-social-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .registration-card,
+  .facebook-card {
+    padding: 25px;
+  }
+
+  .registration-card h3,
+  .facebook-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .registration-btn,
+  .facebook-btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+
+  .error-content {
+    padding: 30px 20px;
+    margin: 0 10px;
+  }
+
+  .error-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .error-content p {
+    font-size: 1rem;
+  }
+
+  .retry-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 10px;
+    padding-top: 45px;
+    /* further reduced on very small screens */
+  }
+
+  .challenge-logo {
+    height: 300px;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .countdown-timer {
+    gap: 8px;
+  }
+
+  .countdown-item {
+    min-width: 45px;
+    padding: 6px 6px;
+    gap: 2px;
+  }
+
+  .countdown-number {
+    font-size: 1rem;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+
+  .scroll-triangle {
+    display: none;
+  }
+
+  .scroll-triangle i {
+    display: none;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .info-item {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .info-item i {
+    font-size: 1.3rem;
+  }
+
+  .info-content h4 {
+    font-size: 0.8rem;
+  }
+
+  .info-content p {
+    font-size: 0.75rem;
+  }
+
+  .info-pack-card {
+    padding: 15px;
+    gap: 12px;
+  }
+
+  .info-pack-card h3 {
+    font-size: 0.9rem;
+  }
+
+  .open-btn {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+
+  .gallery-image {
+    height: 180px;
+  }
+
+  .partner-logo {
+    height: 40px;
+    max-width: 90px;
+  }
+
+  .partner-item {
+    margin-right: 40px;
+  }
+}
+
+/* History Link Section */
+.history-link-section {
+  padding: 50px 20px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-color-dark) 100%);
+  text-align: center;
+}
+
+.history-link-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.history-link-content h2 {
+  font-size: 1.8rem;
+  color: white;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-shadow: var(--text-shadow-strong);
+}
+
+.history-link-content p {
+  font-size: 1.05rem;
+  color: white;
+  margin-bottom: 25px;
+  line-height: 1.6;
+  text-shadow: var(--text-shadow-global);
+}
+
+.history-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 28px;
+  background-color: var(--accent-color);
+  color: #333;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 50px;
+  transition: all var(--transition-medium);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.history-btn:hover {
+  background-color: var(--accent-color-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.history-btn i {
+  font-size: 1.1rem;
+}
+
+/* Responsive for history section */
+@media (max-width: 768px) {
+  .history-link-section {
+    padding: 40px 20px;
+  }
+
+  .history-link-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .history-link-content p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .history-btn {
+    padding: 10px 24px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .history-link-section {
+    padding: 35px 15px;
+  }
+
+  .history-link-content h2 {
+    font-size: 1.4rem;
+  }
+
+  .history-link-content p {
+    font-size: 0.95rem;
+  }
+
+  .history-btn {
+    padding: 10px 22px;
+    font-size: 0.9rem;
+  }
+
+  .history-btn i {
+    font-size: 1rem;
+  }
+}

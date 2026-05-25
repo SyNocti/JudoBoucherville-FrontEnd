@@ -1,0 +1,319 @@
+/* Title section */
+.title-section {
+    background: url('/assets/images/logos/sport_etudes_logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.title-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.title-section app-page-title {
+    position: relative;
+    z-index: 2;
+}
+
+/* Content section */
+.content-section {
+    padding: 60px 0;
+    background: var(--secondary-color) url('/assets/images/logos/sport_etudes_logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.content-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.content-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Loading wrapper */
+.loading-wrapper {
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+/* Error state */
+.error-state,
+.no-data-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    min-height: 400px;
+}
+
+.error-content,
+.no-data-content {
+    text-align: center;
+    max-width: 500px;
+}
+
+.error-content h2,
+.no-data-content h2 {
+    font-size: 2rem;
+    margin: 0 0 20px 0;
+    color: var(--primary-color);
+}
+
+.error-content p,
+.no-data-content p {
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Main content */
+.sport-etude-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Contact and Director wrapper for side-by-side layout */
+.contact-director-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* Section styles */
+.contact-section,
+.director-section,
+.website-section,
+.files-section {
+    background-color: var(--background-light);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.contact-section h3,
+.director-section h3,
+.website-section h3,
+.files-section h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 25px 0;
+    text-align: center;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 15px;
+}
+
+/* Contact and Director info */
+.contact-info,
+.director-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--primary-color);
+}
+
+.contact-item i {
+    color: var(--accent-color);
+    width: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.contact-item span {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.contact-item a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: var(--transition-medium);
+}
+
+.contact-item a:hover {
+    color: var(--accent-color-dark);
+    text-decoration: underline;
+}
+
+/* Website section */
+.website-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: var(--transition-medium);
+    box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.website-link:hover {
+    background-color: var(--accent-color-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--shadow-medium);
+}
+
+/* Files section */
+.files-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.file-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background-color: var(--secondary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    color: var(--text-color);
+    transition: var(--transition-medium);
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.file-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px var(--shadow-medium);
+    border-color: var(--accent-color);
+}
+
+.file-card i:first-child {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.file-card span {
+    flex: 1;
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.file-card i:last-child {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.file-open-icon {
+    color: #007bff !important;
+    /* Blue color for open icon */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .content-section {
+        padding: 40px 0;
+    }
+
+    .sport-etude-content {
+        gap: 30px;
+    }
+
+    /* Stack contact and director sections on mobile */
+    .contact-director-wrapper {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .contact-section,
+    .director-section,
+    .website-section,
+    .files-section {
+        padding: 20px;
+    }
+
+    .contact-section h3,
+    .director-section h3,
+    .website-section h3,
+    .files-section h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .files-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .contact-item {
+        padding: 12px;
+    }
+
+    .website-link {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+
+    .file-card {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-section {
+        padding: 30px 0;
+    }
+
+    .contact-section,
+    .director-section,
+    .website-section,
+    .files-section {
+        padding: 15px;
+    }
+
+    .contact-section h3,
+    .director-section h3,
+    .website-section h3,
+    .files-section h3 {
+        font-size: 1.3rem;
+    }
+
+    .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .contact-item i {
+        align-self: center;
+    }
+}

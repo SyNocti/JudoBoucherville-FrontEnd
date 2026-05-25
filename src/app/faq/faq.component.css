@@ -1,0 +1,448 @@
+/* Loading section */
+.loading-section {
+    padding: 200px 0 80px 0;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-container p {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+app-loading-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    /* or 100vh if you want it fullscreen */
+    width: 100%;
+}
+
+/* Title section */
+.title-section {
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.title-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.title-section app-page-title {
+    position: relative;
+    z-index: 2;
+}
+
+/* FAQ section */
+.faq-section {
+    padding: 60px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.faq-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.faq-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Introduction - Always visible */
+.intro-text {
+    text-align: center;
+    margin-bottom: 50px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.intro-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-color);
+    font-style: italic;
+}
+
+/* Questions content wrapper */
+.questions-content {
+    margin-bottom: 60px;
+}
+
+/* Loading wrapper */
+.loading-wrapper {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Error state */
+.error-state,
+.no-questions-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.error-content,
+.no-questions-content {
+    text-align: center;
+    max-width: 500px;
+    color: #666;
+}
+
+.error-content h2,
+.no-questions-content h2 {
+    font-size: 2rem;
+    margin: 0 0 20px 0;
+    color: var(--primary-color);
+}
+
+.error-content p,
+.no-questions-content p {
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Questions list */
+.questions-list {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* Question item */
+.question-item {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 2px 8px var(--shadow-light);
+    flex: 0 0 calc(50% - 10px);
+    min-width: 0;
+    align-self: flex-start;
+}
+
+/* Question header */
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: var(--transition-medium);
+    border-bottom: 1px solid transparent;
+}
+
+.question-header:hover {
+    background-color: rgba(64, 74, 195, 0.05);
+}
+
+.question-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0;
+    flex: 1;
+    text-align: left;
+    line-height: 1.3;
+}
+
+/* Expand icon */
+.expand-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    transition: var(--transition-medium);
+    flex-shrink: 0;
+    margin-left: 15px;
+}
+
+.expand-icon.expanded {
+    background-color: var(--accent-color);
+    color: var(--primary-color-dark);
+    transform: rotate(180deg);
+}
+
+.expand-icon i {
+    font-size: 0.8rem;
+}
+
+/* Answer container */
+.answer-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, border-top 0.3s ease;
+}
+
+.answer-container.expanded {
+    max-height: 500px;
+    border-top: 1px solid var(--border-color);
+}
+
+.answer-content {
+    padding: 16px 20px;
+    background-color: rgba(64, 74, 195, 0.02);
+}
+
+.answer-text {
+    color: var(--text-color);
+    line-height: 1.5;
+    margin: 0;
+    font-size: 0.95rem;
+    text-align: justify;
+}
+
+/* Contact section - Always visible */
+.contact-section {
+    text-align: center;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 40px;
+    box-shadow: 0 4px 12px var(--shadow-light);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.contact-section h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 15px 0;
+}
+
+.contact-section p {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0 0 25px 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-button {
+    background-color: var(--primary-color-dark);
+    color: var(--secondary-color);
+    border: none;
+    padding: 12px 25px;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-medium);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.contact-button:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-medium);
+}
+
+.contact-button i {
+    font-size: 0.9rem;
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+    .questions-list {
+        max-width: 600px;
+        gap: 15px;
+        padding: 0 20px;
+    }
+
+    .question-item {
+        flex: 0 0 100%;
+    }
+
+    .intro-text {
+        max-width: 600px;
+        padding: 0 20px;
+    }
+
+    .contact-section {
+        max-width: 600px;
+        margin: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .faq-section {
+        padding: 40px 0;
+    }
+
+    .intro-text {
+        margin-bottom: 40px;
+    }
+
+    .intro-text p {
+        font-size: 1rem;
+    }
+
+    .questions-content {
+        margin-bottom: 40px;
+    }
+
+    .loading-wrapper,
+    .error-state,
+    .no-questions-state {
+        padding: 30px 20px;
+    }
+
+    .error-content h2,
+    .no-questions-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .error-content p,
+    .no-questions-content p {
+        font-size: 1.1rem;
+    }
+
+    .question-header {
+        padding: 14px 18px;
+    }
+
+    .question-text {
+        font-size: 0.95rem;
+    }
+
+    .expand-icon {
+        width: 26px;
+        height: 26px;
+        margin-left: 12px;
+    }
+
+    .expand-icon i {
+        font-size: 0.75rem;
+    }
+
+    .answer-content {
+        padding: 14px 18px;
+    }
+
+    .answer-text {
+        font-size: 0.9rem;
+    }
+
+    .contact-section {
+        padding: 30px;
+    }
+
+    .contact-section h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .faq-section {
+        padding: 30px 0;
+    }
+
+    .loading-wrapper,
+    .error-state,
+    .no-questions-state {
+        padding: 20px 15px;
+    }
+
+    .error-content h2,
+    .no-questions-content h2 {
+        font-size: 1.6rem;
+    }
+
+    .question-header {
+        padding: 12px 15px;
+    }
+
+    .question-text {
+        font-size: 0.9rem;
+    }
+
+    .expand-icon {
+        width: 24px;
+        height: 24px;
+        margin-left: 10px;
+    }
+
+    .expand-icon i {
+        font-size: 0.7rem;
+    }
+
+    .answer-content {
+        padding: 12px 15px;
+    }
+
+    .answer-text {
+        font-size: 0.85rem;
+    }
+
+    .contact-section {
+        padding: 25px;
+    }
+
+    .contact-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}

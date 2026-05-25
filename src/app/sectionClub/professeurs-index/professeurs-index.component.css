@@ -1,0 +1,570 @@
+/* Loading section */
+.loading-section {
+    padding: 200px 0 80px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.loading-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.loading-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-container p {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* Title section */
+.title-section {
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.title-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.title-section app-page-title {
+    position: relative;
+    z-index: 2;
+}
+
+/* Professeurs section */
+.professeurs-section {
+    padding: 40px 0 60px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.professeurs-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.professeurs-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Former professors section */
+.anciens-professeurs-section {
+    padding: 60px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+    border-top: 1px solid #e0e0e0;
+}
+
+.anciens-professeurs-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.anciens-professeurs-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-align: center;
+    margin: 0 0 30px 0;
+    text-shadow: 2px 2px 4px var(--shadow-light);
+}
+
+.intro-text {
+    text-align: center;
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.intro-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Professeurs content wrapper */
+.professeurs-content {
+    min-height: 300px;
+    /* Ensures consistent spacing */
+}
+
+/* Loading wrapper */
+.loading-wrapper {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Error state */
+.error-state,
+.no-professeurs-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.error-content,
+.no-professeurs-content {
+    text-align: center;
+    max-width: 500px;
+    color: #666;
+}
+
+.error-content h2,
+.no-professeurs-content h2 {
+    font-size: 2rem;
+    margin: 0 0 20px 0;
+    color: var(--primary-color);
+}
+
+.error-content p,
+.no-professeurs-content p {
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Professeurs container - 2 columns on large screens */
+.professeurs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 70px 40px;
+    margin-bottom: 50px;
+}
+
+/* Individual professeur row - no border or background */
+.professeur-row {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    background-color: transparent;
+    padding: 0;
+}
+
+/* Professeur photo with border */
+.professeur-photo {
+    flex-shrink: 0;
+}
+
+.profile-image {
+    width: 170px;
+    height: 220px;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px var(--shadow-light);
+}
+
+/* Professeur information - left aligned */
+.professeur-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+}
+
+.professeur-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.professeur-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin: 0;
+    font-style: italic;
+}
+
+.professeur-grade {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.professeur-affiliation {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.professeur-certification {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: var(--text-color);
+    margin: 0;
+    flex: 1;
+}
+
+/* Affiliation grouping styles */
+.affiliation-group {
+    grid-column: 1 / -1; /* Span full width of grid */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.affiliation-separator {
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+    margin: 20px 0 10px 0;
+    box-shadow: 0 2px 4px var(--shadow-light);
+}
+
+.affiliation-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: center;
+    margin: 0 0 25px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px var(--shadow-light);
+}
+
+.professeurs-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px 40px;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .professeurs-group {
+        gap: 60px 30px;
+    }
+
+    .professeur-row {
+        gap: 20px;
+    }
+
+    .profile-image {
+        width: 150px;
+        height: 195px;
+    }
+
+    .professeur-name {
+        font-size: 1.3rem;
+    }
+
+    .affiliation-title {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 992px) {
+
+    .professeurs-section .container,
+    .anciens-professeurs-section .container {
+        padding: 0 40px;
+    }
+
+    /* Switch to single column layout */
+    .professeurs-group {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .professeur-row {
+        gap: 25px;
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .professeur-info {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .affiliation-title {
+        font-size: 1.4rem;
+    }
+
+    .profile-image {
+        width: 160px;
+        height: 210px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .professeurs-section {
+        padding: 30px 0 50px 0;
+    }
+
+    .anciens-professeurs-section {
+        padding: 50px 0;
+    }
+
+    .professeurs-section .container,
+    .anciens-professeurs-section .container {
+        padding: 0 50px;
+    }
+
+    .intro-text {
+        margin-bottom: 40px;
+    }
+
+    .intro-text p {
+        font-size: 1.1rem;
+    }
+
+    .professeurs-content {
+        min-height: 250px;
+    }
+
+    .loading-wrapper,
+    .error-state,
+    .no-professeurs-state {
+        padding: 30px 20px;
+        min-height: 300px;
+    }
+
+    .error-content h2,
+    .no-professeurs-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .error-content p,
+    .no-professeurs-content p {
+        font-size: 1.1rem;
+    }
+
+    .professeurs-group {
+        gap: 45px;
+        margin-bottom: 40px;
+    }
+
+    .professeur-row {
+        gap: 20px;
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .professeur-info {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .affiliation-title {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+    }
+
+    .profile-image {
+        width: 140px;
+        height: 185px;
+        border-width: 2px;
+    }
+
+    .professeur-name {
+        font-size: 1.2rem;
+    }
+
+    .professeur-title {
+        font-size: 1rem;
+    }
+
+    .professeur-certification {
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .professeurs-section .container,
+    .anciens-professeurs-section .container {
+        padding: 0 40px;
+    }
+
+    .professeurs-content {
+        min-height: 200px;
+    }
+
+    .loading-wrapper,
+    .error-state,
+    .no-professeurs-state {
+        padding: 20px 15px;
+    }
+
+    .professeurs-group {
+        gap: 40px;
+    }
+
+    .professeur-row {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        gap: 15px;
+    }
+
+    .professeur-info {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .affiliation-title {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+
+    .profile-image {
+        width: 120px;
+        height: 160px;
+    }
+
+    .professeur-name {
+        font-size: 1.1rem;
+    }
+
+    .professeur-certification {
+        font-size: 0.85rem;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+
+    .error-content h2,
+    .no-professeurs-content h2 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .professeurs-section .container,
+    .anciens-professeurs-section .container {
+        padding: 0 30px;
+    }
+
+    .professeurs-group {
+        gap: 35px;
+    }
+
+    .professeur-row {
+        gap: 12px;
+    }
+
+    .affiliation-title {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+
+    .profile-image {
+        width: 100px;
+        height: 130px;
+    }
+
+    .professeur-name {
+        font-size: 1rem;
+    }
+
+    .professeur-title {
+        font-size: 0.9rem;
+    }
+
+    .professeur-grade {
+        font-size: 0.9rem;
+    }
+
+    .professeur-affiliation {
+        font-size: 0.85rem;
+    }
+
+    .professeur-certification {
+        font-size: 0.8rem;
+    }
+
+    .section-title {
+        font-size: 1.2rem;
+    }
+}

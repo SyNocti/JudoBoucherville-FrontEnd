@@ -1,0 +1,419 @@
+/* Loading and error sections */
+.loading-section,
+.not-found-section {
+    padding: 200px 0 80px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.loading-section::before,
+.not-found-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.loading-section,
+.not-found-section {
+    padding: 200px 0 80px 0;
+    min-height: 70vh;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+    z-index: 2;
+}
+
+.loading-section > *,
+.not-found-section > * {
+    position: relative;
+    z-index: 2;
+}
+
+app-loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px; /* or 100vh if you want it fullscreen */
+  width: 100%;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-container p {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.not-found {
+    text-align: center;
+    color: var(--text-color);
+}
+
+.not-found h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* Title section */
+.title-section {
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.title-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.title-section app-page-title {
+    position: relative;
+    z-index: 2;
+}
+
+/* Competition info section */
+.competition-info-section {
+    padding: 40px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.competition-info-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.competition-info-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+/* Photo section */
+.photo-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.competition-photo {
+    max-width: 100%;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 8px 20px var(--shadow-light);
+}
+
+.competition-image {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    display: block;
+    border-radius: var(--border-radius);
+}
+
+/* Info and statistics section */
+.info-statistics-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Cards styling */
+.info-card,
+.statistics-card {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: 0 4px 8px var(--shadow-light);
+}
+
+.card-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 20px 0;
+    text-align: center;
+}
+
+/* Info grid */
+.info-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.info-value {
+    font-weight: 600;
+    color: var(--primary-color);
+    text-align: right;
+}
+
+/* Medal breakdown */
+.medals-breakdown {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px 0;
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+}
+
+.medal-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.medal-item i {
+    font-size: 2rem;
+}
+
+.medal-item.gold i {
+    color: #FFD700;
+}
+
+.medal-item.silver i {
+    color: #C0C0C0;
+}
+
+.medal-item.bronze i {
+    color: #CD7F32;
+}
+
+.medal-count {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.medal-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.total-medals {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-top: 1px solid var(--border-color);
+    font-weight: 600;
+}
+
+.total-label {
+    color: var(--text-color);
+}
+
+.total-count {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+/* Results section - no borders */
+.results-section {
+    padding: 40px 0 60px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.results-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.results-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.results-container,
+.no-results-container {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 30px 0;
+    text-align: center;
+}
+
+.no-results-text {
+    text-align: center;
+    color: var(--text-color);
+    font-style: italic;
+    margin: 0;
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .photo-section {
+        order: 2;
+    }
+
+    .info-statistics-section {
+        order: 1;
+    }
+
+    .medals-breakdown {
+        flex-direction: row;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .competition-info-section {
+        padding: 30px 0;
+    }
+
+    .results-section {
+        padding: 30px 0 50px 0;
+    }
+
+    .info-card,
+    .statistics-card {
+        padding: 20px;
+    }
+
+    .card-title,
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .content-grid {
+        gap: 25px;
+    }
+
+    .medals-breakdown {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .medal-item {
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .medal-item i {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .loading-section,
+    .not-found-section {
+        padding: 150px 0 60px 0;
+    }
+
+    .info-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .info-value {
+        text-align: left;
+    }
+
+    .medals-breakdown {
+        padding: 10px;
+    }
+
+    .medal-count {
+        font-size: 1.2rem;
+    }
+
+    .total-medals {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+    }
+}

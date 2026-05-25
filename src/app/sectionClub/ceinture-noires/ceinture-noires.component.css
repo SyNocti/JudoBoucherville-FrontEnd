@@ -1,0 +1,492 @@
+/* Title section */
+.title-section {
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.title-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.title-section app-page-title {
+    position: relative;
+    z-index: 2;
+}
+
+/* Loading section */
+.loading-section {
+    padding: 200px 0 80px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.loading-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.loading-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-container p {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* Ceintures section */
+.ceintures-section {
+    padding: 40px 0 60px 0;
+    background: var(--secondary-color) url('/assets/images/logos/logo.png') no-repeat center center/contain fixed;
+    position: relative;
+}
+
+.ceintures-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.ceintures-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Introduction section */
+.intro-section {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.intro-text h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 15px 0;
+}
+
+.intro-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin: 0;
+    text-align: justify;
+}
+
+.wall-display {
+    text-align: center;
+}
+
+.wall-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 25px var(--shadow-medium);
+    border: 3px solid var(--primary-color);
+}
+
+.wall-caption {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    font-style: italic;
+    margin: 10px 0 0 0;
+}
+
+/* Club Logos Timeline Section - Always one row */
+.logos-timeline-section {
+    margin-bottom: 50px;
+    padding: 30px 0;
+}
+
+.logos-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.logo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+}
+
+.logo-image-container {
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.logo-years {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.year-range {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #000;
+    /* Years now black */
+}
+
+/* Belts section wrapper */
+.belts-section {
+    margin-bottom: 40px;
+    min-height: 300px;
+    /* Ensures consistent spacing */
+}
+
+/* Loading wrapper */
+.loading-wrapper {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Error state */
+.error-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    padding: 60px 20px;
+}
+
+.error-content {
+    text-align: center;
+    max-width: 500px;
+    color: #666;
+}
+
+.error-content h2 {
+    font-size: 2rem;
+    margin: 0 0 20px 0;
+    color: var(--primary-color);
+}
+
+.error-content p {
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Decades container */
+.decades-container {
+    margin-bottom: 40px;
+}
+
+.decade-group {
+    margin-bottom: 70px;
+}
+
+.decade-group:last-child {
+    margin-bottom: 0;
+}
+
+.decade-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #000;
+    margin: 0 0 20px 0;
+    padding-bottom: 0;
+    border: none;
+}
+
+/* Black belts grid - 3 columns on big screen */
+.belts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    /* More space between blocks */
+    margin-top: 30px;
+}
+
+.belt-item {
+    display: grid;
+    grid-template-columns: 50px 1fr 60px;
+    align-items: center;
+    padding: 10px 14px;
+    background-color: rgba(26, 26, 26, 0.75);
+    /* Transparency added */
+    backdrop-filter: blur(2px);
+    border-radius: 6px;
+    border-left: none;
+    /* Removed yellow bar */
+    font-size: 0.9rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.belt-number {
+    font-weight: 700;
+    color: #FFFFFF;
+    font-size: 0.85rem;
+}
+
+.belt-name {
+    font-weight: 600;
+    color: #FFFFFF;
+    padding: 0 10px;
+}
+
+.belt-year {
+    font-weight: 600;
+    color: #000;
+    /* Years now black */
+    text-align: right;
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.75);
+    /* Ensure readability on dark translucent bg */
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* Responsive design - Scale down logos */
+@media (max-width: 992px) {
+    .intro-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .wall-display {
+        order: -1;
+    }
+
+    .wall-image {
+        max-width: 350px;
+        height: auto;
+    }
+
+    .logos-container {
+        gap: 25px;
+    }
+
+    .logo-image-container {
+        width: 120px;
+        height: 120px;
+    }
+
+    .year-range {
+        font-size: 1rem;
+    }
+
+    /* Keep 3 columns for belts on tablet */
+    .belts-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        /* Maintain a bit more air on tablet */
+    }
+}
+
+@media (max-width: 768px) {
+    .ceintures-section {
+        padding: 30px 0 50px 0;
+    }
+
+    .intro-text h2 {
+        font-size: 1.6rem;
+    }
+
+    .intro-text p {
+        font-size: 1rem;
+    }
+
+    .wall-image {
+        max-width: 300px;
+        height: auto;
+    }
+
+    .logos-container {
+        gap: 20px;
+    }
+
+    .logo-image-container {
+        width: 100px;
+        height: 100px;
+    }
+
+    .year-range {
+        font-size: 0.9rem;
+    }
+
+    .belts-section {
+        min-height: 250px;
+    }
+
+    .loading-wrapper,
+    .error-state {
+        padding: 30px 20px;
+    }
+
+    .error-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .error-content p {
+        font-size: 1.1rem;
+    }
+
+    /* Switch to 2 columns for belts on smaller screens */
+    .belts-grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 12px;
+        /* Keep spacing on small screens */
+    }
+
+    .belt-item {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+
+    .decade-title {
+        font-size: 1.4rem;
+        border: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .intro-section {
+        gap: 20px;
+    }
+
+    .logos-timeline-section {
+        padding: 20px 0;
+        margin-bottom: 40px;
+    }
+
+    .logos-container {
+        gap: 15px;
+    }
+
+    .logo-image-container {
+        width: 80px;
+        height: 80px;
+    }
+
+    .year-range {
+        font-size: 0.85rem;
+    }
+
+    .belts-section {
+        min-height: 200px;
+    }
+
+    .loading-wrapper,
+    .error-state {
+        padding: 20px 15px;
+    }
+
+    .error-content h2 {
+        font-size: 1.6rem;
+    }
+
+    .error-content p {
+        font-size: 1.1rem;
+    }
+
+    .belt-item {
+        grid-template-columns: 40px 1fr 50px;
+        padding: 7px 10px;
+    }
+
+    .belt-name {
+        padding: 0 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logos-container {
+        gap: 10px;
+    }
+
+    .logo-image-container {
+        width: 70px;
+        height: 70px;
+    }
+
+    .year-range {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .logos-container {
+        gap: 8px;
+    }
+
+    .logo-image-container {
+        width: 60px;
+        height: 60px;
+    }
+
+    .year-range {
+        font-size: 0.75rem;
+    }
+}

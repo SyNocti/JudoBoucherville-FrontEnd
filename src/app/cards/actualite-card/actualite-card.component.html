@@ -1,0 +1,32 @@
+<div class="actualite-card">
+    <div class="card-image">
+        <img [src]="getImageUrl(actualite.image)" [alt]="actualite.title"
+            [class]="'actualite-image' + (isDefaultImage(actualite.image) ? ' placeholder' : '')">
+    </div>
+
+    <div class="card-content">
+        <div class="published-date">
+            <div class="published-info">
+                <ng-container *ngIf="hasDate(actualite.publishedDate)">
+                    <i class="fas fa-calendar-alt"></i>
+                </ng-container>
+                <ng-container *ngIf="!hasDate(actualite.publishedDate)">
+                    <p>&nbsp;</p>
+                </ng-container>
+                <span>{{ formatDate(actualite.publishedDate) }}</span>
+            </div>
+            <div class="modification-info">
+                <i class="fa-solid fa-pencil"></i>
+                <span>{{ formatDate(actualite.dateModification) }}</span>
+            </div>
+        </div>
+        <h3 class="actualite-title">{{ actualite.title }}</h3>
+
+        <div class="card-actions">
+            <a [routerLink]="['/actualite/detail', actualite.id]" class="detail-button">
+                <i class="fas fa-arrow-right"></i>
+                Lire la suite
+            </a>
+        </div>
+    </div>
+</div>

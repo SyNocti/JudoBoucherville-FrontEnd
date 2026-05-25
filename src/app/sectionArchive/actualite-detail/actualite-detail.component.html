@@ -1,0 +1,81 @@
+<div class="actualite-detail-container">
+    <!-- Loading state -->
+    <section class="loading-section" *ngIf="loading">
+        <div class="container">
+            <div class="loading-container">
+                <div class="loading-spinner"></div>
+                <p>Chargement de l'actualité...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Actualite not found -->
+    <section class="not-found-section" *ngIf="!loading && !actualite">
+        <div class="container">
+            <div class="not-found">
+                <h2>Actualité non trouvée</h2>
+                <p>L'actualité demandée n'existe pas ou n'est plus disponible.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Actualite detail content -->
+    <div *ngIf="!loading && actualite">
+        <!-- Page title section -->
+        <section class="title-section">
+            <app-page-title [title]="actualite.titre"></app-page-title>
+        </section>
+
+        <!-- Actualite content section -->
+        <section class="actualite-content-section">
+            <div class="container">
+                <!-- Article metadata -->
+                <div class="article-metadata">
+                    <div class="metadata-item" *ngIf="actualite.dateModification">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Publié le {{ formatDate(actualite.dateModification) }}</span>
+                    </div>
+
+                    <div class="metadata-item" *ngIf="actualite.dateEvenement">
+                        <i class="fas fa-clock"></i>
+                        <span>Événement le {{ formatDateTime(actualite.dateEvenement) }}</span>
+                    </div>
+
+                    <div class="metadata-item" *ngIf="actualite.lieu">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>{{ actualite.lieu }}</span>
+                    </div>
+                </div>
+
+                <!-- Article content -->
+                <div class="article-content">
+                    <div class="content-text" *ngIf="actualite.contenu">
+                        <markdown [data]="actualite.contenu"></markdown>
+                    </div>
+
+                    <!-- External link button -->
+                    <div class="external-link-section" *ngIf="actualite.lienWeb">
+                        <button class="external-link-btn" (click)="openExternalLink(actualite.lienWeb!)">
+                            <i class="fas fa-external-link-alt"></i>
+                            Plus d'informations
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Images gallery section -->
+        <section class="images-section" *ngIf="getAllImages().length > 0">
+            <div class="container">
+                <h3 class="section-title">Galerie d'images</h3>
+
+                <div class="photo-grid">
+                    <div *ngFor="let image of getAllImages(); let i = index" class="photo-item">
+                        <img [src]="getImageUrl(image)" [alt]="actualite.titre + ' - Image ' + (i + 1)"
+                            class="gallery-photo">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

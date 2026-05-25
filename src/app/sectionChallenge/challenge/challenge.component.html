@@ -1,0 +1,260 @@
+<div class="challenge-container">
+  <!-- Hero Section - Always visible -->
+  <section class="hero-section">
+    <div class="hero-image-container">
+      <img src="/assets/images/dojo.jpg" alt="Challenge International de Judo de Boucherville" class="hero-image">
+    </div>
+
+    <!-- Background Logo - Behind content -->
+    <div class="hero-logo-background">
+      <img src="/assets/images/logos/logo_challenge_no_text.png" alt="Challenge Logo" class="challenge-logo">
+    </div>
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span *ngIf="challenge">{{ challenge.title }}</span>
+        <span *ngIf="!challenge">Challenge International de Judo Boucherville</span>
+      </h1>
+      <p class="hero-intro" *ngIf="challenge">{{ challenge.introduction }}</p>
+
+      <!-- Countdown Timer -->
+      <div class="countdown-section">
+        <h3>Compte à rebours</h3>
+        <div class="countdown-timer">
+          <div class="countdown-item">
+            <span class="countdown-number">{{ countdown.days }}</span>
+            <span class="countdown-label" title="Jours" aria-label="Jours">J</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-number">{{ countdown.hours }}</span>
+            <span class="countdown-label" title="Heures" aria-label="Heures">H</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-number">{{ countdown.minutes }}</span>
+            <span class="countdown-label" title="Minutes" aria-label="Minutes">M</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-number">{{ countdown.seconds }}</span>
+            <span class="countdown-label" title="Secondes" aria-label="Secondes">S</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Livestream Section -->
+      <div class="livestream-section">
+        <div class="livestream-info" *ngIf="!challenge?.livestreamActive">
+          <i class="fas fa-video"></i>
+          <span>Événement diffusé en direct</span>
+        </div>
+        <a routerLink="/challenge/live" class="livestream-button" *ngIf="challenge?.livestreamActive">
+          <i class="fas fa-play"></i>
+          Voir la diffusion en direct
+        </a>
+      </div>
+    </div>
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" (click)="scrollToNextSection()">
+      <div class="scroll-triangle">
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Loading/Error States - Overlay in middle sections -->
+  <div class="content-loading-wrapper" *ngIf="loading">
+    <app-loading-spinner message="Chargement du challenge..." size="large">
+    </app-loading-spinner>
+  </div>
+
+  <div class="content-error-state" *ngIf="!loading && error">
+    <div class="error-content">
+      <h2>Erreur de chargement</h2>
+      <p>Une erreur s'est produite lors du chargement des informations du challenge. Veuillez réessayer plus tard.</p>
+      <button class="retry-button" (click)="loadChallengeInfo()">
+        <i class="fas fa-refresh"></i>
+        Réessayer
+      </button>
+    </div>
+  </div>
+
+  <!-- Challenge content - Only show when loaded successfully -->
+  <ng-container *ngIf="!loading && !error && challenge">
+    <!-- Partners Section -->
+    <section class="partners-section" *ngIf="challenge.sponsors && challenge.sponsors.length > 0">
+      <div class="partners-carousel">
+        <om-marquee [animationDuration]="marqueeAnimationDuration">
+          <!-- Duplicate partner items to ensure full width coverage -->
+          <ng-container *ngFor="let i of [0, 1, 2, 3, 4, 5]">
+            <div #OmMarqueeContent class="partner-item" *ngFor="let sponsor of challenge.sponsors">
+              <a class="partner-link" [href]="sponsor.url" target="_blank">
+                <img [src]="sponsorLogoUrls[sponsor.id]" [alt]="sponsor.name" class="partner-logo">
+              </a>
+            </div>
+          </ng-container>
+        </om-marquee>
+      </div>
+    </section>
+
+    <!-- Quick Info Section -->
+    <section class="quick-info-section">
+      <div class="container">
+        <div class="info-grid">
+          <div class="info-item">
+            <i class="fas fa-calendar-alt"></i>
+            <div class="info-content">
+              <h4>Date de la compétition</h4>
+              <p>{{ challenge.competitionDate }}</p>
+            </div>
+          </div>
+          <a class="info-item location-link"
+            [href]="'https://www.google.com/maps/search/?api=1&query=' + challenge.location" target="_blank"
+            rel="noopener noreferrer" title="Ouvrir l'emplacement dans Google Maps">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="info-content">
+              <h4>Lieu</h4>
+              <p>{{ challenge.location }}</p>
+            </div>
+          </a>
+          <div class="info-item">
+            <i class="fas fa-user-tie"></i>
+            <div class="info-content">
+              <h4>Président-e d'honneur</h4>
+              <p>{{ challenge.honoraryPresident }}</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-users"></i>
+            <div class="info-content">
+              <h4>Catégories</h4>
+              <p>{{ challenge.categories }}</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-trophy"></i>
+            <div class="info-content">
+              <h4>Récompenses</h4>
+              <p>{{ challenge.rewards }}</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-dollar-sign"></i>
+            <div class="info-content">
+              <h4>Inscription - Coûts</h4>
+              <p>{{ challenge.registrationCost }}</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-clock"></i>
+            <div class="info-content">
+              <h4>Inscription - Date limite - Amérique du Nord</h4>
+              <p>{{ challenge.deadlineNA }}</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-globe"></i>
+            <div class="info-content">
+              <h4>Inscription - Date limite - Reste du monde</h4>
+              <p>{{ challenge.deadlineWorld }}</p>
+            </div>
+          </div>
+          <div class="info-item" *ngIf="challenge.otherInfo">
+            <i class="fas fa-info-circle"></i>
+            <div class="info-content">
+              <h4>Autre information</h4>
+              <p>{{ challenge.otherInfo }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Information PDFs Section -->
+    <section class="info-packs-section" *ngIf="challenge.infoFiles && challenge.infoFiles.length > 0">
+      <div class="container">
+        <h2>Documents d'information</h2>
+        <p>Veuillez consulter les documents pour tous les détails sur l'horaire et les modalités d'inscription</p>
+        <div class="info-packs-grid">
+          <div class="info-pack-card" *ngFor="let pack of challenge.infoFiles">
+            <i class="fas fa-file-pdf"></i>
+            <h3>{{ pack.title }}</h3>
+            <button class="open-btn" (click)="downloadPDF(pack.fileName)">
+              <i class="fas fa-external-link-alt"></i>
+              Ouvrir
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration and Social Section -->
+    <section class="registration-social-section">
+      <div class="container">
+        <div class="registration-social-grid">
+          <div class="registration-card">
+            <h3>Équipes inscrites au Challenge</h3>
+            <p>Consultez la liste des équipes inscrites au Challenge international de judo de Boucherville</p>
+            <a routerLink="/challenge/inscription" class="registration-btn">
+              <i class="fas fa-pen"></i>
+              Liste d'inscription
+            </a>
+          </div>
+
+          <div class="facebook-card">
+            <h3>Rejoignez le groupe du Challenge</h3>
+            <p>Suivez toutes les actualités du challenge et échangez avec les autres participants sur notre groupe
+              Facebook</p>
+            <button class="facebook-btn" (click)="openFacebookGroup()">
+              <i class="fab fa-facebook-f"></i>
+              Groupe Facebook
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image Gallery Section -->
+    <section class="gallery-section" *ngIf="challenge.images && challenge.images.length > 0">
+      <div class="container">
+        <h2>Galerie photos</h2>
+        <div class="gallery-carousel">
+          <swiper-container slides-per-view="auto" space-between="20" pagination="true" navigation="true" loop="false"
+            grab-cursor="true" class="gallery-swiper">
+            <swiper-slide *ngFor="let image of challenge.images" class="gallery-slide">
+              <div class="gallery-item">
+                <img [src]="getImageUrl(image)" alt="Image du challenge" class="gallery-image">
+              </div>
+            </swiper-slide>
+          </swiper-container>
+        </div>
+      </div>
+    </section>
+  </ng-container>
+
+  <!-- Contact Section - Always visible -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-content">
+        <h2>Contactez-nous</h2>
+        <p>Pour toute question concernant l'inscription ou l'événement</p>
+
+        <a routerLink="/contact" class="contact-btn">
+          <i class="fas fa-envelope"></i>
+          Contactez-nous
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- History Link Section -->
+  <section class="history-link-section">
+    <div class="history-link-content">
+      <h2>Découvrez l'histoire du Challenge</h2>
+      <p>Consultez les résultats des éditions précédentes et revivez les moments forts de notre compétition.</p>
+      <a routerLink="/challenge/historique" class="history-btn">
+        <i class="fas fa-history"></i>
+        Voir l'historique complet
+      </a>
+    </div>
+  </section>
+</div>

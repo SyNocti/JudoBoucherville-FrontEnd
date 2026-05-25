@@ -1,0 +1,76 @@
+<!-- Page title section - Always visible -->
+<section class="title-section">
+    <app-page-title title="Ceintures Noires"></app-page-title>
+</section>
+
+<!-- Ceintures noires content -->
+<section class="ceintures-section">
+    <div class="container">
+        <!-- Introduction with wall display image - Always visible -->
+        <div class="intro-section">
+            <div class="intro-text">
+                <h2>Nos Ceintures Noires</h2>
+                <p *ngIf="!loading && !error">Depuis la fondation du club, nous avons eu l'honneur de former {{
+                    ceinturesNoires.length }} ceintures noires.
+                    Chaque judoka représenté ici a démontré une maîtrise exceptionnelle des techniques et des valeurs du
+                    judo.</p>
+                <p *ngIf="loading || error">Depuis la fondation du club, nous avons eu l'honneur de former de nombreuses
+                    ceintures noires.
+                    Chaque judoka représenté ici a démontré une maîtrise exceptionnelle des techniques et des valeurs du
+                    judo.</p>
+            </div>
+            <div class="wall-display">
+                <img src="/assets/images/tableau_ceintures.jpg" alt="Mur des ceintures noires du club"
+                    class="wall-image">
+                <p class="wall-caption">Notre mur d'honneur des ceintures noires</p>
+            </div>
+        </div>
+
+        <!-- Club Logos Timeline - Always visible -->
+        <div class="logos-timeline-section">
+            <div class="logos-container">
+                <div *ngFor="let logo of logosTimeline" class="logo-item">
+                    <div class="logo-image-container">
+                        <img [src]="logo.imageUrl" [alt]="'Logo du club ' + logo.startYear + '-' + logo.endYear"
+                            class="logo-image">
+                    </div>
+                    <div class="logo-years">
+                        <span class="year-range">{{ logo.startYear }} - {{ logo.endYear }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Black belts list section with loading/error/content states -->
+        <div class="belts-section">
+            <!-- Loading state -->
+            <div class="loading-wrapper" *ngIf="loading">
+                <app-loading-spinner message="Chargement de la liste des ceintures noires..." size="medium">
+                </app-loading-spinner>
+            </div>
+
+            <!-- Error state -->
+            <div class="error-state" *ngIf="!loading && error">
+                <div class="error-content">
+                    <h2>Erreur de chargement</h2>
+                    <p>Une erreur s'est produite lors du chargement de la liste des ceintures noires. Veuillez réessayer
+                        plus tard.</p>
+                </div>
+            </div>
+
+            <!-- Black belts list by decade -->
+            <div class="decades-container" *ngIf="!loading && !error">
+                <div *ngFor="let group of getDecadeGroups()" class="decade-group">
+                    <h3 class="decade-title">{{ group.decade }}</h3>
+                    <div class="belts-grid">
+                        <div *ngFor="let belt of group.belts" class="belt-item">
+                            <span class="belt-number">#{{ belt.numero }}</span>
+                            <span class="belt-name">{{ belt.nom }}</span>
+                            <span class="belt-year">{{ belt.annee }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

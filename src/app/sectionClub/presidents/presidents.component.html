@@ -1,0 +1,57 @@
+<div class="presidents-container">
+    <!-- Page title section - Always visible -->
+    <section class="title-section">
+        <app-page-title title="Présidents du club"></app-page-title>
+    </section>
+
+    <!-- Loading state -->
+    <section class="loading-section" *ngIf="loading">
+        <div class="container">
+            <app-loading-spinner message="Chargement de la liste des présidents..." size="medium">
+            </app-loading-spinner>
+        </div>
+    </section>
+
+    <!-- Error state -->
+    <section class="error-section" *ngIf="!loading && error">
+        <div class="container">
+            <div class="error-state">
+                <div class="error-content">
+                    <h2>Erreur de chargement</h2>
+                    <p>Une erreur s'est produite lors du chargement de la liste des présidents. Veuillez réessayer plus
+                        tard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Presidents content -->
+    <div *ngIf="!loading && !error">
+        <!-- Presidents list section -->
+        <section class="presidents-section">
+            <div class="container">
+
+                <!-- Presidents list -->
+                <div class="presidents-list" *ngIf="presidents.length > 0">
+                    <div *ngFor="let president of presidents; let i = index" class="president-card"
+                        [class.current-president]="isCurrentPresident(president)">
+
+                        <!-- President info -->
+                        <div class="president-info">
+                            <h3 class="president-name">{{ president.nom }}</h3>
+                            <span class="president-years">{{ getTermDuration(president) }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No presidents message -->
+                <div class="no-presidents-state" *ngIf="presidents.length === 0">
+                    <div class="no-presidents-content">
+                        <h2>Aucun président trouvé</h2>
+                        <p>Les informations sur les présidents ne sont pas disponibles pour le moment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

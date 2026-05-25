@@ -1,0 +1,103 @@
+<div class="challenge-live-container">
+    <!-- Page Title -->
+    <section class="title-section">
+        <app-page-title title="Diffusion en direct"></app-page-title>
+    </section>
+    
+    <!-- Main Content Section -->
+    <section class="live-section">
+        <div class="container">
+            <!-- Loading State -->
+            <div class="loading-wrapper" *ngIf="loading">
+                <app-loading-spinner message="Chargement de la diffusion..." size="large"></app-loading-spinner>
+            </div>
+
+            <!-- Error State -->
+            <div class="error-state" *ngIf="!loading && error">
+                <div class="error-content">
+                    <h2>Erreur de chargement</h2>
+                    <p>Une erreur s'est produite lors du chargement des informations de diffusion. Veuillez réessayer
+                        plus tard.</p>
+                    <button class="retry-button" (click)="retry()">
+                        <i class="fas fa-refresh"></i>
+                        Réessayer
+                    </button>
+                </div>
+            </div>
+
+            <!-- Challenge Content -->
+            <div class="live-content" *ngIf="!loading && !error && challenge">
+                <!-- Challenge Info Header -->
+                <div class="challenge-header">
+                    <h2>{{ challenge.title }}</h2>
+                    <div class="challenge-details">
+                        <div class="detail-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>{{ formatDate(challenge.date) }}</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>{{ challenge.location }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Livestream Section -->
+                <div class="livestream-wrapper">
+                    <!-- Active Livestream -->
+                    <div class="livestream-active" *ngIf="isLivestreamAvailable()">
+                        <div class="livestream-header">
+                            <div class="live-indicator">
+                                <span class="live-dot"></span>
+                                <span class="live-text">EN DIRECT</span>
+                            </div>
+                            <h3>Diffusion en cours</h3>
+                        </div>
+                        <div class="video-container">
+                            <iframe [src]="safeUrl" title="Challenge de Judo - Diffusion en direct" frameborder="0"
+                                allowfullscreen
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Livestream Not Active -->
+                    <div class="livestream-inactive" *ngIf="!isLivestreamAvailable()">
+                        <div class="inactive-content">
+                            <i class="fas fa-video-slash"></i>
+                            <h3>Diffusion non disponible</h3>
+                            <p>La diffusion en direct n'est pas encore démarrée. Revenez plus tard pour suivre le
+                                Challenge en direct.</p>
+                            <div class="event-info">
+                                <p><strong>Événement :</strong> {{ formatDate(challenge.date) }}</p>
+                                <p><strong>Lieu :</strong> {{ challenge.location }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Livestream Active but No URL -->
+                    <div class="livestream-error" *ngIf="isLivestreamAvailable() && !safeUrl">
+                        <div class="error-content">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h3>Problème de diffusion</h3>
+                            <p>La diffusion est activée mais l'URL de diffusion n'est pas disponible. Veuillez contacter
+                                l'organisation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="navigation-section">
+                    <a routerLink="/challenge" class="back-button">
+                        <i class="fas fa-arrow-left"></i>
+                        Retour au Challenge
+                    </a>
+                    <a routerLink="/challenge/inscription" class="inscriptions-button">
+                        <i class="fas fa-list"></i>
+                        Voir les inscriptions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,86 @@
+<div class="cours-list-container">
+    <!-- Page title section -->
+    <section class="title-section">
+        <app-page-title title="Liste des cours"></app-page-title>
+    </section>
+
+    <!-- Courses section -->
+    <section class="cours-section">
+        <div class="container">
+            <!-- Intro text -->
+            <!-- <div class="intro-text">
+                <p>
+                    Découvrez nos différents cours adaptés à tous les âges et niveaux.
+                    Cliquez sur un cours pour en savoir plus sur les horaires, tarifs et inscriptions.<br>
+                    Vous ne savez pas par où commencer ? Consultez la page <strong>FAQ</strong> pour savoir comment
+                    choisir le bon cours, connaître les modalités d'inscription et plus encore.
+                </p>
+                <div class="faq-link-container">
+                    <a routerLink="/faq" class="faq-link">
+                        <i class="fas fa-question-circle"></i>
+                        Questions fréquentes
+                    </a>
+                </div>
+            </div> -->
+
+            <!-- Dynamic content with loading/error/content states -->
+            <div class="cours-content">
+                <!-- Loading state -->
+                <div class="loading-wrapper" *ngIf="loading">
+                    <app-loading-spinner message="Chargement des cours..." size="medium">
+                    </app-loading-spinner>
+                </div>
+
+                <!-- Error state -->
+                <div class="error-state" *ngIf="!loading && error">
+                    <div class="error-content">
+                        <h2>Erreur de chargement</h2>
+                        <p>Une erreur s'est produite lors du chargement des cours. Veuillez réessayer plus tard.</p>
+                    </div>
+                </div>
+
+                <!-- Courses grid grouped by category -->
+                <div class="cours-grid" *ngIf="!loading && !error && cours.length > 0">
+                    <div *ngFor="let category of getOrderedCategories(); let isFirst = first" class="category-group">
+                        <!-- Category separator line -->
+                        <div class="category-separator" *ngIf="!isFirst"></div>
+
+                        <!-- Category title -->
+                        <h3 class="category-title">{{ formatCategory(category) }}</h3>
+
+                        <!-- Courses in this category -->
+                        <div class="cours-category-grid">
+                            <div *ngFor="let coursItem of coursGroupes[category]" class="cours-card"
+                                (click)="navigateToCours(coursItem)">
+                                <!-- Course image -->
+                                <div class="cours-image-container">
+                                    <img [src]="getImageUrl(coursItem.imageUrl)" [alt]="coursItem.nom"
+                                        class="cours-image">
+                                </div>
+
+                                <!-- Course info -->
+                                <div class="cours-info">
+                                    <h3 class="cours-name">{{ coursItem.nom }}</h3>
+                                    <p class="cours-description">{{ coursItem.description }}</p>
+
+                                    <!-- Click indicator -->
+                                    <div class="click-indicator">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No courses message -->
+                <div class="no-cours-state" *ngIf="!loading && !error && cours.length === 0">
+                    <div class="no-cours-content">
+                        <h2>Aucun cours trouvé</h2>
+                        <p>Les informations sur les cours ne sont pas disponibles pour le moment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
